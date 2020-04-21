@@ -31,7 +31,11 @@ class Auth extends CI_Controller{
                             }else{
                                 $response['message'] = 'Login Berhasil';
                                 $response['status'] = true;
-                                $response['data'] = $a;
+                                $token_data['nama'] = $a['nama'];
+                                $token_data['email'] = $a['email'];
+                                $token_data['id'] = $a['id'];
+                                $response['token'] = $this->authorization_token->generateToken($token_data);
+                                $response['data'] = $this->authorization_token->userData();
                             }
                         }
                     }
