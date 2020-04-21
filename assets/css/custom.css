@@ -1,0 +1,48 @@
+.padding12{
+    padding: 12px;;
+}
+
+
+/* color */
+.color-primary{
+    color: #00cff2;
+}
+
+
+/* text */
+
+.text-center{
+    text-align: center;
+}
+
+/* margin */
+.margin-18{
+    margin-top: 18px;
+}
+.margin-top-bottom-12{
+    margin: 12px 0;
+}
+
+/* img */
+.image-slide{
+    width:20%;
+    float: left;
+}
+
+#map{
+    height: 500px;
+}
+
+
+/* display */
+.inline{
+    display: inline;
+}
+
+.card-shadow{
+    box-shadow: 0 1px 8px 0 rgba(0,0,0,.12);
+    padding: 24px;
+    
+    margin-bottom: 16px;
+    border-radius: 8px;
+}
