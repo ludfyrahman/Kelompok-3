@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_marginTop="10dp"
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="130dp"
+        android:textColor="@color/colorPrimaryDark"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Verifikasi"/>
+
+     <EditText
+         android:layout_marginTop="10dp"
+         android:id="@+id/username"
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:inputType="text"
+         android:hint="username"/>
+    <EditText
+        android:id="@+id/password"
+        android:enabled="false"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="password"/>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="80dp"
+        android:id="@+id/button"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:text="verifikasi" />
+
+
+</LinearLayout>

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+   <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="115dp"
+        android:textSize="30dp"
+        android:textColor="@android:color/holo_blue_dark"
+        android:text="Biodata Diri"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        android:text="Silahkan isi biodata diri anda untuk memudahkan kita memverifikasi akun anda"/>
+ <TextView
+     android:layout_marginTop="20dp"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginLeft="20dp"
+     android:textStyle="bold"
+     android:text="Nama lengkap"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:background="#fbf5f5"
+        android:ems="10"
+        android:hint="Nama Lengkap anda"
+        android:inputType="textPersonName"
+        android:textSize="10dp" />
+ <TextView
+     android:layout_marginTop="20dp"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginLeft="20dp"
+     android:textStyle="bold"
+     android:text="Email"/>
+
+    <EditText
+        android:id="@+id/Email"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:background="#fbf5f5"
+        android:ems="10"
+        android:hint="Email anda"
+        android:inputType="textPersonName"
+        android:textSize="10dp" />
+ <TextView
+     android:layout_marginTop="20dp"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginLeft="20dp"
+     android:textStyle="bold"
+     android:text="No Hp"/>
+
+    <EditText
+        android:id="@+id/Nohp"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:background="#fbf5f5"
+        android:ems="10"
+        android:hint="No Hp"
+        android:inputType="textPersonName"
+        android:textSize="10dp" />
+ <TextView
+     android:layout_marginTop="20dp"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginLeft="20dp"
+     android:textStyle="bold"
+     android:text="Jenis Kelamin"/>
+
+    <EditText
+        android:id="@+id/jeniskelamin"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:background="#fbf5f5"
+        android:ems="10"
+        android:hint="Jenis Kelamin anda"
+        android:inputType="textPersonName"
+        android:textSize="10dp" />
+ <TextView
+     android:layout_marginTop="20dp"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginLeft="20dp"
+     android:textStyle="bold"
+     android:text="Tanggal Lahir"/>
+
+    <EditText
+        android:id="@+id/tanggallahir"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:background="#fbf5f5"
+        android:ems="10"
+        android:hint="Tanggal Lahir anda"
+        android:inputType="textPersonName"
+        android:textSize="10dp" />
+ <TextView
+     android:layout_marginTop="20dp"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_marginLeft="20dp"
+     android:textStyle="bold"
+     android:text="Alamat"/>
+
+    <EditText
+        android:id="@+id/Alamat"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="5dp"
+        android:background="#fbf5f5"
+        android:ems="10"
+        android:hint="Alamat anda"
+        android:inputType="textPersonName"
+        android:textSize="10dp" />
+
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="Ubah Biodata Diri"
+        android:textColor="#ffffff"
+        android:background="@android:color/holo_blue_dark"/>
+
+
+</LinearLayout>
+
+
