@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".login">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="left"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/left_50px"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="30dp"
+                android:text="Mendaftar"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textAlignment="center"
+                android:layout_marginTop="3dp"
+                android:text="isi from dibawah &amp; buat akun baru"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:gravity="center_horizontal" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:orientation="vertical"
+                android:layout_gravity="center">
+
+                <EditText
+                    android:id="@+id/user"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="Username"
+                    android:textStyle="bold"
+                    android:textColorHint="#1e58b6"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/user_50px"
+                    android:drawablePadding="10dp"
+                    android:layout_marginTop="35dp" />
+
+                <EditText
+                    android:id="@+id/et-email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="Email"
+                    android:textStyle="bold"
+                    android:textColorHint="#1e58b6"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/email"
+                    android:drawablePadding="10dp"
+                    android:layout_marginTop="35dp" />
+
+                <EditText
+                    android:id="@+id/et-Password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="Password"
+                    android:textStyle="bold"
+                    android:textColorHint="#1e58b6"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/lock_50px"
+                    android:drawablePadding="10dp"
+                    android:layout_marginTop="35dp"
+                    android:drawableRight="@drawable/hide_50px"/>
+
+                <EditText
+                    android:id="@+id/verikasi"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="Verifikasi Password"
+                    android:textStyle="bold"
+                    android:textColorHint="#1e58b6"
+                    android:layout_gravity="center"
+                    android:drawableLeft="@drawable/lock_orientation_50px"
+                    android:drawablePadding="10dp"
+                    android:layout_marginTop="35dp"
+                    android:drawableRight="@drawable/hide_50px"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Lupa Password"
+                    android:textStyle="bold"
+                    android:textColorHint="#1e58b6"
+                    android:textAlignment="viewEnd"
+                    android:gravity="end" />
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="#1e58b6"
+                    android:text="MASUK"
+                    android:textColor="#FFFFFF"
+                    android:layout_gravity="center"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Daftar Melalui"
+                    android:textStyle="bold"
+                    android:textColorHint="#1e58b6"
+                    android:textAlignment="center"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="15dp"/>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:src="@drawable/fb"/>
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="34dp"
+                        android:src="@drawable/akun"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="Tidak memiliki akun?"
+                    android:textColorHint="#A1A1A1"
+                    android:layout_marginTop="15dp"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:hint="Masuk"
+                        android:textColorHint="#1e58b6"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginLeft="3dp"/>
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
+</LinearLayout>
