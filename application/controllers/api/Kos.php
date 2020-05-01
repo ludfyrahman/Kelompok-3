@@ -11,6 +11,15 @@ class Kos extends CI_Controller{
         $q = $this->db->get($this->low)->result_array();
         echo json_encode(['data' => $q]);
     }
+    public function edit($id){
+        $q = $this->db->get_where($this->low, ['id' => $id])->row_array();
+        echo json_encode(['data' => $q]);
+    }
+    public function update($id){
+        $q = $this->db->get_where($this->low, ['id' => $id])->row_array();
+        echo json_encode(['data' => $q]);
+    }
+    
     public function detail($id){
         $q = $this->db->get_where($this->low, ['id' => $id])->row_array();
         echo json_encode(['data' => $q]);
