@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Papikos</string>
+    <string name="next">Selanjutnya</string>
+    <string name="skip">Lewati</string>
+
+    <string name="slide_1_title">Aman</string>
+    <string name="slide_1_desc">Keamanan kos yang terjamin dengan adanya satpam atau pengamanan di setiap tempat kos</string>
+    <string name="slide_2_title">Nyaman</string>
+    <string name="slide_2_desc">Kenyamanan kos yang Harga yang terjangkau dengan fasilitas yang lengkap</string>
+    <string name="slide_3_title">Strategis</string>
+    <string name="slide_3_desc">Tempat kos yang dekat dengan tempat - tempat yang menunjang kebutuhan,seperti lokasi kampus ataupun tempat kerja</string>
+    <string name="welcome_title">Selamat Datang di Papikos</string>
+    <string name="welcome_desc">Masuk agar anda dapat mendapatkan  fitur yang menarik dari papikos</string>
+    <string name="daftar">Daftar</string>
+    <string name="masuk">Masuk</string>
+    <string name="or_welcome">Atau melalui</string>
+    <string name="register_desc"><![CDATA[Isi form dibawah & buat akun baru]]></string>
+</resources>
