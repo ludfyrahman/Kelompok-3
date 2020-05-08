@@ -1,16 +1,14 @@
-package com.example.papikos;
+package com.example.beljas_as;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
-import com.ludfyrahman.papikos.R;
-
-public class comeActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_come);
+        setContentView(R.layout.activity_season);
     }
 }
