@@ -11,6 +11,161 @@ class Auth extends CI_Controller{
         $response['data'] = $this->db->get_where($this->low)->row_array();
         echo json_encode($response);
     }
+    public function lupa_password(){
+        $response = [];
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $d = $_POST;
+            $response['status'] = false;
+            try {
+                $cek = $this->db->get_where("pengguna", ['email' => $d['email']])->num_rows();
+                if($cek > 1){
+                    $response['status'] = true;
+                    $response['message'] = 'Silahkan Cek email untuk mengubah password anda';
+                }else{
+                    $response['message'] = 'Email yang anda masukan tidak terdaftar';
+                }
+            }
+            catch(Exception $e) {
+                // $this->login();
+                $response['message'] = 'Kesalahan';
+            }
+        }else{
+            $response['message'] = 'Method Not allowed';
+        }
+        echo json_encode($response);
+    }
+    public function ubah_password(){
+        $response = [];
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $d = $_POST;
+            $response['status'] = false;
+            try {
+                if($d['password'] != $d['password_confirmation']) {
+                    $_SESSION['alert'] = ['danger', 'Password konfirmasi tidak sama'];
+                    return $this->password();
+                }
+    
+                if(!password_verify($d['old_password'], Account::Get('password'))) {
+                    $_SESSION['alert'] = ['danger', 'Password lama tidak sama'];
+                    return $this->password();
+                }
+    
+                $arr = ['password' => password_hash($d['password'], PASSWORD_DEFAULT)];
+                $d = $this->db->update("pengguna", $arr, ['email' => $d['email']]);
+                if($d){
+                    $response['status'] = true;
+                    $response['message'] = 'Ubah Password Berhasil';
+                }else{
+                    $response['message'] = 'Ubah password gagal';
+                }
+            }
+            catch(Exception $e) {
+                // $this->login();
+                $response['message'] = 'Kesalahan';
+            }
+        }else{
+            $response['message'] = 'Method Not allowed';
+        }
+        echo json_encode($response);
+    }
+    public function ubah_profile(){
+        $response = [];
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $d = $_POST;
+            $response['status'] = false;
+            try {
+    
+                $arr = [
+                    'nama'              => $d['nama'],
+                    'email'             => $d['email'],
+                    'jenis_kelamin'     => $d['jenis_kelamin'],
+                    'no_hp'             => $d['no_hp'],
+                    'tanggal_lahir'     => $d['tanggal_lahir'],
+                    'alamat'            => $d['alamat']
+                ];
+                $d = $this->db->update("pengguna", $arr, ['email' => $d['email']]);
+                if($d){
+                    $response['status'] = true;
+                    $response['message'] = 'Ubah Profil Berhasil';
+                }else{
+                    $response['message'] = 'Ubah Profil gagal';
+                }
+            }
+            catch(Exception $e) {
+                // $this->login();
+                $response['message'] = 'Kesalahan';
+            }
+        }else{
+            $response['message'] = 'Method Not allowed';
+        }
+        echo json_encode($response);
+    }
+    public function ubah_rekening(){
+        $response = [];
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $d = $_POST;
+            $response['status'] = false;
+            try {
+    
+                $arr = [
+                    'nama_bank'         => $d['nama_bank'],
+                    'nama_rekening'     => $d['nama_rekening'],
+                    'no_rekening'       => $d['no_rekening'],
+                ];
+                $d = $this->db->update("pengguna", $arr, ['email' => $d['email']]);
+                if($d){
+                    $response['status'] = true;
+                    $response['message'] = 'Ubah Rekening Berhasil';
+                }else{
+                    $response['message'] = 'Ubah Rekening gagal';
+                }
+            }
+            catch(Exception $e) {
+                // $this->login();
+                $response['message'] = 'Kesalahan';
+            }
+        }else{
+            $response['message'] = 'Method Not allowed';
+        }
+        echo json_encode($response);
+    }
+    public function ubah_foto(){
+        $response = [];
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $d = $_POST;
+            $response['status'] = false;
+            try {
+    
+                if(App::validateSizeUpload(20097152 , $f['foto'])){
+                    if(App::validateTypeUpload(['image/png', 'image/jpg', 'image/jpeg'], $f['foto'])){
+                        $name = App::RandomString(5);
+                        $tipe = str_replace("image/", "", $f['foto']['type']);
+                        $f['foto']['name'] = $name.".".$tipe;
+                        App::UploadImage($f['foto'], "profil");
+                        $d = $this->db->update("pengguna", ['profil' => $name.".".$tipe], ['email' => $d['email']]);
+                        if($d){
+                            $response['status'] = true;
+                            $response['message'] = 'Ubah Foto Berhasil';
+                        }else{
+                            $response['message'] = 'Ubah Foto gagal';
+                        }
+                    }else{
+                        $response['message'] = 'File yang di upload tidak sesuai';
+                    }
+                }else{
+                    $response['message'] = 'File yang di upload melebihi 2 mb';
+                }
+                
+            }
+            catch(Exception $e) {
+                // $this->login();
+                $response['message'] = 'Kesalahan';
+            }
+        }else{
+            $response['message'] = 'Method Not allowed';
+        }
+        echo json_encode($response);
+    }
     public function sign_In(){
         $response = [];
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
