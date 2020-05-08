@@ -18,7 +18,7 @@ class Auth extends CI_Controller{
             $response['status'] = false;
             try {
                 $cek = $this->db->get_where("pengguna", ['email' => $d['email']])->num_rows();
-                if($cek > 1){
+                if($cek > 0){
                     $response['status'] = true;
                     $response['message'] = 'Silahkan Cek email untuk mengubah password anda';
                 }else{
@@ -34,30 +34,32 @@ class Auth extends CI_Controller{
         }
         echo json_encode($response);
     }
-    public function ubah_password(){
+    public function update_password(){
         $response = [];
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $d = $_POST;
             $response['status'] = false;
             try {
                 if($d['password'] != $d['password_confirmation']) {
-                    $_SESSION['alert'] = ['danger', 'Password konfirmasi tidak sama'];
-                    return $this->password();
-                }
-    
-                if(!password_verify($d['old_password'], Account::Get('password'))) {
-                    $_SESSION['alert'] = ['danger', 'Password lama tidak sama'];
-                    return $this->password();
-                }
-    
-                $arr = ['password' => password_hash($d['password'], PASSWORD_DEFAULT)];
-                $d = $this->db->update("pengguna", $arr, ['email' => $d['email']]);
-                if($d){
-                    $response['status'] = true;
-                    $response['message'] = 'Ubah Password Berhasil';
+                    $response['message'] = ['danger', 'Password konfirmasi tidak sama'];
                 }else{
-                    $response['message'] = 'Ubah password gagal';
+                    $data = $this->db->get_where("pengguna", ['email' => $d['email']])->row_array();
+                    if(!password_verify($d['old_password'], $data['password'])) {
+                        $response['message'] = ['danger', 'Password lama tidak sama'];
+                    }else{
+                        $arr = ['password' => password_hash($d['password'], PASSWORD_DEFAULT)];
+                        $d = $this->db->update("pengguna", $arr, ['email' => $d['email']]);
+                        if($d){
+                            $response['status'] = true;
+                            $response['message'] = 'Ubah Password Berhasil';
+                        }else{
+                            $response['message'] = 'Ubah password gagal';
+                        }
+                    }
                 }
+                
+    
+               
             }
             catch(Exception $e) {
                 // $this->login();
@@ -68,7 +70,7 @@ class Auth extends CI_Controller{
         }
         echo json_encode($response);
     }
-    public function ubah_profile(){
+    public function update_profile(){
         $response = [];
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $d = $_POST;
@@ -100,7 +102,7 @@ class Auth extends CI_Controller{
         }
         echo json_encode($response);
     }
-    public function ubah_rekening(){
+    public function update_rekening(){
         $response = [];
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $d = $_POST;
@@ -129,7 +131,7 @@ class Auth extends CI_Controller{
         }
         echo json_encode($response);
     }
-    public function ubah_foto(){
+    public function update_foto(){
         $response = [];
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $d = $_POST;
