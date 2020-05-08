@@ -15,4 +15,17 @@
     <string name="masuk">Masuk</string>
     <string name="or_welcome">Atau melalui</string>
     <string name="register_desc"><![CDATA[Isi form dibawah & buat akun baru]]></string>
+    <string name="ubah_biodata_desc">Silahkan isi biodata diri anda untuk memudahkan kita  memverifikasi akun anda</string>
+    <string name="nama_lengkap">Nama Lengkap</string>
+    <string name="email">Email</string>
+    <string name="no_hp">No Hp</string>
+    <string name="alamat">Alamat</string>
+    <string name="rekening">Rekening</string>
+    <string name="rekening_desc">Silahkan isi data rekening untuk memudahkan anda  dalam bertransaksi di papikos</string>
+    <string name="nama_bank">Nama Bank</string>
+    <string name="nama_rekening">Nama Rekening</string>
+    <string name="no_rekening">No Rekening</string>
+    <string name="verifikasi">Verifikasi</string>
+    <string name="konfirmasi_pembayaran_desc">silahkan masukkan bukti transaksi anda untuk memudahkan  verifikasi pemesanan kos</string>
+    <string name="bukti_transfer">Bukti Transfer</string>
 </resources>

@@ -155,7 +155,7 @@
                             android:textSize="15sp"
                             android:id="@+id/password_konfirmasi"
                             android:inputType="textPassword"
-                            android:hint="Password"/>
+                            android:hint="Password Konfirmasi"/>
                     </com.google.android.material.textfield.TextInputLayout>
                 </LinearLayout>
 

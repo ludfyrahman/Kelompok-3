@@ -9,7 +9,15 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Dashboard.Dashboard"></activity>
+        <activity android:name=".Pembayaran.Konfirmasi_Pembayaran"></activity>
+        <activity android:name=".Akun.Verifikasi.Verifikasi" />
+        <activity android:name=".Akun.Pengaturan.Form_Rekening" />
+        <activity android:name=".Akun.Pengaturan.Ubah_Biodata" />
+        <activity android:name=".Akun.Pengaturan.Data_Diri" />
+        <activity android:name=".Akun.Profil" />
+        <activity android:name=".Akun.Pengaturan.Ubah_Password" />
+        <activity android:name=".Akun.Lupa_Password" />
+        <activity android:name=".Dashboard.Dashboard" />
         <activity android:name=".Akun.Sign_Up" />
         <activity android:name=".Other.Welcome" />
         <activity android:name=".Akun.Sign_In" />
