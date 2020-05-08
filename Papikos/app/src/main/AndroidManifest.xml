@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.papikos">
+    package="com.ludfyrahman.papikos">
 
     <application
         android:allowBackup="true"
@@ -8,18 +8,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".intro2Activity"></activity>
-        <activity android:name=".intro1Activity" />
-        <activity android:name=".comeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".splashscreen" />
-        <activity android:name=".introActivity" />
+        android:theme="@style/AppTheme">
+        <activity android:name=".welcome"></activity>
+        <activity android:name=".ubah_password_berhasil" />
+        <activity android:name=".lupa_password" />
+        <activity android:name=".ubah_password" />
+        <activity android:name=".mendaftar" />
+        <activity android:name=".login" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
