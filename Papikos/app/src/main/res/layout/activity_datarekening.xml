@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+android:layout_marginLeft="90dp"
+android:textSize="30dp"
+android:textColor="#0000A0"
+android:text="Data Rekening"/>
+
+<TextView
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:layout_marginTop="20dp"
+android:layout_marginLeft="10dp"
+android:text="Silahkan isi Data Rekening untuk memudahkan anda dalam bertransaksi di papikos"/>
+
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:text="Nama Bank"/>
+
+    <EditText
+        android:id="@+id/editText"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:background="#fbf5f5"
+        android:ems="10"
+        android:hint="Nama Bank"
+        android:inputType="textPersonName"
+        android:textSize="10dp" />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:text="Nama Rekening"/>
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:background="#fbf5f5"
+        android:ems="10"
+        android:hint="Nama rekening"
+        android:inputType="textPersonName"
+        android:textSize="10dp" />
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:textStyle="bold"
+        android:text="No Rekening"/>
+
+    <EditText
+        android:id="@+id/norekening"
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="5dp"
+        android:background="#fbf5f5"
+        android:ems="10"
+        android:hint="No Rekening"
+        android:inputType="textPersonName"
+        android:textSize="10dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="20dp"
+        android:text="Ubah"
+        android:textColor="#ffffff"
+        android:background="#0000A0"/>
+
+</LinearLayout>
