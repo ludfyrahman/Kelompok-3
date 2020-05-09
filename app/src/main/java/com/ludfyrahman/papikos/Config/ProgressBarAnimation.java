@@ -6,6 +6,9 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.ProgressBar;
 
+import com.ludfyrahman.papikos.Dashboard.Fragment_Dashboard;
+import com.ludfyrahman.papikos.Dashboard.Fragment_Kos;
+import com.ludfyrahman.papikos.Kos.Detail_Kos;
 import com.ludfyrahman.papikos.Other.Intro;
 
 public class ProgressBarAnimation extends Animation {
@@ -28,7 +31,8 @@ public class ProgressBarAnimation extends Animation {
         progressBar.setProgress((int) value);
 
         if (value == to){
-            context.startActivity(new Intent(context, Intro.class));
+            context.startActivity(new Intent(context, Fragment_Kos.class));
+//            context.startActivity(new Intent(context, Intro.class));
         }
     }
 }

@@ -9,7 +9,8 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Transaksi.Detail_Transaksi"></activity>
+        <activity android:name=".Dashboard.Fragment_Kos"></activity>
+        <activity android:name=".Transaksi.Detail_Transaksi" />
         <activity android:name=".Kos.Detail_Kos" />
         <activity android:name=".Dashboard.Fragment_Dashboard" />
         <activity android:name=".Transaksi.Konfirmasi_Pembayaran" />

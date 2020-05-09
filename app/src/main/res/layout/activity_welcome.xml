@@ -90,6 +90,7 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/button_border_blue"
                     android:layout_margin="8dp"
+                    android:id="@+id/daftar"
                     android:text="@string/daftar"/>
             </LinearLayout>
             <TextView

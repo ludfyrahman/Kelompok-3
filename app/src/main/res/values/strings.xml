@@ -31,4 +31,9 @@
     <string name="tanggal">Due 09/12/2021</string>
     <string name="invoice_title">INVOICE INV00051</string>
     <string name="total_pembayaran">Total Pembayaran</string>
+    <string name="welcome">Selamat Datang, Ludfi</string>
+    <string name="dashboard_desc">Temukan kos yang sesuai dengan kebutuhan anda di aplikasi papikos</string>
+    <string name="kategori">Kategori</string>
+    <string name="terbaru">Terbaru</string>
+    <string name="rekomendasi">Rekomendasi</string>
 </resources>

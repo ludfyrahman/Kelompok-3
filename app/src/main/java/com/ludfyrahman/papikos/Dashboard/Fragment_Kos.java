@@ -1,4 +1,4 @@
-package com.ludfyrahman.papikos.Akun;
+package com.ludfyrahman.papikos.Dashboard;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.ludfyrahman.papikos.R;
 
-public class Profil extends AppCompatActivity {
+public class Fragment_Kos extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_profil);
+        setContentView(R.layout.fragment_kos);
     }
 }

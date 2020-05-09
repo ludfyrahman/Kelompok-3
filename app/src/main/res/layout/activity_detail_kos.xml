@@ -20,7 +20,15 @@
                 app:contentScrim="?attr/colorPrimary"
                 app:expandedTitleTextAppearance="@android:color/transparent"
                 android:fitsSystemWindows="true">
-
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                    android:title="Detail Produk"
+                    app:layout_collapseMode="pin"
+                    app:titleTextColor="@color/colorwhite"
+                    />
                 <com.synnapps.carouselview.CarouselView
                     android:id="@+id/cover"
                     android:layout_width="match_parent"
@@ -33,15 +41,7 @@
                     app:strokeWidth="1dp"/>
 
 
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    android:title="Detail Produk"
-                    app:layout_collapseMode="pin"
-                    app:titleTextColor="@color/colorwhite"
-                    />
+
 
 
             </com.google.android.material.appbar.CollapsingToolbarLayout>

@@ -16,7 +16,7 @@ public class Sign_Up extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.back);
         Intent data = getIntent();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
