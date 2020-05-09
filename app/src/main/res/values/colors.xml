@@ -8,6 +8,8 @@
     <color name="colorLight">#F8F8F8</color>
     <color name="colorBlack">#000D22</color>
     <color name="colorOrange">#F2A83A</color>
+    <color name="colorRed">#DE4C50</color>
+    <color name="colorBlueSea">#4DD5EB</color>
 
 
     <array name="array_dot_active">

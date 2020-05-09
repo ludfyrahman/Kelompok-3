@@ -9,9 +9,10 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Kos.Detail_Kos"></activity>
+        <activity android:name=".Transaksi.Detail_Transaksi"></activity>
+        <activity android:name=".Kos.Detail_Kos" />
         <activity android:name=".Dashboard.Fragment_Dashboard" />
-        <activity android:name=".Pembayaran.Konfirmasi_Pembayaran" />
+        <activity android:name=".Transaksi.Konfirmasi_Pembayaran" />
         <activity android:name=".Akun.Verifikasi.Verifikasi" />
         <activity android:name=".Akun.Pengaturan.Form_Rekening" />
         <activity android:name=".Akun.Pengaturan.Ubah_Biodata" />

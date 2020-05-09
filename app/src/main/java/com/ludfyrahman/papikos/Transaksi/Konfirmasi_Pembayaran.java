@@ -1,4 +1,4 @@
-package com.ludfyrahman.papikos.Pembayaran;
+package com.ludfyrahman.papikos.Transaksi;
 
 import androidx.appcompat.app.AppCompatActivity;
 
