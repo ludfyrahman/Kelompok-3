@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:enabled="true"
+        android:icon="@drawable/dashboard"
+        android:id="@+id/dashboard"
+        android:title="Beranda"
+        app:showAsAction="ifRoom" />
+    <item
+        android:enabled="true"
+        android:icon="@drawable/kos"
+        android:id="@+id/kos"
+        android:title="Kos"
+        app:showAsAction="ifRoom"
+        />
+    <item
+        android:enabled="true"
+        android:icon="@drawable/marker"
+        android:id="@+id/map"
+        android:title="Map"
+        app:showAsAction="ifRoom" />
+    <item
+        android:enabled="true"
+        android:icon="@drawable/akun"
+        android:id="@+id/akun"
+        android:title="Akun"
+        app:showAsAction="ifRoom" />
+</menu>
