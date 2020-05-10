@@ -36,4 +36,13 @@
     <string name="kategori">Kategori</string>
     <string name="terbaru">Terbaru</string>
     <string name="rekomendasi">Rekomendasi</string>
+    <string name="profil">Profil</string>
+    <string name="ubah_data_diri">Ubah Data Diri</string>
+    <string name="ubah_sandi">Ubah Kata Sandi</string>
+    <string name="transaksi">Transaksi</string>
+    <string name="favorit">Favorit</string>
+    <string name="tentang">Tentang Papikos</string>
+    <string name="keluar">Keluar</string>
+    <string name="empty_title">Tidak ada data</string>
+    <string name="empty_desc">Something wrong with you why are you check notification?</string>
 </resources>

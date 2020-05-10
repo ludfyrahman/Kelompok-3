@@ -9,7 +9,11 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Dashboard.Fragment_Kos"></activity>
+        <activity android:name=".Akun.Notifikasi"></activity>
+        <activity android:name=".Dashboard.Fragment_Favorit" />
+        <activity android:name=".Dashboard.Fragment_Map" />
+        <activity android:name=".Dashboard.Fragment_Akun" />
+        <activity android:name=".Dashboard.Fragment_Kos" />
         <activity android:name=".Transaksi.Detail_Transaksi" />
         <activity android:name=".Kos.Detail_Kos" />
         <activity android:name=".Dashboard.Fragment_Dashboard" />

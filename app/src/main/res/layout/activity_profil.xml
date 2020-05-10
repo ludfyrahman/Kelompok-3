@@ -50,6 +50,7 @@
                 android:padding="16dp"
                 android:layout_gravity="center"
                 android:src="@drawable/auth"/>
+
             <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="match_parent"

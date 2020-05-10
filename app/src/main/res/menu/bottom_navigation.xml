@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:enabled="true"
-        android:icon="@drawable/dashboard"
-        android:id="@+id/dashboard"
-        android:title="Beranda"
+        android:icon="@drawable/love"
+        android:id="@+id/favorit"
+        android:title="Favorit"
         app:showAsAction="ifRoom" />
     <item
         android:enabled="true"
@@ -14,6 +14,12 @@
         android:title="Kos"
         app:showAsAction="ifRoom"
         />
+    <item
+        android:enabled="true"
+        android:id="@+id/dashboard"
+        android:title="Beranda"
+        app:labelVisibilityMode="labeled"
+        app:showAsAction="always" />
     <item
         android:enabled="true"
         android:icon="@drawable/marker"

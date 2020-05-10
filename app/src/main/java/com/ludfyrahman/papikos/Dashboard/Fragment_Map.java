@@ -12,12 +12,12 @@ import android.view.ViewGroup;
 
 import com.ludfyrahman.papikos.R;
 
-public class Fragment_Kos extends Fragment {
+public class Fragment_Map  extends Fragment {
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        View v = inflater.inflate(R.layout.fragment_kos, container, false);
+        View v = inflater.inflate(R.layout.fragment_map, container, false);
         return v;
     }
 }
