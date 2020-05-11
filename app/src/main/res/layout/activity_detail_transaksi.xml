@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/colorwhite"
     tools:context=".Transaksi.Detail_Transaksi">
     <com.google.android.material.appbar.AppBarLayout
@@ -34,253 +35,128 @@
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_marginTop="50dp"
-        android:background="@color/colorPrimary"/>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="120dp"
-        android:orientation="vertical">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/hand_card"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_weight="1"
-                    android:paddingLeft="8dp"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorLight"
-                        android:text="@string/tanggal"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="8dp"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorLight"
-                        android:text="@string/invoice_title"/>
-                </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="16dp"
-                android:paddingBottom="16dp"
-                android:paddingLeft="16dp"
-                android:layout_marginTop="8dp"
-                android:orientation="horizontal"
-                android:paddingRight="16dp"
-                android:background="@color/colorBlueSea">
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textSize="18sp"
-                        android:textColor="@color/colorwhite"
-                        android:text="@string/total_pembayaran"/>
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_marginTop="8dp"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/colorwhite"
-                        android:textSize="25sp"
-                        android:text="Rp 250.000"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:gravity="right"
-                    >
-                    <Button
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="right"
-                        android:background="@color/colorwhite"
-                        android:text="Dp"/>
-                </LinearLayout>
-            </LinearLayout>
-        </LinearLayout>
-        <LinearLayout
+        android:layout_height="wrap_content"
+        >
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:padding="16dp"
-            android:background="@color/colorLight">
+            >
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="8dp"
-                android:background="@color/colorwhite">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="Detail Pembeli"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/colorLight"/>
+                android:layout_height="180dp"
+                android:background="@color/colorPrimary"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="50dp"
+                android:orientation="vertical">
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:orientation="vertical"
-                    >
+                    android:padding="16dp">
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
                         android:orientation="horizontal">
-                        <TextView
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorGray"
-                            android:text="@string/nama_lengkap"/>
-                        <TextView
+                            android:layout_gravity="center"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:src="@drawable/hand_card"/>
+                        </LinearLayout>
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:gravity="right"
-                            android:textColor="@color/colorBlack"
+                            android:layout_weight="1"
+                            android:paddingLeft="8dp"
                             android:layout_height="wrap_content"
-                            android:text="Fina Vivi"/>
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorLight"
+                                android:text="@string/tanggal"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:paddingTop="8dp"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="@color/colorLight"
+                                android:text="@string/invoice_title"/>
+                        </LinearLayout>
                     </LinearLayout>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-                        <TextView
+                        android:paddingTop="16dp"
+                        android:paddingBottom="16dp"
+                        android:paddingLeft="16dp"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        android:paddingRight="16dp"
+                        android:background="@color/colorBlueSea">
+                        <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/colorGray"
-                            android:text="@string/no_hp"/>
-                        <TextView
+                            android:orientation="vertical">
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="18sp"
+                                android:textColor="@color/colorwhite"
+                                android:text="@string/total_pembayaran"/>
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_marginTop="8dp"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/colorwhite"
+                                android:textSize="25sp"
+                                android:text="Rp 250.000"/>
+                        </LinearLayout>
+                        <LinearLayout
                             android:layout_width="match_parent"
-                            android:gravity="right"
-                            android:textColor="@color/colorBlack"
                             android:layout_height="wrap_content"
-                            android:text="082331759738"/>
+                            android:layout_gravity="center"
+                            android:gravity="right"
+                            >
+                            <Button
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="right"
+                                android:background="@color/colorwhite"
+                                android:textColor="@color/colorPrimary"
+                                android:text="Dp"/>
+                        </LinearLayout>
                     </LinearLayout>
-                    <LinearLayout
+                    <com.google.android.material.tabs.TabLayout
+                        android:id="@+id/tabs"
+                        android:layout_marginTop="16dp"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorGray"
-                            android:text="@string/email"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:gravity="right"
-                            android:textColor="@color/colorBlack"
-                            android:layout_height="wrap_content"
-                            android:text="Email"/>
-                    </LinearLayout>
+                        app:tabTextColor="@color/colorPrimary"
+                        app:tabIndicatorColor="@color/colorPrimary"
+                        android:layout_height="wrap_content"/>
                 </LinearLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginTop="16dp"
-                android:background="@color/colorwhite">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="16dp"
-                    android:text="Data Rekening"/>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@color/colorLight"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:padding="16dp"
                     android:orientation="vertical"
-                    >
-                    <LinearLayout
+                    android:background="@color/colorLight"
+                    android:padding="16dp">
+                    <androidx.viewpager.widget.ViewPager
+                        android:id="@+id/container"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorGray"
-                            android:text="@string/nama_bank"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:gravity="right"
-                            android:textColor="@color/colorBlack"
-                            android:layout_height="wrap_content"
-                            android:text="BNI"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorGray"
-                            android:text="@string/nama_rekening"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:gravity="right"
-                            android:textColor="@color/colorBlack"
-                            android:layout_height="wrap_content"
-                            android:text="Mochamad Ludfi Rahman"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:orientation="horizontal">
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:textColor="@color/colorGray"
-                            android:text="@string/no_rekening"/>
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:gravity="right"
-                            android:textColor="@color/colorBlack"
-                            android:layout_height="wrap_content"
-                            android:text="2988398928"/>
-                    </LinearLayout>
+                        android:layout_height="450dp"
+                        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
                 </LinearLayout>
+
             </LinearLayout>
-        </LinearLayout>
-    </LinearLayout>
-</FrameLayout>
+        </FrameLayout>
+    </ScrollView>
+</LinearLayout>

@@ -51,11 +51,11 @@
                 android:layout_height="120dp"
                 android:padding="16dp"
                 android:layout_gravity="center"
-                android:src="@drawable/auth"/>
+                android:src="@drawable/profil"/>
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Mochamad Ludfi Rahman"
+                android:text="Fani dwi"
                 android:textStyle="bold"
                 android:textSize="20sp"
                 android:padding="8dp"

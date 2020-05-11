@@ -45,4 +45,11 @@
     <string name="keluar">Keluar</string>
     <string name="empty_title">Tidak ada data</string>
     <string name="empty_desc">Something wrong with you why are you check notification?</string>
+    <string name="nama_kos">Nama Kos</string>
+    <string name="type">Type</string>
+    <string name="harga">Harga</string>
+    <string name="jenis">Jenis</string>
+    <string name="bayar">Bayar</string>
+    <string name="status">Status</string>
+    <string name="kode_invoice">Kode Invoice</string>
 </resources>

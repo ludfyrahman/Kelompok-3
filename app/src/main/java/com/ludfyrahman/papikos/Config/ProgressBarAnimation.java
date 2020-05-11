@@ -11,6 +11,7 @@ import com.ludfyrahman.papikos.Dashboard.Fragment_Dashboard;
 import com.ludfyrahman.papikos.Dashboard.Fragment_Kos;
 import com.ludfyrahman.papikos.Kos.Detail_Kos;
 import com.ludfyrahman.papikos.Other.Intro;
+import com.ludfyrahman.papikos.Transaksi.Detail_Transaksi;
 
 public class ProgressBarAnimation extends Animation {
     private Context context;
@@ -32,7 +33,7 @@ public class ProgressBarAnimation extends Animation {
         progressBar.setProgress((int) value);
 
         if (value == to){
-            context.startActivity(new Intent(context, Dashboard.class));
+            context.startActivity(new Intent(context, Detail_Transaksi.class));
 //            context.startActivity(new Intent(context, Intro.class));
         }
     }

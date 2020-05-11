@@ -9,7 +9,10 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Akun.Notifikasi"></activity>
+        <activity android:name=".Transaksi.Fragment_Pembayaran"></activity>
+        <activity android:name=".Transaksi.Fragment_Item" />
+        <activity android:name=".Transaksi.Fragment_Pembeli" />
+        <activity android:name=".Akun.Notifikasi" />
         <activity android:name=".Dashboard.Fragment_Favorit" />
         <activity android:name=".Dashboard.Fragment_Map" />
         <activity android:name=".Dashboard.Fragment_Akun" />

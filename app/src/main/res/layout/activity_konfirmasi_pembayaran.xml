@@ -59,11 +59,11 @@
                     android:paddingTop="8dp"
                     android:paddingBottom="8dp"
                     android:text="@string/bukti_transfer"/>
-                <EditText
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:padding="16dp"
-                    android:gravity="top"
+                    android:gravity="center"
                     android:background="@color/colorLight"
                     android:textSize="12sp"
                     android:layout_gravity="center"
