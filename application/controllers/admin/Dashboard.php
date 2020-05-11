@@ -20,9 +20,9 @@ class Dashboard extends CI_Controller { //mengextends CI_Controller
         }
         $wherefirst = "";
         $wherelast = "";
-        if (Account::get('level') !=1) {
-            $wherelast = " AND pg.id =".Account::get('id');
-            $wherefirst = " WHERE pg.id =".Account::get('id');
+        if (Account_Helper::get('level') !=1) {
+            $wherelast = " AND pg.id =".Account_Helper::get('id');
+            $wherefirst = " WHERE pg.id =".Account_Helper::get('id');
         }
         $data['kategori']   = $this->kategori->Select("*", "");
         $data['pengguna']   = $this->pengguna->Select("*", "");

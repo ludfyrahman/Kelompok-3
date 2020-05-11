@@ -26,7 +26,7 @@ class Pengguna extends CI_Controller {
     public function index(){
 		$data['title'] = "Data $this->cap";
 		$data['content'] = "$this->low/index";
-        $data['lists'] = $this->db->get("pengguna")->result_array();
+        $data['lists'] = $this->db->get("$this->low")->result_array();
         $this->load->view('backend/index',$data);
     }
 	
@@ -79,7 +79,8 @@ class Pengguna extends CI_Controller {
                             }else{
                                 $arr['password'] = password_hash($d['password'], PASSWORD_DEFAULT);
                             }
-                            $this->pengguna->Insert($arr);
+                            // $this->pengguna->Insert($arr);
+                            $this->db->insert("$this->low", $arr);
                         }else{
                             $_SESSION['alert'] = ['danger', 'foto profile yang anda upload tidak sesuai.'];
                             $this->add();
@@ -162,7 +163,7 @@ class Pengguna extends CI_Controller {
                     $arr['password'] = password_hash($d['password'], PASSWORD_DEFAULT);
                 }
             }
-            $this->pengguna->Update($arr, "WHERE id = $id");
+            // $this->pengguna->Update($arr, "WHERE id = $id");
 			$this->db->update("$this->low",$arr, ['id' => $id]);
 			$this->session->set_flashdata("alert", ['success', "Ubah $this->cap Berhasil", ' Berhasil']);
 			redirect(base_url("$this->low/"));
@@ -186,7 +187,7 @@ class Pengguna extends CI_Controller {
 		}
     }
     public function profil() {
-        $data['title'] = 'Profil '.Account::Get('nama');
+        $data['title'] = 'Profil '.Account_Helper::Get('nama');
 		$data['content'] = 'user/profil';
         $this->load->view('frontend/index',$data);
     }
@@ -224,11 +225,12 @@ class Pengguna extends CI_Controller {
     }
     public function proses_forgot_password(){
         $d = $_POST;
-        $c = $this->pengguna->select("*", "WHERE email='$d[email]'");
-        if($c[0] > 0 ){
-            $this->setting->lupa_password_email("papikos@gmail.com", $c['email']);
+        $c = $this->db->get_where($this->low, ['email' => $d['email']])->result_array();
+        // $c = $this->pengguna->select("*", "WHERE email='$d[email]'");
+        if(count($c) > 0 ){
+            $this->setting->lupa_password_email("papikos@gmail.com", $c[0]['email']);
             // echo "ada cek email";
-            $_SESSION['alert'] = ['info', 'Verifikasi Terkirim ke email '.$c['email']];
+            $_SESSION['alert'] = ['info', 'Verifikasi Terkirim ke email '.$c[0]['email']];
             return $this->lupa_password();
         }else{
             $_SESSION['alert'] = ['info', 'Email anda tidak terdaftar di aplikasi'];
@@ -239,7 +241,7 @@ class Pengguna extends CI_Controller {
     public function proses_verifikasi($tipe = 'email'){
         $d = $_POST;
         try {
-            $j = $this->db->get_where("pengguna", ['verification' => $d['verification_code']]);
+            $j = $this->db->get_where("$this->low", ['verification' => $d['verification_code']]);
             // print_r($j);
             if ($j[0] > 0) {
                 if($tipe == 'email'){
@@ -291,7 +293,7 @@ class Pengguna extends CI_Controller {
         $d = $_POST;
         try {
             // echo "password lama "
-            if(!password_verify($d['old_password'], Account::Get('password'))) {
+            if(!password_verify($d['old_password'], Account_Helper::Get('password'))) {
                 $_SESSION['alert'] = ['danger', 'Password lama tidak sama'];
                 // echo "password lama tidak sama";
                 return $this->profil();
@@ -352,7 +354,8 @@ class Pengguna extends CI_Controller {
         $d = $_POST;
 
         try {
-            $a = $this->pengguna->Select('*', "WHERE email = '$d[email]'")[1];
+            // $a = $this->pengguna->Select('*', "WHERE email = '$d[email]'")[1];
+            $a = $this->db->get_where($this->low, ['email' => $d['email']])->result_array();
 
             if(count($a) < 1) {
                 $_SESSION['alert'] = ['danger', "Login gagal, email anda tidak terdaftar silahkan cek kembali"];
@@ -412,7 +415,7 @@ class Pengguna extends CI_Controller {
                     'tanggal_lahir' => $d['tanggal_lahir'],
                     'alamat' => $d['alamat']
                 ];
-                $this->db->update($this->low, $arr, ['id' => Account::get('id')]);
+                $this->db->update($this->low, $arr, ['id' => Account_Helper::get('id')]);
                 // $this->pengguna->update($arr, "WHERE id=1");
                 return true;
                 // print_r($arr);
@@ -428,7 +431,7 @@ class Pengguna extends CI_Controller {
                     'nama_rekening' => $d['nama_rekening'],
                     'no_rekening' => $d['no_rekening'],
                 ];
-                $this->db->update($this->low, $arr, ['id' => Account::get('id')]);
+                $this->db->update($this->low, $arr, ['id' => Account_Helper::get('id')]);
                 // $this->pengguna->update($arr, "WHERE id=1");
                 return true;
         }catch(Exception $e){
@@ -443,7 +446,7 @@ class Pengguna extends CI_Controller {
                 $tipe = str_replace("image/", "", $f['foto']['type']);
                 $f['foto']['name'] = $name.".".$tipe;
                 Response_Helper::UploadImage($f['foto'], "profil");
-                $this->db->update($this->low, ['profil' => $name.".".$tipe], ['id' => Account::get('id')]);
+                $this->db->update($this->low, ['profil' => $name.".".$tipe], ['id' => Account_Helper::get('id')]);
             }else{
                 echo json_encode(['danger', 'file yang anda upload tidak sesuai.']);
             }

@@ -52,3 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'site';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+$route['admin'] = 'kos/adminkos';
+$route['pengguna/wishlist'] = 'site/wishlist';
+$route['akun/pemesanan/detail/(:num)'] = 'pemesanan/detailPemesananUser/$1';
+$route['transaksi'] = 'pemesanan/transaction';

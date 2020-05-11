@@ -17,8 +17,8 @@ class Report extends CI_Controller { //mengextends CI_Controller
     }
     public function data($start_date = "2019-11",  $end_date = "2019-12"){
         $where = "";
-        // if (Account::get("level") != 1) {
-        //     $where = " AND pg.id = ".Account::get('id');
+        // if (Account_Helper::get("level") != 1) {
+        //     $where = " AND pg.id = ".Account_Helper::get('id');
         // }
         $q = $this->db->query("SELECT tgl, IFNULL(ditolak, 0) ditolak, IFNULL(pending, 0) pending, IFNULL(dp, 0) dp, IFNULL(lunas, 0) lunas
         FROM (

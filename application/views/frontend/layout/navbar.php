@@ -35,7 +35,7 @@
                         ?>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown-2" role="button" data-toggle="dropdown">
-                                <?= Account::Get('email')?>
+                                <?= Account_Helper::Get('email')?>
                             </a>
                             <!-- Blog Menu -->
                             <div class="dropdown-menu mega-menu blog-menu px-3 py-md-3">

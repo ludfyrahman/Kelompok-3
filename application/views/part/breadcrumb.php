@@ -5,17 +5,17 @@
             <a href="<?=BASEADM."dashboard"?>">Dashboard</a>
         </li>
         <?php
-            for($i = 3; $i < count(App::url());$i++){
+            for($i = 3; $i < count(Response_Helper::url());$i++){
         ?>
-            <li class="breadcrumb-item <?= (count(App::url()) - 1 == $i ? 'active' : '') ?>" aria-current="page">
+            <li class="breadcrumb-item <?= (count(Response_Helper::url()) - 1 == $i ? 'active' : '') ?>" aria-current="page">
                 <?php 
-                    if((count(App::url()) - 1) != $i){
+                    if((count(Response_Helper::url()) - 1) != $i){
                 ?>
-                <a href="<?=BASEADM.App::uri(3)?>">
-                    <?=App::url()[$i]?>
+                <a href="<?=BASEADM.Response_Helper::uri(3)?>">
+                    <?=Response_Helper::url()[$i]?>
                 </a>
                 <?php }else{?>
-                    <?=App::url()[$i]?>
+                    <?=Response_Helper::url()[$i]?>
                 <?php } ?>
             </li>
         <?php } ?>

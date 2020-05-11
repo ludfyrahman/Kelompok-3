@@ -56,12 +56,12 @@
                                         <div class="profile-login mb-2 p-4">
                                             <span class="bg-white p-2">or</span>
                                         </div>
-                                        <?php Response::part('alert'); ?>
+                                        <?php Response_Helper::part('alert'); ?>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon1"><i class="fas fa-user"></i></span>
                                             </div>
-                                            <input type="text" class="form-control" value="<?= Input::postOrOr('email') ?>" placeholder=" Email" name="email" aria-label="Username" aria-describedby="basic-addon1" required>
+                                            <input type="text" class="form-control" value="<?= Input_Helper::postOrOr('email') ?>" placeholder=" Email" name="email" aria-label="Username" aria-describedby="basic-addon1" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">
@@ -119,7 +119,7 @@
                                             <div class="input-group-prepend">
                                                 <span class="input-group-text" id="basic-addon4"><i class="fas fa-envelope"></i></span>
                                             </div>
-                                            <input type="email" class="form-control" name="email" placeholder="Email" value="<?= Input::postOrOr('email') ?>" aria-label="Email" aria-describedby="basic-addon4" required>
+                                            <input type="email" class="form-control" name="email" placeholder="Email" value="<?= Input_Helper::postOrOr('email') ?>" aria-label="Email" aria-describedby="basic-addon4" required>
                                         </div>
                                         <div class="input-group mb-3">
                                             <div class="input-group-prepend">

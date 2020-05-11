@@ -7,7 +7,7 @@
                 <!-- Single Blog Details -->
                 <article class="single-blog-details">
                     <!-- Blog Thumb -->
-                    <!-- <?php App::breadcrumb()?> -->
+                    <!-- <?php Response_Helper::breadcrumb()?> -->
                     <div class="row">
                         <div class="col-md-5">
                             <div class="blog-thumb">
@@ -41,7 +41,7 @@
                                 <!-- Meta Info -->
                                 <!-- Blog Details -->
                                 <div class="blog-details">
-                                    <h3 class="color-primary float-right"><?=App::price($data['harga'])?> / Bulan</h3>
+                                    <h3 class="color-primary float-right"><?=Response_Helper::price($data['harga'])?> / Bulan</h3>
                                     <h3 class="blog-title py-2 py-sm-3 inline"><?= $data['nama_kos'] ?></h3>
                                     <h5 class="margin-top-bottom-12">Tersedia <?= $data['jumlah_kamar']?> kamar</h5>
                                     <h5 class="margin-top-bottom-12">Type Kamar</h5>
@@ -49,14 +49,14 @@
                                         <?php 
                                         foreach ($dk as $d){?>
                                         <div class="col-md-2">
-                                            <a href="<?= BASEURL."kos/detail/".App::uri(4)."/".$d['id']?>"><button class="btn <?= App::uri(5) == $d['id'] ? 'btn-success' : 'btn-primary' ?> btn-xs"><?=$d['type']?></button></a>
+                                            <a href="<?= BASEURL."kos/detail/".Response_Helper::uri(4)."/".$d['id']?>"><button class="btn <?= $this->uri->segment(4) == $d['id'] ? 'btn-success' : 'btn-primary' ?> btn-xs"><?=$d['type']?></button></a>
                                         </div>
                                     <?php }?>
                                     </div>
                                     <div class="meta-info d-flex flex-wrap align-items-center py-2">
                                         <ul>
                                             <li class="d-inline-block p-2">Pemilik Kos <?= $data['nama'] ?></li>
-                                            <li class="d-inline-block p-2">Diubah <?= App::date($data['tanggal_diubah'], "d M Y, H:i") ?></li>
+                                            <li class="d-inline-block p-2">Diubah <?= Response_Helper::date($data['tanggal_diubah'], "d M Y, H:i") ?></li>
                                         </ul>
                                     </div>
                                     <div class="rating padding12">
@@ -124,7 +124,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <!-- <a href="<?= BASEURL."kos/pesan/".$data['id']."/".App::uri(5)?>"><button class="btn btn-success float-right">Pesan</button></a> -->
+                                        <!-- <a href="<?= BASEURL."kos/pesan/".$data['id']."/".Response_Helper::uri(5)?>"><button class="btn btn-success float-right">Pesan</button></a> -->
                                     </div>
                                 </div>
                             </div>
@@ -188,7 +188,7 @@
                                                     <i class="fa fa-star"></i>
                                                 <?php }?>
                                             </li>
-                                                <li><?= App::date($u['tanggal_ditambahkan']) ?></li>
+                                                <li><?= Response_Helper::date($u['tanggal_ditambahkan']) ?></li>
                                             </ul>
                                             <div class="container">
                                             <p><?= $u['ulasan'] ?></p>

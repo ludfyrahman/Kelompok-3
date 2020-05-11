@@ -16,8 +16,8 @@
                     </nav>
                     <div class="row">
                         <div class="col-md-12">
-                            <h3 class="margin-top-bottom-12"><?= Account::Get('nama') ?></h3>
-                            <p class="margin-top-bottom-12"><?= Account::Get('no_hp') ?></p>
+                            <h3 class="margin-top-bottom-12"><?= Account_Helper::Get('nama') ?></h3>
+                            <p class="margin-top-bottom-12"><?= Account_Helper::Get('no_hp') ?></p>
                         </div>
                         <div class="col-md-5">
                             <div class="blog-thumb">
@@ -29,7 +29,7 @@
                                 <!-- Meta Info -->
                                 <!-- Blog Details -->
                                 <div class="blog-details">
-                                    <h3 class="float-right"><?=App::price($data['harga'])?> / Bulan</h3>
+                                    <h3 class="float-right"><?=Response_Helper::price($data['harga'])?> / Bulan</h3>
                                     <h3 class="blog-title py-2 py-sm-3 inline"><?= $data['nama_kos'] ?></h3>
                                     <h5 class="margin-top-bottom-12">Tersedia <?= $data['jumlah_kamar']?> kamar</h5>
                                     <div class="row">
@@ -38,13 +38,13 @@
                                             <!-- <span>*dp yang harus dibayarkan</span> -->
                                         </div>
                                         <div class="col-md-3">
-                                            <h3 class="float-right color-primary "><?= App::price(25/100 * $data['harga']) ?></h3>
+                                            <h3 class="float-right color-primary "><?= Response_Helper::price(25/100 * $data['harga']) ?></h3>
                                         </div>
                                     </div>
                                     <div class="meta-info d-flex flex-wrap align-items-center py-2">
                                         <ul>
                                             <li class="d-inline-block p-2">Pemilik Kos <b><?= $data['nama'] ?></b></li>
-                                            <li class="d-inline-block p-2">Diubah <?= App::date($data['tanggal_diubah'], "d M Y, H:i") ?></li>
+                                            <li class="d-inline-block p-2">Diubah <?= Response_Helper::date($data['tanggal_diubah'], "d M Y, H:i") ?></li>
                                             <!-- <li class="d-inline-block p-2"><a href="#">2 Comments</a></li> -->
                                         </ul>
                                     </div>
@@ -55,11 +55,11 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <h3 class="margin-top-bottom-12">Pembayaran Melalui Rekening</h3>
-                                    <p class="margin-top-bottom-12"><?=Account::Get('nama_bank')." ".Account::Get('no_rekening')."(".Account::Get('nama_rekening').")"?></p>
+                                    <p class="margin-top-bottom-12"><?=Account_Helper::Get('nama_bank')." ".Account_Helper::Get('no_rekening')."(".Account_Helper::Get('nama_rekening').")"?></p>
                                 </div>
                                 <div class="col-md-6">
                                     <p style="text-align:right">Batas maksimal pembayaran dp 1 x 24 jam</p>
-                                    <a href="<?= BASEURL."kos/pesanAction/".$data['id']."/".App::uri(5) ?>" class='pesan'><button class="btn btn-success float-right" >Pesan Kos</button></a>
+                                    <a href="<?= BASEURL."kos/pesanAction/".$data['id']."/".Response_Helper::uri(5) ?>" class='pesan'><button class="btn btn-success float-right" >Pesan Kos</button></a>
                                 </div>
                             </div>
                         </div>

@@ -3,17 +3,17 @@
     <div class="container">
         <div class="row">
             <?php
-            Response::part('sidebar_profile');
+            Response_Helper::part('sidebar_profile');
             ?>
             <div class="col-12 col-lg-9">
                 <!-- Single Blog Details -->
                 <article class="single-blog-details ">
-                <?php Response::part('alert'); ?>
+                <?php Response_Helper::part('alert'); ?>
                     <div class="row">
                         <div class="col-md-4">
                             <div class="" >
                                 <div>
-                                    <img src="<?= BASEASSET."images/upload/profil/".Account::get("profil") ?>" alt="" id="profile" class="img-fluid" style="width:100%">
+                                    <img src="<?= BASEASSET."images/upload/profil/".Account_Helper::get("profil") ?>" alt="" id="profile" class="img-fluid" style="width:100%">
                                     <input type="file" id="foto" name="foto" style="display:none;" />
                                 </div>
                                 <div class="card-body">
@@ -26,27 +26,27 @@
                             <h5 class="margin-top-bottom-12">Biodata Diri <a href="#" class="color-primary"  data-toggle="modal" data-target="#akun">Ubah</a></h5> 
                             <div class="margin-top-bottom-12">
                                 <label for="" class='col-4'>Nama</label>
-                                <span class="col-d"><?= Account::Get("nama") ?></span>
+                                <span class="col-d"><?= Account_Helper::Get("nama") ?></span>
                             </div>
                             <div class="margin-top-bottom-12">
                                 <label for="" class='col-4'>Tanggal Lahir</label>
-                                <span class="col-d"><?= App::Date(Account::Get("tanggal_lahir"), 'd M Y') ?></span>
+                                <span class="col-d"><?= Response_Helper::Date(Account_Helper::Get("tanggal_lahir"), 'd M Y') ?></span>
                             </div>
                             <div class="margin-top-bottom-12">
                                 <label for="" class='col-4'>Jenis Kelamin</label>
-                                <span class="col-d"><?= jenis_kelamin[Account::Get("jenis_kelamin")] ?></span>
+                                <span class="col-d"><?= jenis_kelamin[Account_Helper::Get("jenis_kelamin")] ?></span>
                             </div>
                             <h5 class="margin-top-bottom-12">Ubah Kontak</h5>
                             <div class="margin-top-bottom-12">
                                 <label for="" class='col-4'>No Hp</label>
-                                <span class="col-4"><?= Account::Get("no_hp") ?></span>
-                                <span class="badge <?= (Account::get("stnohp") == 1 ? 'badge-success' : 'badge-warning') ?>"><i class="fa fa-check"></i> <?= (Account::get("stnohp") == 1 ? 'Terverifikasi' : 'tidak Terverifikasi') ?></span>
+                                <span class="col-4"><?= Account_Helper::Get("no_hp") ?></span>
+                                <span class="badge <?= (Account_Helper::get("stnohp") == 1 ? 'badge-success' : 'badge-warning') ?>"><i class="fa fa-check"></i> <?= (Account_Helper::get("stnohp") == 1 ? 'Terverifikasi' : 'tidak Terverifikasi') ?></span>
                                 <a href="#" class="color-primary"  data-toggle="modal" data-target="#no_hp">Ubah</a>
                             </div>
                             <div class="margin-top-bottom-12">
                                 <label for="" class='col-4'>Email</label>
-                                <span class="col-4"><?= Account::Get("email") ?></span>
-                                <span class="badge <?= (Account::get("stemail") == 1 ? 'badge-success' : 'badge-warning') ?>"><i class="fa fa-check"></i> <?= (Account::get("stemail") == 1 ? 'Terverifikasi' : 'tidak Terverifikasi') ?></span>
+                                <span class="col-4"><?= Account_Helper::Get("email") ?></span>
+                                <span class="badge <?= (Account_Helper::get("stemail") == 1 ? 'badge-success' : 'badge-warning') ?>"><i class="fa fa-check"></i> <?= (Account_Helper::get("stemail") == 1 ? 'Terverifikasi' : 'tidak Terverifikasi') ?></span>
                                 <a href="#" class="color-primary" data-toggle="modal" data-target="#email">Ubah</a>
                             </div>
                         </div>
@@ -105,7 +105,7 @@
             <a href="#">
                 <div class="single-blog wow fadeIn res-margin" data-wow-duration="2s">
                     <div class="blog-content p-4" id="verifikasi_email">
-                        <i class="fa fa-envelope text-success"></i>  <?= Account::get('email') ?>
+                        <i class="fa fa-envelope text-success"></i>  <?= Account_Helper::get('email') ?>
                     </div>
                 </div>
             </a>
@@ -125,7 +125,7 @@
       <form action="#" method="POST" >
       
         <div class="modal-body text-center">
-            <p >Kode verifikasi yang telah dikirimkan ke email <?= Account::get("email") ?></p>
+            <p >Kode verifikasi yang telah dikirimkan ke email <?= Account_Helper::get("email") ?></p>
             <div class="form-group">
                 <h3 for="" style="margin:20px">Kode verifikasi</h3>
                 <input type="text" id="verification_email_code" class="form-control">
@@ -152,7 +152,7 @@
       <form action="#" method="POST" >
       
         <div class="modal-body text-center">
-            <p >Kode verifikasi yang telah dikirimkan ke No HP <?= Account::get("no_hp") ?></p>
+            <p >Kode verifikasi yang telah dikirimkan ke No HP <?= Account_Helper::get("no_hp") ?></p>
             <div class="form-group">
                 <h3 for="" style="margin:20px">Kode verifikasi</h3>
                 <input type="text" id="verification_nohp_code" class="form-control">
@@ -179,7 +179,7 @@
             <a href="#" >
                 <div class="single-blog wow fadeIn res-margin" data-wow-duration="2s">
                     <div class="blog-content p-4" id="verifikasi_no_hp">
-                        <i class="fa fa-envelope text-success"></i>  <?= Account::get('no_hp') ?>
+                        <i class="fa fa-envelope text-success"></i>  <?= Account_Helper::get('no_hp') ?>
                     </div>
                 </div>
             </a>
@@ -211,19 +211,19 @@
                       <form action="#" method="POST" id="data_diri">
                         <div class="form-group">
                             <label for="">Nama</label>
-                            <input type="text" placeholder="masukkan nama anda" class="form-control"  name="nama" value="<?= Input::postOrOr('nama', Account::Get("nama")) ?>" required>
+                            <input type="text" placeholder="masukkan nama anda" class="form-control"  name="nama" value="<?= Input_Helper::postOrOr('nama', Account_Helper::Get("nama")) ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="">Email</label>
-                            <input type="text" placeholder="masukkan email anda" class="form-control" name="email" value="<?= Input::postOrOr('email', Account::Get("email")) ?>" required>
+                            <input type="text" placeholder="masukkan email anda" class="form-control" name="email" value="<?= Input_Helper::postOrOr('email', Account_Helper::Get("email")) ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="">No Hp</label>
-                            <input type="text" placeholder="masukkan no hp anda" class="form-control"  name="no_hp" value="<?= Input::postOrOr('no_hp', Account::Get("no_hp")) ?>" required>
+                            <input type="text" placeholder="masukkan no hp anda" class="form-control"  name="no_hp" value="<?= Input_Helper::postOrOr('no_hp', Account_Helper::Get("no_hp")) ?>" required>
                         </div>
                         <div class="form-group">
                             <?php 
-                            $jen = Input::postOrOr('jenis_kelamin', Account::Get('jenis_kelamin'))
+                            $jen = Input_Helper::postOrOr('jenis_kelamin', Account_Helper::Get('jenis_kelamin'))
                             ?>
                             <label for="">Jenis Kelamin</label><br>
                             <input type="radio" value="1" name="jenis_kelamin" <?= ($jen == 1 ? 'checked' : '') ?>>Laki Laki
@@ -231,11 +231,11 @@
                         </div>
                         <div class="form-group">
                             <label for="">Tanggal Lahir</label>
-                            <input type="date" placeholder="masukkan Tanggal Lahir Anda" class="form-control" name="tanggal_lahir" value="<?= Input::postOrOr('tanggal_lahir', Account::Get("tanggal_lahir")) ?>" required>
+                            <input type="date" placeholder="masukkan Tanggal Lahir Anda" class="form-control" name="tanggal_lahir" value="<?= Input_Helper::postOrOr('tanggal_lahir', Account_Helper::Get("tanggal_lahir")) ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="">Alamat</label>
-                            <textarea name="alamat" class="form-control" id="" cols="30" rows="10" placeholder="masukkan alamat anda" required><?= Input::postOrOr('alamat', Account::Get("alamat")) ?></textarea>
+                            <textarea name="alamat" class="form-control" id="" cols="30" rows="10" placeholder="masukkan alamat anda" required><?= Input_Helper::postOrOr('alamat', Account_Helper::Get("alamat")) ?></textarea>
                         </div>
                         <div class="form-group">
                           <button class="btn btn-block" id="btn_simpan_data_diri" type="button">Simpan</button>
@@ -248,15 +248,15 @@
                       <form action="#" method="post">
                         <div class="form-group">
                             <label for="">Nama Bank</label>
-                            <input type="text" placeholder="masukkan nama bank anda" class="form-control" name="nama_bank" value="<?= Input::postOrOr('nama_bank', Account::Get("nama_bank")) ?>" required>
+                            <input type="text" placeholder="masukkan nama bank anda" class="form-control" name="nama_bank" value="<?= Input_Helper::postOrOr('nama_bank', Account_Helper::Get("nama_bank")) ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="">Nama Rekening</label>
-                            <input type="text" placeholder="masukkan nama rekening anda" class="form-control" name="nama_rekening" value="<?= Input::postOrOr('nama_rekening', Account::Get("nama_rekening")) ?>" required>
+                            <input type="text" placeholder="masukkan nama rekening anda" class="form-control" name="nama_rekening" value="<?= Input_Helper::postOrOr('nama_rekening', Account_Helper::Get("nama_rekening")) ?>" required>
                         </div>
                         <div class="form-group">
                             <label for="">No Rekening</label>
-                            <input type="text" placeholder="masukkan no rekening anda" class="form-control" name="no_rekening" value="<?= Input::postOrOr('no_rekening', Account::Get("no_rekening")) ?>" required>
+                            <input type="text" placeholder="masukkan no rekening anda" class="form-control" name="no_rekening" value="<?= Input_Helper::postOrOr('no_rekening', Account_Helper::Get("no_rekening")) ?>" required>
                         </div>
                         <div class="form-group">
                           <button class="btn btn-block" type="button" id="btn_simpan_data_rekening">Simpan</button>

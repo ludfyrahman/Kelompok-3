@@ -26,6 +26,15 @@ class Response_helper
         }else{
             return true;
         }
+	}
+	public static function uri($index){
+        $var = explode('/', "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+        return $var[$index];
+    }
+    
+    public static function url(){
+        $var = explode('/', "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
+        return $var;
     }
     public static function UploadImage($img, $path) {
         $path = "assets/images/upload/$path/$img[name]";
@@ -166,6 +175,9 @@ class Response_helper
 		extract($var);
 		include str_replace("system", "application/views", BASEPATH)."/".$file.".php";
 	}
+	public static function breadcrumb(){
+        Response_Helper::part('breadcrumb');
+    }
 	public static function get_nama_karyawan($kode_rab)
 	{
 		$ci = get_instance();

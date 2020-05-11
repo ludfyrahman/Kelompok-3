@@ -86,6 +86,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 
 
+define('BASEURL', "http://localhost/papikos-2/");
 // configure google api setting
 /* Google App Client Id */
 define('CLIENT_ID', '381036941652-c840m0csbpp1fb22108i1vkeeg4t9r6i.apps.googleusercontent.com');
@@ -124,3 +125,4 @@ define('status', ['danger', 'default', 'primary', 'success']);
 
 // status pemesanan
 define('status_pemesanan', ['Ditolak', 'Pending','DP','Lunas']);
+define('CLIENT_REDIRECT_URL', BASEURL.'helpers/gauth.php');

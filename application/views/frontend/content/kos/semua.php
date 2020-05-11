@@ -10,14 +10,14 @@
                             <form action="" method="post">
                                 <div class="form-group">
                                     <label for="">Nama Kos</label>
-                                    <input type="text" placeholder="cari" name="cari" value="<?= Input::postOrOr('cari') ?>">
+                                    <input type="text" placeholder="cari" name="cari" value="<?= Input_Helper::postOrOr('cari') ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="">Kategori Kos</label>
                                     <select name="kategori" id="" class="form-control">
                                         <option value="">Semua</option>
                                     <?php
-                                    $tp = Input::postOrOr('tipe');
+                                    $tp = Input_Helper::postOrOr('tipe');
                                     foreach ($kategori as $k) {
                                     ?>
                                         <option value="<?= $k['id'] ?>" <?= ($tp == $k['id'] ? 'selected' : '') ?>><?= $k['nama'] ?></option>
@@ -27,7 +27,7 @@
                                 <div class="form-group">
                                     <label for="">Tipe Kos</label>
                                     <?php
-                                    $tp = Input::postOrOr('tipe');
+                                    $tp = Input_Helper::postOrOr('tipe');
                                     ?>
                                     <select name="tipe" id="" class="form-control">
                                         <option value="">Semua</option>
@@ -39,14 +39,14 @@
                                     <label for="">Urutkan</label>
                                     <select name="urut" id="" class="form-control">
                                         <option value="">Semua</option>
-                                        <option value="1" <?= (Input::postOrOr('urut') == 1 ? "selected" : "") ?>>Terbaru</option>
-                                        <option value="2" <?= (Input::postOrOr('urut') == 2 ? "selected" : "") ?>>Termurah</option>
-                                        <option value="3" <?= (Input::postOrOr('urut') == 3 ? "selected" : "") ?>>Tertinggi</option>
+                                        <option value="1" <?= (Input_Helper::postOrOr('urut') == 1 ? "selected" : "") ?>>Terbaru</option>
+                                        <option value="2" <?= (Input_Helper::postOrOr('urut') == 2 ? "selected" : "") ?>>Termurah</option>
+                                        <option value="3" <?= (Input_Helper::postOrOr('urut') == 3 ? "selected" : "") ?>>Tertinggi</option>
                                     </select>
                                 </div>
                                 <!-- <div class="form-group">
                                     <label for="">Jarak (m)</label>
-                                    <input type="text" placeholder="jarak" name="jarak" value="<?= Input::postOrOr('jarak') ?>">
+                                    <input type="text" placeholder="jarak" name="jarak" value="<?= Input_Helper::postOrOr('jarak') ?>">
                                 </div> -->
                                 <!-- <div class="form-group">
                                     <label for="">Fasilitas</label>
@@ -62,13 +62,13 @@
                                     <label for="">Rentang Harga</label>
                                     <div class="row">
                                         <div class="col-md-5">
-                                            <input type="text" placeholder="harga awal"  name="harga_awal" class="form-control" value="<?= Input::postOrOr('harga_awal', '100000') ?>">
+                                            <input type="text" placeholder="harga awal"  name="harga_awal" class="form-control" value="<?= Input_Helper::postOrOr('harga_awal', '100000') ?>">
                                         </div>
                                         <div class="col-md-1">
                                             -
                                         </div>
                                         <div class="col-md-5">
-                                            <input type="text" placeholder="harga tertinggi" name="harga_tertinggi" value="<?= Input::postOrOr('harga_tertinggi') ?>" class="form-control">
+                                            <input type="text" placeholder="harga tertinggi" name="harga_tertinggi" value="<?= Input_Helper::postOrOr('harga_tertinggi') ?>" class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -104,13 +104,13 @@
                             <!-- Meta Info -->
                             <ul class="meta-info d-flex justify-content-between" style="min-height:85px">
                                 <li>By <a href="<?= BASEURL."kos/detail/".$k['id'] ?>"><?= $nama[0] ?></a></li>
-                                <li><a href="<?= BASEURL."kos/detail/".$k['id'] ?>"><?= App::Date($k['tanggal_ditambahkan'], 'd M Y') ?></a></li>
+                                <li><a href="<?= BASEURL."kos/detail/".$k['id'] ?>"><?= Response_Helper::Date($k['tanggal_ditambahkan'], 'd M Y') ?></a></li>
                             </ul>
                             <!-- Blog Title -->
                             <h3 class="blog-title my-3"><a href="#"><?= substr($k['nama'], 0,15)."..." ?></a></h3>
                             <span class="badge badge-secondary"><?= $k['kategori'] ?></span></h3>
                             <p><?= substr($k['deskripsi'], 0, 30)."..." ?></p>
-                            <p><?= App::price($k['harga']) ?></p>
+                            <p><?= Response_Helper::price($k['harga']) ?></p>
                             <a href="<?= BASEURL."kos/detail/".$k['id'] ?>" class="blog-btn mt-3">Selengkapnya 
                             <!-- <?= $k['distance'] ?> -->
                             </a>

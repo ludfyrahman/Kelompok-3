@@ -6,9 +6,9 @@
     <?php 
     define("BASEASSET", base_url("assets/"));
     define("BASEADM", base_url("admin/"));
-    define("BASEURL", base_url());
+    // define("BASEURL", base_url());
     define("PATHPAPI", str_replace('system', 'application', BASEPATH));
-    define('CLIENT_REDIRECT_URL', str_replace('system', 'application', BASEPATH).'helpers/gauth.php');
+    // define('CLIENT_REDIRECT_URL', str_replace('system', 'application', BASEPATH).'helpers/gauth.php');
     ?>
     <link rel="icon" href="<?= BASEASSET ?>/images/favicon.png">
     <!-- ***** All CSS Files ***** -->

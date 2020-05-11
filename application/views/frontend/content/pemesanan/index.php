@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <?php
-            Response::part('sidebar_profile');
+            Response_Helper::part('sidebar_profile');
             ?>
             <div class="col-12 col-lg-9">
                 <article class="single-blog-details">
@@ -30,7 +30,7 @@
                                 ?>
                                 <div class="margin-top-bottom-12 card-shadow">
                                     <h4 class="margin-top-bottom-12"><?= $d['nama'] ?></h4>
-                                    <p class="margin-top-bottom-12">Total : <b class="color-primary"><?= App::price($d['harga']) ?></b> Tanggal Pembelian : <b><?= App::Date($d['tanggal_pemesanan'], 'd M Y') ?></b></p>
+                                    <p class="margin-top-bottom-12">Total : <b class="color-primary"><?= Response_Helper::price($d['harga']) ?></b> Tanggal Pembelian : <b><?= Response_Helper::Date($d['tanggal_pemesanan'], 'd M Y') ?></b></p>
                                     <div class="alert alert-warning margin-top-bottom-12">
                                         <p>Bayar Sebelum <?= (date('d M Y H:i:s', strtotime($d['tanggal_pemesanan']. ' +1 day')))?></p>
                                     </div>
@@ -46,7 +46,7 @@
                                 ?>
                                 <div class="margin-top-bottom-12 card-shadow">
                                     <h4 class="margin-top-bottom-12"><?= $p['nama'] ?></h4>
-                                    <p class="margin-top-bottom-12">Total : <b class="color-primary"><?= App::price($p['harga']) ?></b> Tanggal Pembelian : <b><?= App::Date($p['tanggal_pemesanan'], 'd M Y') ?></b></p>
+                                    <p class="margin-top-bottom-12">Total : <b class="color-primary"><?= Response_Helper::price($p['harga']) ?></b> Tanggal Pembelian : <b><?= Response_Helper::Date($p['tanggal_pemesanan'], 'd M Y') ?></b></p>
                                     <div class="alert alert-warning margin-top-bottom-12">
                                         <p>Bayar Sebelum <?= (date('d M Y H:i:s', strtotime($p['tanggal_pemesanan']. ' +4 day')))?></p>
                                     </div>
@@ -62,7 +62,7 @@
                                 ?>
                                 <div class="margin-top-bottom-12 card-shadow">
                                     <h4 class="margin-top-bottom-12"><?= $b['nama'] ?></h4>
-                                    <p class="margin-top-bottom-12">Total : <b class="color-primary"><?= App::price($b['harga']) ?></b> Tanggal Pembelian : <b><?= App::Date($b['tanggal_pemesanan'], 'd M Y') ?></b></p>
+                                    <p class="margin-top-bottom-12">Total : <b class="color-primary"><?= Response_Helper::price($b['harga']) ?></b> Tanggal Pembelian : <b><?= Response_Helper::Date($b['tanggal_pemesanan'], 'd M Y') ?></b></p>
                                     <div class="alert alert-danger margin-top-bottom-12">
                                         <p>Dibatalkan</p>
                                     </div>
@@ -78,7 +78,7 @@
                                 ?>
                                 <div class="margin-top-bottom-12 card-shadow">
                                     <h4 class="margin-top-bottom-12"><?= $l['nama'] ?></h4>
-                                    <p class="margin-top-bottom-12">Total : <b class="color-primary"><?= App::price($l['harga']) ?></b> Tanggal Pembelian : <b><?= App::Date($l['tanggal_pemesanan'], 'd M Y') ?></b></p>
+                                    <p class="margin-top-bottom-12">Total : <b class="color-primary"><?= Response_Helper::price($l['harga']) ?></b> Tanggal Pembelian : <b><?= Response_Helper::Date($l['tanggal_pemesanan'], 'd M Y') ?></b></p>
                                     <div class="alert alert-success margin-top-bottom-12">
                                         <p>Sudah Dibayarkan</p>
                                     </div>

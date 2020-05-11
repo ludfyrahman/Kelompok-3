@@ -13,7 +13,7 @@
                     <h2 class="text-primary">Lupa Password Kamu?</h2>
                     <p class="mt-3 mb-4">Masukkan email akun anda yang terdaftar di aplikasi kami. maka kami akan mengirimkan kode verifikasi ke email anda untuk mengubah password</p>
                     <form action="" method="POST">
-                    <?php Response::part('alert'); ?>
+                    <?php Response_Helper::part('alert'); ?>
                     <div class="input-group reset-password">
                             <input type="email" name="email" class="form-control" placeholder="Masukkan email kamu">
                             <div class="input-group-append mt-3 mt-sm-0">

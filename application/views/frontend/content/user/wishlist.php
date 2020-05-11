@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <?php
-            Response::part('sidebar_profile');
+            Response_Helper::part('sidebar_profile');
             ?>
             <div class="col-12 col-lg-9">
                 <article class="single-blog-details">
@@ -34,7 +34,7 @@
                             <div class="blog-content p-4">
                                 <!-- Blog Title -->
                                 <h3 class="blog-title my-3"><a href="#"><?= substr($k['nama'], 0,15)."..." ?></a></h3>
-                                <p><?= App::price($k['harga']) ?></p>
+                                <p><?= Response_Helper::price($k['harga']) ?></p>
                                 <a href="<?= BASEURL."kos/detail/".$k['id'] ?>" class="blog-btn mt-3">Selengkapnya</a>
                             </div>
                         </div>

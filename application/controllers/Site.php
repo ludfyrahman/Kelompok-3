@@ -2,6 +2,7 @@
 class Site extends CI_Controller { //mengextends CI_Controller 
     public function __construct(){
         parent::__construct();
+        // echo BASEPATH;
     }
     public function index () {
         $data['title'] = "Papikos Homepage";
@@ -16,14 +17,17 @@ class Site extends CI_Controller { //mengextends CI_Controller
     }
     public function wishlist(){
         $d = $_POST;
-        $where = " where p.id= ".Account::Get('id');
+        $where = " where p.id= ".Account_Helper::Get('id');
         if(isset($d['search'])){
             $cari = $_POST['cari'];
             $where.=" and k.nama like '%$cari%' ";
         }
-        $data['title'] = 'Profil '.Account::Get('nama');
+        $data['title'] = 'Profil '.Account_Helper::Get('nama');
         $data['content'] = 'user/wishlist';
-        $data['favorit'] = $this->db->get('SELECT k.nama, k.id, k.deskripsi, k.jumlah_kamar, k.harga, m.link_media, k.tanggal_ditambahkan from favorit f JOIN kos k ON f.id_kos=k.id JOIN pengguna p on f.id_pengguna=p.id  JOIN (Select * from media) m on k.id=m.id_kos $where GROUP BY m.id_kos')->result_array();
+        $data['data'] = $this->db->query("SELECT k.nama, dk.harga,k.id, k.deskripsi, m.link_media, k.tanggal_ditambahkan from favorit f 
+        JOIN kos k ON f.id_kos=k.id JOIN pengguna p on f.id_pengguna=p.id 
+        JOIN (Select * from detail_kos) dk on k.id=dk.id_kos
+        JOIN (Select * from media) m on k.id=m.id_kos $where GROUP BY m.id_kos")->result_array();
         $this->load->view('frontend/index',$data);
     }
     public function doLogin(){

@@ -12,7 +12,7 @@
                 <div class="col-12 col-md-6 col-lg-6 mb-5 mb-md-0">
                     <h2 class="text-primary">Ubah Password</h2>
                     <p class="mt-3 mb-4">Ubah password kamu untuk masuk akun papikos</p>
-                    <?php Response::part('alert'); ?>
+                    <?php Response_Helper::part('alert'); ?>
                     <form action="" method="POST">
                         <div class="form-group">
                             <label for="">Password Baru</label>

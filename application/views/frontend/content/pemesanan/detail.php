@@ -26,9 +26,9 @@
                                 </div>
                                 <div class="col-md-6">
                                     <p class="margin-top-bottom-12">Tanggal Pemesanan</p>
-                                    <p class="margin-top-bottom-12 font-weight-bold"><?= App::Date($data['tanggal_pemesanan'], 'd M Y H:i:s') ?></p>
+                                    <p class="margin-top-bottom-12 font-weight-bold"><?= Response_Helper::Date($data['tanggal_pemesanan'], 'd M Y H:i:s') ?></p>
                                     <p class="margin-top-bottom-12">No Hp</p>
-                                    <p class="margin-top-bottom-12 font-weight-bold"><?= Account::Get('no_hp') ?></p>
+                                    <p class="margin-top-bottom-12 font-weight-bold"><?= Account_Helper::Get('no_hp') ?></p>
                                 </div>
                             </div>
                         </div>
@@ -42,7 +42,7 @@
                                 <!-- Meta Info -->
                                 <!-- Blog Details -->
                                 <div class="blog-details">
-                                    <h3 class="float-right"><?=App::price($data['harga'])?> / Bulan</h3>
+                                    <h3 class="float-right"><?=Response_Helper::price($data['harga'])?> / Bulan</h3>
                                     <h3 class="blog-title py-2 py-sm-3 inline"><?= $data['nama_kos'] ?></h3>
                                     <h5 class="margin-top-bottom-12">Tersedia <?= $data['jumlah_kamar']?> kamar</h5>
                                     <div class="row">
@@ -51,13 +51,13 @@
                                             <!-- <span>*dp yang harus dibayarkan</span> -->
                                         </div>
                                         <div class="col-md-4">
-                                            <h3 class="float-right color-primary"><?= App::price(25/100 * $data['harga']) ?></h3>
+                                            <h3 class="float-right color-primary"><?= Response_Helper::price(25/100 * $data['harga']) ?></h3>
                                         </div>
                                     </div>
                                     <div class="meta-info d-flex flex-wrap align-items-center py-2">
                                         <ul>
                                             <li class="d-inline-block p-2">Pemilik Kos <b><?= $data['nama_pemilik'] ?></b></li>
-                                            <li class="d-inline-block p-2">Tanggal Pemesanan <?= App::date($data['tanggal_pemesanan'], "d M Y, H:i") ?></li>
+                                            <li class="d-inline-block p-2">Tanggal Pemesanan <?= Response_Helper::date($data['tanggal_pemesanan'], "d M Y, H:i") ?></li>
                                         </ul>
                                     </div>
                                 </div>
