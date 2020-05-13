@@ -1,0 +1,9 @@
+package com.ludfyrahman.papikos.Config;
+
+public class Notification_Model {
+    private String token;
+
+    public String getToken(){ return token; }
+    public void setToken(String token){ this.token = token; }
+
+}
