@@ -1,4 +1,5 @@
 <?php 
+
 class Auth extends CI_Controller{
     public function __construct(){
         parent::__construct();
@@ -8,7 +9,7 @@ class Auth extends CI_Controller{
 
     }
     public function info(){
-        $response['data'] = $this->db->get_where($this->low)->row_array();
+        $response['data'] = $this->authorization_token->userData();
         echo json_encode($response);
     }
     public function lupa_password(){
@@ -57,9 +58,6 @@ class Auth extends CI_Controller{
                         }
                     }
                 }
-                
-    
-               
             }
             catch(Exception $e) {
                 // $this->login();
