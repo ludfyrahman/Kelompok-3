@@ -52,4 +52,6 @@
     <string name="bayar">Bayar</string>
     <string name="status">Status</string>
     <string name="kode_invoice">Kode Invoice</string>
+    <string name="empty_data">DATA KOSONG!</string>
+    <string name="empty_data_desc">Data yang anda perlukan tidak tersedia untuk saat ini</string>
 </resources>
