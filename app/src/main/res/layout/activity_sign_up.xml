@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorwhite"
     android:layout_height="match_parent"
     tools:context=".Other.Welcome">
     <com.google.android.material.appbar.AppBarLayout
@@ -186,7 +187,7 @@
                 <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Masuk"
+                    android:text="@string/daftar"
                     android:id="@+id/daftar"
                     android:background="@color/colorPrimary"
                     android:textColor="@color/colorwhite"/>

@@ -1,4 +1,4 @@
-package com.ludfyrahman.papikos.Akun.Pengaturan;
+package com.ludfyrahman.papikos.Other;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -9,12 +9,12 @@ import android.view.View;
 
 import com.ludfyrahman.papikos.R;
 
-public class Ubah_Biodata extends AppCompatActivity {
+public class Tentang extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ubah_biodata);
+        setContentView(R.layout.activity_tentang);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.back);

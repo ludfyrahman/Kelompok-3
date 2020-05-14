@@ -6,6 +6,7 @@ import android.view.animation.Animation;
 import android.view.animation.Transformation;
 import android.widget.ProgressBar;
 
+import com.google.android.gms.maps.model.Dash;
 import com.ludfyrahman.papikos.Dashboard.Dashboard;
 import com.ludfyrahman.papikos.Dashboard.Fragment_Dashboard;
 import com.ludfyrahman.papikos.Dashboard.Fragment_Kos;
@@ -33,7 +34,7 @@ public class ProgressBarAnimation extends Animation {
         progressBar.setProgress((int) value);
 
         if (value == to){
-            context.startActivity(new Intent(context, Intro.class));
+            context.startActivity(new Intent(context, Dashboard.class));
 //            context.startActivity(new Intent(context, Intro.class));
         }
     }

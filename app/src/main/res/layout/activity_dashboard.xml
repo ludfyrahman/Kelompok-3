@@ -25,9 +25,9 @@
         android:id="@+id/home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorwhite"
+        android:backgroundTint="@color/colorPrimary"
         app:borderWidth="0dp"
-        android:src="@drawable/logo"
+        android:src="@drawable/white_logo"
         app:fabSize="normal"
         app:layout_anchorGravity="top"
         app:layout_anchor="@+id/bottomAppBar" />

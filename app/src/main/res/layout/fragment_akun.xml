@@ -60,13 +60,21 @@
                 android:textSize="20sp"
                 android:padding="8dp"
                 android:gravity="center"/>
-                <LinearLayout
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="fani@gmail.com"
+                android:textColor="@color/colorGray"
+                android:padding="8dp"
+                android:gravity="center"/>
+            <LinearLayout
                     android:orientation="vertical"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:padding="16dp">
                     <LinearLayout
                         android:orientation="vertical"
+                        android:id="@+id/profil"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="16dp">
@@ -74,6 +82,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingBottom="8dp"
+
                             android:orientation="horizontal">
                             <ImageView
                                 android:layout_width="30dp"
@@ -82,7 +91,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/profil"
                                 android:layout_weight="1"
                                 android:layout_gravity="center"
                                 android:paddingLeft="16dp"
@@ -101,6 +109,7 @@
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
+                        android:id="@+id/edit_profil"
                         android:layout_height="wrap_content"
                         android:paddingBottom="16dp">
                         <LinearLayout
@@ -111,7 +120,7 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/card"/>
+                                android:src="@drawable/edit_profil"/>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -135,6 +144,7 @@
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/edit_password"
                         android:paddingBottom="16dp">
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -144,7 +154,7 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/card"/>
+                                android:src="@drawable/password"/>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -166,6 +176,7 @@
                     </LinearLayout>
                     <LinearLayout
                         android:orientation="vertical"
+                        android:id="@+id/transaksi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="16dp">
@@ -181,7 +192,6 @@
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/transaksi"
                                 android:layout_weight="1"
                                 android:layout_gravity="center"
                                 android:paddingLeft="16dp"
@@ -200,6 +210,7 @@
 
                     <LinearLayout
                         android:orientation="vertical"
+                        android:id="@+id/favorit"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="16dp">
@@ -212,10 +223,9 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/card" />
+                                android:src="@drawable/love" />
 
                             <TextView
-                                android:id="@+id/favorit"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
@@ -239,6 +249,7 @@
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/tentang"
                         android:paddingBottom="16dp">
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -248,11 +259,10 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/card"/>
+                                android:src="@drawable/tentang"/>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/tentang"
                                 android:layout_weight="1"
                                 android:layout_gravity="center"
                                 android:paddingLeft="16dp"
@@ -272,6 +282,7 @@
                         android:orientation="vertical"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:id="@+id/keluar"
                         android:paddingBottom="16dp">
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -281,11 +292,10 @@
                             <ImageView
                                 android:layout_width="30dp"
                                 android:layout_height="30dp"
-                                android:src="@drawable/card"/>
+                                android:src="@drawable/keluar"/>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:id="@+id/keluar"
                                 android:layout_weight="1"
                                 android:layout_gravity="center"
                                 android:paddingLeft="16dp"
