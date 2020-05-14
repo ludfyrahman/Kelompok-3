@@ -12,6 +12,8 @@ class Auth extends CI_Controller{
         $response['data'] = $this->authorization_token->userData();
         echo json_encode($response);
     }
+    public function send(){
+    }
     public function lupa_password(){
         $response = [];
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -197,11 +199,10 @@ class Auth extends CI_Controller{
                 }
             }
             catch(Exception $e) {
-                // $this->login();
-                echo "gagal";
+                $response['message'] = 'Kesalahan';
             }
         }else{
-
+            $response['message'] = 'Method Not allowed';
         }
         echo json_encode($response);
     }

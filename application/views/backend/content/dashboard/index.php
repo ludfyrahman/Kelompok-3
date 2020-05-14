@@ -12,7 +12,7 @@
         <div class="grid">
             <div class="grid-body text-gray">
             <div class="d-flex justify-content-between">
-                <p><?= $kos[0]?></p>
+                <p><?= $kos?></p>
                
             </div>
             <p class="text-black">Kos</p>
@@ -26,7 +26,7 @@
         <div class="grid">
             <div class="grid-body text-gray">
             <div class="d-flex justify-content-between">
-                <p><?= $kategori[0]?></p>
+                <p><?= $kategori?></p>
                 
             </div>
             <p class="text-black">Kategori</p>
@@ -40,7 +40,7 @@
         <div class="grid">
             <div class="grid-body text-gray">
             <div class="d-flex justify-content-between">
-                <p><?= $fasilitas[0]?></p>
+                <p><?= $fasilitas?></p>
                
             </div>
             <p class="text-black">Fasilitas</p>
@@ -54,7 +54,7 @@
         <div class="grid">
             <div class="grid-body text-gray">
             <div class="d-flex justify-content-between">
-                <p><?= $pengguna[0]?></p>
+                <p><?= $pengguna?></p>
             
             </div>
             <p class="text-black">Pengguna</p>
@@ -94,7 +94,7 @@
                 <div class="grid-body">
                 <p class="card-title">Pemesanan Berhasil</p>
                 <div id="radial-chart"></div>
-                <h4 class="text-center"><?= App::price($pemesanan_lunas['jumlah']) ?></h4>
+                <h4 class="text-center"><?= Response_Helper::price($pemesanan_lunas['jumlah']) ?></h4>
                 <p class="text-center text-muted">Uang Dibayarkan</p>
                 </div>
             </div>
@@ -140,7 +140,7 @@
                             <td>
                             <small><?= invoice_code."".$p['id'] ?></small>
                             </td>
-                            <td> <?= App::date($p['tanggal_pemesanan']) ?> </td>
+                            <td> <?= Response_Helper::date($p['tanggal_pemesanan']) ?> </td>
                         </tr>
                     <?php }?>
                     </tbody>

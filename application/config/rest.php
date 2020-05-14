@@ -126,7 +126,7 @@ $config['rest_auth'] = false;
 | Note: If 'rest_auth' is set to 'session' then change 'auth_source' to the name of the session variable
 |
 */
-$config['auth_source'] = 'ldap';
+$config['auth_source'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -179,7 +179,9 @@ $config['auth_library_function'] = '';
 | Acceptable values are; 'none', 'digest' and 'basic'.
 |
 */
-// $config['auth_override_class_method']['deals']['view'] = 'none';
+$config['auth_override_class_method']['daftar']['*'] = 'none';
+$config['auth_override_class_method']['login']['*'] = 'none';
+$config['auth_override_class_method']['forgot']['*'] = 'none';
 // $config['auth_override_class_method']['deals']['insert'] = 'digest';
 // $config['auth_override_class_method']['accounts']['user'] = 'basic';
 // $config['auth_override_class_method']['dashboard']['*'] = 'basic';
@@ -323,7 +325,7 @@ $config['rest_keys_table'] = 'keys';
 |   ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 |
 */
-$config['rest_enable_keys'] = false;
+$config['rest_enable_keys'] = true;
 
 /*
 |--------------------------------------------------------------------------
@@ -334,7 +336,7 @@ $config['rest_enable_keys'] = false;
 | column name to match e.g. my_key
 |
 */
-$config['rest_key_column'] = 'key';
+$config['rest_key_column'] = 'key_user';
 
 /*
 |--------------------------------------------------------------------------
@@ -376,7 +378,7 @@ $config['rest_key_length'] = 40;
 | 2012/06/12. See RFC 6648 specification for more details
 |
 */
-$config['rest_key_name'] = 'X-API-KEY';
+$config['rest_key_name'] = 'apikey';
 
 /*
 |--------------------------------------------------------------------------
@@ -468,7 +470,7 @@ $config['rest_logs_json_params'] = false;
 | When set to TRUE, the REST API will count the number of uses of each method
 | by an API key each hour. This is a general rule that can be overridden in the
 | $this->method array in each controller
-|
+| 
 | Default table schema:
 |   CREATE TABLE `limits` (
 |       `id` INT(11) NOT NULL AUTO_INCREMENT,
