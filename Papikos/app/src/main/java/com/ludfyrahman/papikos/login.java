@@ -2,9 +2,10 @@ package com.ludfyrahman.papikos;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.os.Bundle;
 
-public class login extends AppCompatActivity {
+public class login extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
