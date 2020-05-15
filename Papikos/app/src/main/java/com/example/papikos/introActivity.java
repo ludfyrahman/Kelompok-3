@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import com.ludfyrahman.papikos.R;
+
 public class introActivity extends AppCompatActivity {
 
     @Override
