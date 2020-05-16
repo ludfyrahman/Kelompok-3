@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "381036941652",
+    "firebase_url": "https://papikos.firebaseio.com",
+    "project_id": "papikos",
+    "storage_bucket": "papikos.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:381036941652:android:96ac8b67533433b1cfb8c1",
+        "android_client_info": {
+          "package_name": "com.ludfyrahman.papikos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "381036941652-p3mn28di3dtn8f9hns17lclb7li4cb6b.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ludfyrahman.papikos",
+            "certificate_hash": "afb9aff6dd125b4337a19bbf19e89d4d5e612d57"
+          }
+        },
+        {
+          "client_id": "381036941652-f154ljlj8c1g3sng683br9870vabde76.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX38xD7_z5RAeMTsIxKn0gT7bHDItDZrc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "381036941652-f154ljlj8c1g3sng683br9870vabde76.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
