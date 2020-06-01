@@ -65,7 +65,6 @@ public class Sign_In extends AppCompatActivity {
             Toast.makeText(getBaseContext(), "Email Tidak Boleh Kosong", Toast.LENGTH_LONG).show();
             email.setFocusable(true);
             pd.dismiss();
-
         }else if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
             Toast.makeText(getBaseContext(), "Email Tidak Valid", Toast.LENGTH_LONG).show();
             email.setFocusable(true);
@@ -74,7 +73,6 @@ public class Sign_In extends AppCompatActivity {
             Toast.makeText(getBaseContext(), "Password Tidak Boleh Kosong", Toast.LENGTH_LONG).show();
             password.setFocusable(true);
             pd.dismiss();
-
         }else{
             Log.d("url", ServerAccess.SIGN_IN);
             StringRequest senddata = new StringRequest(Request.Method.POST, ServerAccess.SIGN_IN, new Response.Listener<String>() {
@@ -83,9 +81,9 @@ public class Sign_In extends AppCompatActivity {
                     pd.cancel();
                     try {
                         JSONObject res = new JSONObject(response);
-//                        Log.d("pesan", res.toString());
+                        Log.d("pesan", res.toString());
                         if(res.getBoolean("status") == true){
-                            JSONObject r = res.getJSONObject("data");
+//                            JSONObject r = res.getJSONObject("data");
 //                            AuthData.getInstance(getBaseContext()).setdatauser(r.getString("id_user"), r.getString("nama_depan"), r.getString("foto"));
                             Toast.makeText(Sign_In.this, res.getString("message"), Toast.LENGTH_SHORT).show();
 //                            Intent intent = new Intent(getBaseContext(), Dashboard.class);

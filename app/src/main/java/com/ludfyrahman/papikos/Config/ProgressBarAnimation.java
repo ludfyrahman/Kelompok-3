@@ -7,6 +7,7 @@ import android.view.animation.Transformation;
 import android.widget.ProgressBar;
 
 import com.google.android.gms.maps.model.Dash;
+import com.ludfyrahman.papikos.Akun.Sign_In;
 import com.ludfyrahman.papikos.Dashboard.Dashboard;
 import com.ludfyrahman.papikos.Dashboard.Fragment_Dashboard;
 import com.ludfyrahman.papikos.Dashboard.Fragment_Kos;
@@ -26,7 +27,6 @@ public class ProgressBarAnimation extends Animation {
         this.from = from;
         this.to = to;
     }
-
     @Override
     protected void applyTransformation(float interpolatedTime, Transformation t) {
         super.applyTransformation(interpolatedTime, t);

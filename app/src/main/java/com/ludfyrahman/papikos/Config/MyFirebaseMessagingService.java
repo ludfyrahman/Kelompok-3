@@ -94,7 +94,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationBuilder.setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setWhen(System.currentTimeMillis())
-                .setSmallIcon(R.drawable.logo)
+                .setSmallIcon(R.drawable.white_logo)
                 .setTicker("Hearty365")
                 .setPriority(Notification.PRIORITY_MAX)
                 .setContentTitle("Pemberitahuan Baru")
@@ -163,13 +163,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private void sendNotification(String body){
         Intent intent = new Intent(this, Dashboard.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-
         PendingIntent pendingIntent = PendingIntent.getActivity(this,0,intent, PendingIntent.FLAG_ONE_SHOT);
-
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this);
-        notificationBuilder.setSmallIcon(R.drawable.logo);
+        notificationBuilder.setSmallIcon(R.drawable.white_logo);
         notificationBuilder.setContentTitle("Pemberitahuan");
         notificationBuilder.setContentText(body);
         notificationBuilder.setAutoCancel(true);
@@ -205,7 +203,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         notificationBuilder.setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)
                 .setWhen(System.currentTimeMillis())
-                .setSmallIcon(R.drawable.logo)
+                .setSmallIcon(R.drawable.white_logo)
                 .setTicker("Hearty365")
                 .setPriority(Notification.PRIORITY_MAX)
                 .setContentTitle("Pemberitahuan baru")

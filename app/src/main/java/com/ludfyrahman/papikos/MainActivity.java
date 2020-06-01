@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
 
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.ludfyrahman.papikos.Config.MyFirebaseInstanceIdService;
 import com.ludfyrahman.papikos.Config.ProgressBarAnimation;
 
 public class MainActivity extends AppCompatActivity {
@@ -14,6 +16,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("token", FirebaseInstanceId.getInstance().getToken());
         progressBar = (ProgressBar)findViewById(R.id.pg);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         progressBar.setMax(100);

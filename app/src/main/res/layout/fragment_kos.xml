@@ -58,7 +58,7 @@
                             android:scaleType="centerCrop"
                             android:layout_width="match_parent"
                             android:layout_height="180dp"
-                            android:src="@drawable/image_kos"/>
+                            android:src="@drawable/kamar"/>
                     </androidx.cardview.widget.CardView>
                     <LinearLayout
                         android:layout_width="match_parent"

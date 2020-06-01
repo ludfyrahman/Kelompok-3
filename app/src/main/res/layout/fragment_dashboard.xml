@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorwhite"
-
     android:orientation="vertical"
     tools:context=".Dashboard.Fragment_Dashboard">
     <com.google.android.material.appbar.AppBarLayout
@@ -15,6 +14,7 @@
         android:textAlignment="center"
         android:background="@color/colorwhite"
         android:elevation="0dp"
+        app:elevation="0dp"
         android:gravity="center">
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -23,17 +23,48 @@
             android:layout_height="wrap_content"
             android:textAlignment="center"
             app:layout_scrollFlags="scroll|enterAlways"
-            android:gravity="center_horizontal"  >
-            <TextView
-                android:layout_width="wrap_content"
+            android:gravity="center_horizontal" >
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Papikos"
-                android:textColor="@color/colorPrimary"
-                android:textSize="20sp"
-                android:layout_gravity="center"
-                android:id="@+id/toolbar_title" />
+                android:gravity="center"
+                android:orientation="horizontal">
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/profil"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/nama"
+                        android:textStyle="bold"
+                        android:layout_height="wrap_content"
+                        android:text="Fina Dini"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:id="@+id/email"
 
-
+                        android:layout_height="wrap_content"
+                        android:text="fina@papikos.com"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="30dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="right"
+                    android:layout_marginRight="16dp"
+                    >
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/marker"/>
+                </LinearLayout>
+            </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
     <ScrollView
@@ -51,28 +82,46 @@
                android:layout_width="match_parent"
                android:layout_height="150dp"
                android:padding="16dp"
-               android:orientation="vertical"
+               android:orientation="horizontal"
                android:background="@drawable/round_blue">
-               <TextView
+               <LinearLayout
                    android:layout_width="match_parent"
                    android:layout_height="wrap_content"
-                   android:textColor="@color/colorwhite"
-                   android:textSize="20sp"
-                   android:text="@string/welcome"/>
-               <TextView
-                   android:layout_width="match_parent"
+                   android:layout_weight="1"
+                   android:orientation="vertical">
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textColor="@color/colorwhite"
+                       android:textSize="20sp"
+                       android:text="@string/welcome"/>
+
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:layout_marginTop="8dp"
+                       android:text="@string/dashboard_desc"
+                       android:textColor="@color/colorwhite"
+                       android:textSize="15sp" />
+
+                   <TextView
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:textColor="@color/colorwhite"
+                       android:layout_marginTop="8dp"
+                       android:textStyle="normal"
+                       android:text="@string/next"/>
+               </LinearLayout>
+               <LinearLayout
+                   android:layout_width="180dp"
                    android:layout_height="wrap_content"
-                   android:layout_marginTop="8dp"
-                   android:textSize="15sp"
-                   android:textColor="@color/colorwhite"
-                   android:text="@string/dashboard_desc"/>
-               <TextView
-                   android:layout_width="match_parent"
-                   android:layout_height="wrap_content"
-                   android:textColor="@color/colorwhite"
-                   android:layout_marginTop="8dp"
-                   android:textStyle="normal"
-                   android:text="@string/next"/>
+                   android:layout_weight="1"
+                   >
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/working"/>
+               </LinearLayout>
            </LinearLayout>
            <TextView
                android:layout_width="match_parent"
@@ -96,8 +145,8 @@
                     android:orientation="vertical"
                     android:background="@drawable/box_blue">
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:src="@drawable/area"/>
                     <TextView
                         android:layout_width="match_parent"
@@ -118,8 +167,8 @@
                    android:orientation="vertical"
                    android:background="@drawable/box_blue">
                    <ImageView
-                       android:layout_width="50dp"
-                       android:layout_height="50dp"
+                       android:layout_width="40dp"
+                       android:layout_height="40dp"
                        android:src="@drawable/kontrakan"/>
                    <TextView
                        android:layout_width="match_parent"
@@ -140,8 +189,8 @@
                    android:orientation="vertical"
                    android:background="@drawable/box_blue">
                    <ImageView
-                       android:layout_width="50dp"
-                       android:layout_height="50dp"
+                       android:layout_width="40dp"
+                       android:layout_height="40dp"
                        android:src="@drawable/rumahan"/>
                    <TextView
                        android:layout_width="match_parent"
