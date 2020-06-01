@@ -8,7 +8,7 @@ class Kos extends CI_Controller{
         
     }
     public function all(){
-        $q = $this->db->get($this->low)->result_array();
+        $q = $this->db->query("SELECT k.*, k.nama as kategori FROM $this->low k JOIN kategori ka ON k.id_kategori=ka.id ")->result_array();
         echo json_encode(['data' => $q]);
     }
     public function edit($id){
@@ -25,8 +25,9 @@ class Kos extends CI_Controller{
         echo json_encode(['data' => $q]);
     }
     public function favorit(){
-        $q = $this->db->query("SELECT * FROM kos k JOIN favorit w ON k.id=w.id_kos GROUP BY w.id_kos")->result_array();
-        echo json_encode(['data' => $q]);
+        print_r($this->authorization_token->userData());
+        // $q = $this->db->query("SELECT * FROM kos k JOIN favorit w ON k.id=w.id_kos GROUP BY w.id_kos")->result_array();
+        // echo json_encode(['data' => $q]);
     }
 }
 

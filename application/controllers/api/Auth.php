@@ -12,7 +12,7 @@ class Auth extends CI_Controller{
         $response['data'] = $this->authorization_token->userData();
         echo json_encode($response);
     }
-    public function send(){
+    public function kirim_notif(){
     }
     public function lupa_password(){
         $response = [];
