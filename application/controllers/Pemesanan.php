@@ -7,7 +7,7 @@ class Pemesanan extends CI_Controller {
 		$this->low = "pemesanan";
 		$this->cap = "Pemesanan";
         date_default_timezone_set('Asia/Jakarta');
-        $this->load->model('mpemesanan');
+        $this->load->model('mpemesanan', 'pemesanan');
 		if($this->uri->segment(3) == "add" && $_SERVER['REQUEST_METHOD'] == "POST"){
 		  $this->store($this->uri->segment(4));
 		}else if($this->uri->segment(3) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST"){
@@ -23,13 +23,14 @@ class Pemesanan extends CI_Controller {
             $send = [
                 $start_date, $end_date, $st
             ];
-            $lists = $this->pemesanan->dataPemesanan($send)[1];
+            $lists = $this->pemesanan->dataPemesanan($send)->result_array();
         }else{
-            $lists = $this->pemesanan->dataPemesanan()[1];
+            $lists = $this->pemesanan->dataPemesanan()->result_array();
         }
-        // echo "<pre>";
-        // print_r($lists);
-        Response::render ('back/index', ['title' => 'Daftar pemesanan', 'content' => 'pemesanan/index', 'list' => $lists]);
+        $data['title'] = "Daftar $this->cap";
+		$data['content'] = "$this->low/index";
+        $data['list'] = $lists;
+        $this->load->view('backend/index',$data);
 
     }
     public function pdf(){
@@ -52,9 +53,10 @@ class Pemesanan extends CI_Controller {
                 'status' => $status, 
             ];
 
-            $this->pembayaran->update($arr, "WHERE id=$id");
+            $this->db->update("pembayaran", $arr, ['id' => $id]);
             // echo "berhasil";
-            Response::redirectWithAlert('admin/pembayaran/', ['info', 'Status Pembayaran dengan kode '.invoice_code."".$id]);
+            $this->session->set_flashdata("alert", ['success', 'Status Pembayaran dengan kode '.invoice_code."".$id, ' Berhasil']);
+			redirect(base_url("admin/pembayaran"));
         }
         catch(Exception $e) {
             print_r($e->errorInfo[2]);
@@ -65,9 +67,10 @@ class Pemesanan extends CI_Controller {
             'id_kos' => $id_detail,
             'id_pengguna' => Account_Helper::Get("id"),
         ];
-        $this->pemesanan->insert($arr);
-        $id = $this->pemesanan->lastInsertId();
-        Response::redirectWithAlert('akun/pemesanan/detail/'.$id, ['info', 'pemesanan berhasil diedit']);
+        $this->db->insert("$this->low", $arr);
+        $id = $this->db->insert_id();
+        $this->session->set_flashdata("alert", ['success', 'pemesanan berhasil diedit', ' Berhasil']);
+        redirect(base_url('akun/pemesanan/detail/'.$id));
     }
     public function detailPemesananUser($id){
         $data = $this->mpemesanan->detailPemesanan($id)->row_array();
@@ -79,8 +82,10 @@ class Pemesanan extends CI_Controller {
         $this->load->view('frontend/index',$data);
     }
     public function invoice($id){
-        $data = $this->pemesanan->detailPemesanan($id)[1][0];
-        Response::render('partials/invoice', ['title' => "invoice", 'data' => $data]);
+        $data = $this->pemesanan->detailPemesanan($id)->row_array();
+        $data['title'] = "invoice";
+        $data['data'] = $data;
+        $this->load->view('partials/invoice',$data);
     }
     public function transaction(){
         $id = Account_Helper::Get('id');
@@ -107,14 +112,16 @@ class Pemesanan extends CI_Controller {
         $this->load->view('frontend/index',$data);
     }
     public function detail($id){
-        $data = $this->pemesanan->detailPemesanan($id);
+        $data = $this->pemesanan->detailPemesanan($id)->row_array();
         // echo "<pre>";
         // print_r($data);
         $pembayaran = $this->db->get_where("pembayaran", ['id_pemesanan' => $data['id']])->result_array();
-        // print_r($pembayaran); 
-        $data = ['title' => 'Detail pemesanan', 'content' => 'pemesanan/detail', 'data' => $data, 'pembayaran' => $pembayaran];
-        $this->load->view('frontend/index',$data);
-        // Response::render ('back/index', ['title' => 'Detail pemesanan', 'content' => 'pemesanan/detail', 'data' => $data, 'pembayaran' => $pembayaran]);
+
+        $data['title'] = "Detail $this->cap";
+		$data['content'] = "$this->low/detail";
+        $data['data'] = $data;
+        $data['pembayaran'] = $pembayaran;
+        $this->load->view('backend/index',$data);
     }
 }
 ?>

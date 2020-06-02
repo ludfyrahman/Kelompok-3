@@ -2,6 +2,8 @@
 class Report extends CI_Controller { //mengextends CI_Controller 
     public function __construct(){
         parent::__construct();
+		$this->low = "report";
+		$this->cap = "Report";
     }
    
     public function index() {
@@ -13,7 +15,11 @@ class Report extends CI_Controller { //mengextends CI_Controller
             $next_month = $d['end_date'];
         }
         $lists = $this->data($now, $next_month);
-        Response_Helper::render('back/index', ['title' => 'Laporan', 'content' => 'report/index', 'list' => $lists]);
+        // Response_Helper::render('back/index', ['title' => 'Laporan', 'content' => 'report/index', 'list' => $lists]);
+        $data['title'] = "$this->cap";
+		$data['content'] = "$this->low/index";
+        $data['list'] = $lists;
+        $this->load->view('backend/index',$data);
     }
     public function data($start_date = "2019-11",  $end_date = "2019-12"){
         $where = "";

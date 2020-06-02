@@ -13,6 +13,11 @@ class Input_helper
 			return $a;
 		return $b;
 	}
+	public static function getOr($index, $a = '') {
+        if(isset($_GET[$index]) && $_GET[$index] != '')
+            return $_GET[$index];
+        return $a;
+    }
 	public static function randomString($length){
 		$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
 		$char = '';

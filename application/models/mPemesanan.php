@@ -16,7 +16,7 @@ class MPemesanan extends CI_model {
         if(Account_Helper::get('level') == 2){
             $range.=" AND k.ditambahkan_oleh=".Account_Helper::get('id');
         }
-        $q = $this->Select("p.id, pg.nama_rekening, pg.nama_bank, pg.no_rekening, k.nama as nama_kos, p.status as status_code, dk.jumlah_kamar, dk.harga, pg.nama as nama_pemesan,p.tanggal_pemesanan, (CASE WHEN p.status = 0 THEN 'Ditolak' WHEN p.status = 1 THEN 'Pending' WHEN p.status = 2 THEN 'Dp' WHEN p.status = 3 THEN 'Lunas' END) as status ", " p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id JOIN pengguna pg on p.id_pengguna=pg.id", " $range ORDER BY p.id DESC");
+        $q = $this->db->query("SELECT p.id, pg.nama_rekening, pg.nama_bank, pg.no_rekening, k.nama as nama_kos, p.status as status_code, dk.jumlah_kamar, dk.harga, pg.nama as nama_pemesan,p.tanggal_pemesanan, (CASE WHEN p.status = 0 THEN 'Ditolak' WHEN p.status = 1 THEN 'Pending' WHEN p.status = 2 THEN 'Dp' WHEN p.status = 3 THEN 'Lunas' END) as status from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id JOIN pengguna pg on p.id_pengguna=pg.id $range ORDER BY p.id DESC");
         return $q;
     }
     public function detailPemesanan($id){
