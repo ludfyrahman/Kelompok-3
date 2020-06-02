@@ -1,5 +1,5 @@
 <div class="page-content-wrapper-inner">
-    <?php App::breadcrumb()?>
+    <?php Response_Helper::breadcrumb()?>
     <div class="content-viewport">
         <form method="post" action="#" enctype="multipart/form-data">
             <div class="row">
@@ -11,7 +11,7 @@
                                 <div class="row">
                                     <div class="form-group col-md-12">
                                         <label for="inputEmail1">Nama</label>
-                                        <input type="text" id="nama" name="nama" class="form-control" value="<?=Input::postOrOr('nama', $data['nama'])?>" placeholder="Masukkan nama kos" required>
+                                        <input type="text" id="nama" name="nama" class="form-control" value="<?=Input_Helper::postOrOr('nama', $data['nama'])?>" placeholder="Masukkan nama kos" required>
                                     </div>
                                     
                                     <div class="form-group col-md-12">
@@ -19,7 +19,7 @@
                                         <select class="custom-select" name="jenis" id="jenis" required>
                                         <option value=' '>Pilih Jenis</option>
                                         <?php
-                                        $jen = Input::postOrOr('jenis', $data['jenis']);
+                                        $jen = Input_Helper::postOrOr('jenis', $data['jenis']);
                                         ?>
                                             <option <?=($jen == '1' ? 'selected' : '')?> value='1'>Laki laki</option>
                                             <option <?=($jen == '2' ? 'selected' : '')?> value='2'>Perempuan</option>
@@ -27,14 +27,14 @@
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="inputPassword1">Deskripsi</label>
-                                        <textarea name="deskripsi" id="ckedtor deskripsi" name="deskripsi" class=" ckeditor form-control" cols="30" rows="10" required><?=Input::postOrOr('deskripsi', $data['deskripsi'])?></textarea>
+                                        <textarea name="deskripsi" id="ckedtor deskripsi" name="deskripsi" class=" ckeditor form-control" cols="30" rows="10" required><?=Input_Helper::postOrOr('deskripsi', $data['deskripsi'])?></textarea>
                                     </div>
                                     <div class="form-group col-md-12">
                                         <label for="inputPassword1">Kategori</label>
                                         <select class="custom-select" name="kategori" id="kategori" required>
                                         <option value=' '>Pilih Kategori</option>
                                         <?php
-                                        $kat = Input::postOrOr('kategori', $data['id_kategori']);
+                                        $kat = Input_Helper::postOrOr('kategori', $data['id_kategori']);
                                         foreach($kategori as $k){
                                         ?>
                                             <option <?=($k['id'] == $kat ? 'selected' : '')?> value='<?= $k['id'] ?>'><?= $k['nama'] ?></option>
@@ -74,16 +74,16 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword1">Type Kos</label>
-                                            <input type="hidden" name="id[]" value="<?=Input::postOrOr('id', $d['id'])?>">
-                                            <input type="number" min="1" id="type" name="type[]" class="form-control" value="<?=Input::postOrOr('type', $d['type'])?>"  placeholder="Masukkan type kamar kos">
+                                            <input type="hidden" name="id[]" value="<?=Input_Helper::postOrOr('id', $d['id'])?>">
+                                            <input type="number" min="1" id="type" name="type[]" class="form-control" value="<?=Input_Helper::postOrOr('type', $d['type'])?>"  placeholder="Masukkan type kamar kos">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword1">Jumlah Kamar</label>
-                                            <input type="number" min="1" id="jumlah_kamar" name="jumlah_kamar[]" class="form-control" value="<?=Input::postOrOr('jumlah_kamar', $d['jumlah_kamar'])?>"  placeholder="Masukkan jumlah kamar kos">
+                                            <input type="number" min="1" id="jumlah_kamar" name="jumlah_kamar[]" class="form-control" value="<?=Input_Helper::postOrOr('jumlah_kamar', $d['jumlah_kamar'])?>"  placeholder="Masukkan jumlah kamar kos">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword1">Harga</label>
-                                            <input type="number" min="1" name="harga[]" id="harga" class="form-control" value="<?=Input::postOrOr('harga', $d['harga'])?>" placeholder="Masukkan harga kos">
+                                            <input type="number" min="1" name="harga[]" id="harga" class="form-control" value="<?=Input_Helper::postOrOr('harga', $d['harga'])?>" placeholder="Masukkan harga kos">
                                         </div>
                                         <div class="item-wrapper col-md-6">
                                             <p>Foto / Video</p>
@@ -138,15 +138,15 @@
                                     <div class="row">
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword1">Type Kos</label>
-                                            <input type="number" min="1" id="type" name="type[]" class="form-control" value="<?=Input::postOrOr('type', $d['type'])?>"  placeholder="Masukkan type kamar kos">
+                                            <input type="number" min="1" id="type" name="type[]" class="form-control" value="<?=Input_Helper::postOrOr('type')?>"  placeholder="Masukkan type kamar kos">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword1">Jumlah Kamar</label>
-                                            <input type="number" min="1" id="jumlah_kamar" name="jumlah_kamar[]" class="form-control" value="<?=Input::postOrOr('jumlah_kamar', $d['jumlah_kamar'])?>"  placeholder="Masukkan jumlah kamar kos">
+                                            <input type="number" min="1" id="jumlah_kamar" name="jumlah_kamar[]" class="form-control" value="<?=Input_Helper::postOrOr('jumlah_kamar')?>"  placeholder="Masukkan jumlah kamar kos">
                                         </div>
                                         <div class="form-group col-md-6">
                                             <label for="inputPassword1">Harga</label>
-                                            <input type="number" min="1" name="harga[]" id="harga" class="form-control" value="<?=Input::postOrOr('harga', $d['harga'])?>" placeholder="Masukkan harga kos">
+                                            <input type="number" min="1" name="harga[]" id="harga" class="form-control" value="<?=Input_Helper::postOrOr('harga')?>" placeholder="Masukkan harga kos">
                                         </div>
                                         <div class="item-wrapper col-md-6">
                                             <p>Foto / Video</p>

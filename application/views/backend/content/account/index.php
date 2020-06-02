@@ -3,7 +3,7 @@
 </div>
 
 <div id="page-wrapper" data-type="account">
-    <?php Response::part('alert'); $level = [1 => 'Admin', 'Member'] ?>
+    <?php Response_Helper::part('alert'); $level = [1 => 'Admin', 'Member'] ?>
     <div class="section-table">
         <table class="table">
             <tr>

@@ -4,7 +4,7 @@
 
 <div id="page-wrapper">
     <form action="" method="post">
-        <?php Response::part('alert') ?>
+        <?php Response_Helper::part('alert') ?>
         <div class="row">
             <div class="col-lg-6 col-lg-offset-3">
                 <div class="form-group">

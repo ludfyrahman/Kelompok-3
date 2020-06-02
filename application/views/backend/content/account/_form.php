@@ -4,19 +4,19 @@
 
 <div id="page-wrapper" data-type="account">
     <form action="" method="post">
-        <?php Response::part('alert') ?>
+        <?php Response_Helper::part('alert') ?>
         <div class="row">
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input type="text" placeholder="Name..." class="form-control" id="name" value="<?php echo Input::postOrOr('name', $data['name']) ?>" name="name" required>
+                    <input type="text" placeholder="Name..." class="form-control" id="name" value="<?php echo Input_Helper::postOrOr('name', $data['name']) ?>" name="name" required>
                 </div>
             </div>
 
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="email">Email</label>
-                    <input type="email" placeholder="Email..." class="form-control" id="email" value="<?php echo Input::postOrOr('email', $data['email']) ?>" name="email" required>
+                    <input type="email" placeholder="Email..." class="form-control" id="email" value="<?php echo Input_Helper::postOrOr('email', $data['email']) ?>" name="email" required>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
             <div class="col-md-6">
                 <div class="form-group">
                     <label for="level">Level</label>
-                    <?php $n = Input::postOrOr('level', $data['level']) ?>
+                    <?php $n = Input_Helper::postOrOr('level', $data['level']) ?>
                     <select name="level" id="level" class="form-control" required>
                         <option>- Select -</option>
                         <option value="1" <?php echo ($n == '1' ? 'selected' : '') ?>>Admin</option>

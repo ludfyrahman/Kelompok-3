@@ -1,12 +1,12 @@
 <div class="page-content-wrapper-inner">
-  <?php App::breadcrumb()?>
+  <?php Response_Helper::breadcrumb()?>
   <div class="content-viewport">
     <div class="row">
       
       <div class="col-lg-12">
         <div class="grid">
           <p class="grid-header"><?= $title ?> <a href="<?=BASEADM."pengguna/add"?>"><button class="btn btn-primary float-right">Tambah</button></a></p>
-          <?php Response::part('alert');?>
+          <?php Response_Helper::part('alert');?>
           <div class="item-wrapper">
             <div class="table-responsive">
               <table class="table info-table table-striped">

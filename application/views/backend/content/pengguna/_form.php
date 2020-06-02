@@ -1,22 +1,22 @@
 <div class="page-content-wrapper-inner">
-    <?php App::breadcrumb()?>
+    <?php Response_Helper::breadcrumb()?>
     <div class="content-viewport">
         <div class="row">
             <div class="col-lg-12 equel-grid">
                 <div class="grid">
                     <p class="grid-header">Tambah pengguna</p>
                     <form method="post" action="" enctype="multipart/form-data">
-                    <?php Response::part('alert');?>
+                    <?php Response_Helper::part('alert');?>
                         <div class="row">
                             <div class="grid-body col-md-6">
                                 <div class="item-wrapper">
                                     <div class="form-group">
                                         <label for="inputEmail1">Nama</label>
-                                        <input type="text" name="nama" class="form-control" value="<?=Input::postOrOr('nama', $data['nama'])?>" placeholder="Masukkan nama pengguna" required>
+                                        <input type="text" name="nama" class="form-control" value="<?=Input_Helper::postOrOr('nama', $data['nama'])?>" placeholder="Masukkan nama pengguna" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail1">Email</label>
-                                        <input type="email" name="email" class="form-control" value="<?=Input::postOrOr('email', $data['email'])?>" placeholder="Masukkan email pengguna" required>
+                                        <input type="email" name="email" class="form-control" value="<?=Input_Helper::postOrOr('email', $data['email'])?>" placeholder="Masukkan email pengguna" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail1">Password</label>
@@ -30,7 +30,7 @@
                                         <label for="inputPassword1">Level</label>
                                         <select class="custom-select" name="level" required>
                                         <?php
-                                        $ket = Input::postOrOr('level', $data['level']);
+                                        $ket = Input_Helper::postOrOr('level', $data['level']);
                                         ?>
                                             <option value="">Pilih Level</option>
                                             <option <?= ($ket == "1" ? "selected" : "") ?> value="1">Admin</option>
@@ -42,7 +42,7 @@
                                         <label for="inputPassword1">Status</label>
                                         <select class="custom-select" name="status" required>
                                         <?php
-                                        $status = Input::postOrOr('status', $data['status']);
+                                        $status = Input_Helper::postOrOr('status', $data['status']);
                                         ?>
                                             <option value="">Pilih Status</option>
                                             <option <?= ($status == "1" ? "selected" : "") ?> value="1">Aktif</option>
@@ -55,17 +55,17 @@
                                 <div class="item-wrapper">
                                     <div class="form-group">
                                         <label for="inputEmail1">Nik</label>
-                                        <input type="text" name="nik" class="form-control" value="<?=Input::postOrOr('nik', $data['nik'])?>" placeholder="Masukkan Nik pengguna" required>
+                                        <input type="text" name="nik" class="form-control" value="<?=Input_Helper::postOrOr('nik', $data['nik'])?>" placeholder="Masukkan Nik pengguna" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail1">No Hp</label>
-                                        <input type="text" name="no_hp" class="form-control" value="<?=Input::postOrOr('no_hp', $data['no_hp'])?>" placeholder="Masukkan No Hp pengguna" required>
+                                        <input type="text" name="no_hp" class="form-control" value="<?=Input_Helper::postOrOr('no_hp', $data['no_hp'])?>" placeholder="Masukkan No Hp pengguna" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail1">Jenis Kelamin</label>
                                         <select class="custom-select" name="jenis_kelamin" required>
                                         <?php
-                                        $jenkel = Input::postOrOr('jenis_kelamin', $data['jenis_kelamin']);
+                                        $jenkel = Input_Helper::postOrOr('jenis_kelamin', $data['jenis_kelamin']);
                                         ?>
                                             <option value="">Pilih Jenis Kelamin</option>
                                             <option <?= ($jenkel == "1" ? "selected" : "") ?> value="1">Laki laki</option>
@@ -74,7 +74,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail1">Tanggal Lahir</label>
-                                        <input type="date" name="tanggal_lahir" class="form-control" value="<?=Input::postOrOr('tanggal_lahir', $data['tanggal_lahir'])?>" placeholder="Masukkan Tanggal lahir" required>
+                                        <input type="date" name="tanggal_lahir" class="form-control" value="<?=Input_Helper::postOrOr('tanggal_lahir', $data['tanggal_lahir'])?>" placeholder="Masukkan Tanggal lahir" required>
                                     </div>
                                     <div class="form-group">
                                         <div class="row">
@@ -93,21 +93,21 @@
                             <div class="grid-body col-md-12">
                                 <div class="form-group">
                                     <label for="inputEmail1">Alamat</label>
-                                    <textarea name="alamat" class="ckeditor form-control" id="ckeditor" cols="30" rows="10"><?=Input::postOrOr('alamat', $data['alamat'])?></textarea>
+                                    <textarea name="alamat" class="ckeditor form-control" id="ckeditor" cols="30" rows="10"><?=Input_Helper::postOrOr('alamat', $data['alamat'])?></textarea>
                                 </div>
                                 <h5 class="margin-top-bottom-12">Data Rekening</h5>
                                 <div class="item-wrapper">
                                     <div class="form-group">
                                         <label for="inputEmail1">Nama Rekening</label>
-                                        <input type="text" name="nama_rekening" class="form-control" value="<?=Input::postOrOr('nama_rekening', $data['nama_rekening'])?>" placeholder="Masukkan Nama Rekening pengguna" required>
+                                        <input type="text" name="nama_rekening" class="form-control" value="<?=Input_Helper::postOrOr('nama_rekening', $data['nama_rekening'])?>" placeholder="Masukkan Nama Rekening pengguna" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail1">No Rekening</label>
-                                        <input type="text" name="no_rekening" class="form-control" value="<?=Input::postOrOr('no_rekening', $data['no_rekening'])?>" placeholder="Masukkan No Rekening pengguna" required>
+                                        <input type="text" name="no_rekening" class="form-control" value="<?=Input_Helper::postOrOr('no_rekening', $data['no_rekening'])?>" placeholder="Masukkan No Rekening pengguna" required>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputEmail1">Nama Bank</label>
-                                        <input type="text" name="nama_bank" class="form-control" value="<?=Input::postOrOr('nama_bank', $data['nama_bank'])?>" placeholder="Masukkan Nama Bank pengguna" required>
+                                        <input type="text" name="nama_bank" class="form-control" value="<?=Input_Helper::postOrOr('nama_bank', $data['nama_bank'])?>" placeholder="Masukkan Nama Bank pengguna" required>
                                     </div>
                                 </div>
                             </div>

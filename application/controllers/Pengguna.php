@@ -12,8 +12,8 @@ class Pengguna extends CI_Controller {
 		// }
 		if($this->uri->segment(3) == "add" && $_SERVER['REQUEST_METHOD'] == "POST"){
 		  $this->store($this->uri->segment(4));
-		}else if($this->uri->segment(3) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST"){
-		  $this->update($this->uri->segment(4), $this->uri->segment(5));
+		}else if($this->uri->segment(4) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST"){
+		  $this->update($this->uri->segment(3));
 		}
     }
     public function logout() {
@@ -26,7 +26,7 @@ class Pengguna extends CI_Controller {
     public function index(){
 		$data['title'] = "Data $this->cap";
 		$data['content'] = "$this->low/index";
-        $data['lists'] = $this->db->get("$this->low")->result_array();
+        $data['list'] = $this->db->get("$this->low")->result_array();
         $this->load->view('backend/index',$data);
     }
 	

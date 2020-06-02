@@ -1,5 +1,5 @@
 <div class="page-content-wrapper-inner">
-    <?php App::breadcrumb()?>
+    <?php Response_Helper::breadcrumb()?>
     <div class="content-viewport">
         <div class="row">
             <div class="col-lg-12 equel-grid">
@@ -50,7 +50,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="">Harga</label>
-                                    <p><?= App::price($data['harga'])?></p>
+                                    <p><?= Response_Helper::price($data['harga'])?></p>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Jumlah Kamar</label>
@@ -76,7 +76,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Jumlah Bayar</label>
-                                                        <p><?= App::price($p['jumlah'])?></p>
+                                                        <p><?= Response_Helper::price($p['jumlah'])?></p>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="">Jenis Bayar</label><br>
@@ -86,7 +86,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="">Tanggal Bayar</label>
-                                                        <p><?= App::date($p['tanggal_pembayaran'])?></p>
+                                                        <p><?= Response_Helper::date($p['tanggal_pembayaran'])?></p>
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="">Status Bayar</label>

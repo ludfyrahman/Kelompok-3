@@ -17,7 +17,7 @@
             </a>
         </li>
         <li>
-            <a href="<?= BASEADM."kost" ?>">
+            <a href="<?= BASEADM."kos" ?>">
                 <span class="link-title">Kos</span>
                 <i class="mdi mdi-home link-icon"></i>
             </a>

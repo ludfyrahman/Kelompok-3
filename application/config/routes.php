@@ -55,4 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 $route['admin'] = 'kos/adminkos';
 $route['pengguna/wishlist'] = 'site/wishlist';
 $route['akun/pemesanan/detail/(:num)'] = 'pemesanan/detailPemesananUser/$1';
+$route['admin/pengguna'] = 'pengguna';
+$route['admin/pengguna/(:any)/edit'] = 'pengguna/edit/$1';
+$route['admin/pengguna/(:any)/delete'] = 'pengguna/delete/$1';
 $route['transaksi'] = 'pemesanan/transaction';

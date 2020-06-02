@@ -2166,7 +2166,7 @@ a,
     padding: 15px;
 }
 
-.contact-box .form-group input::-webkit-input-placeholder,
+.contact-box .form-group Input_Helper::-webkit-input-placeholder,
 .contact-box .form-group textarea::-webkit-input-placeholder {
     color: rgba(68, 68, 68, 0.6);
 }
@@ -2176,7 +2176,7 @@ a,
     color: rgba(68, 68, 68, 0.6);
 }
 
-.contact-box .form-group input::placeholder,
+.contact-box .form-group Input_Helper::placeholder,
 .contact-box .form-group textarea::placeholder {
     color: rgba(68, 68, 68, 0.6);
 }
@@ -2459,7 +2459,7 @@ a,
     color: #fff;
 }
 
-.london .contact-box .form-group input::-webkit-input-placeholder,
+.london .contact-box .form-group Input_Helper::-webkit-input-placeholder,
 .london .contact-box .form-group textarea::-webkit-input-placeholder {
     color: #fff;
 }
@@ -2469,7 +2469,7 @@ a,
     color: #fff;
 }
 
-.london .contact-box .form-group input::placeholder,
+.london .contact-box .form-group Input_Helper::placeholder,
 .london .contact-box .form-group textarea::placeholder {
     color: #fff;
 }
@@ -2668,7 +2668,7 @@ a,
     transition: 1s;
 }
 
-.login-form input::-webkit-input-placeholder {
+.login-form Input_Helper::-webkit-input-placeholder {
     color: rgba(68, 68, 68, 0.3);
 }
 
@@ -2676,7 +2676,7 @@ a,
     color: rgba(68, 68, 68, 0.3);
 }
 
-.login-form input::placeholder {
+.login-form Input_Helper::placeholder {
     color: rgba(68, 68, 68, 0.3);
 }
 

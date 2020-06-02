@@ -1,12 +1,12 @@
 <div class="page-content-wrapper-inner">
-  <?php App::breadcrumb()?>
+  <?php Response_Helper::breadcrumb()?>
   <div class="content-viewport">
     <div class="row">
       
       <div class="col-lg-12">
         <div class="grid">
           <p class="grid-header"><?= $title ?> <a href="<?=BASEADM."sub_fasilitas/add"?>"><button class="btn btn-primary float-right">Tambah</button></a></p>
-          <?php Response::part('alert');?>
+          <?php Response_Helper::part('alert');?>
           <div class="item-wrapper">
             <div class="table-responsive">
               <table class="table info-table table-striped">
@@ -28,11 +28,10 @@
                     <td class='text-left'><?=$l['nama']?></td>
                     <td class='text-left'><?=$l['fasilitas']?></td>
                     <td>
-                      <a href="<?=BASEADM.'sub_fasilitas/'.$l['id'].'/edit' ?>" >
+                      <a href="<?=BASEADM.'sub_fasilitas/edit/'.$l['id']?>" >
                         <i class="mdi mdi-pencil-box-outline"></i>
                       </a>
-                      
-                      <a class="delete" href="<?=BASEADM.'sub_fasilitas/'.$l['id'].'/delete' ?>" >
+                      <a href="<?=BASEADM.'sub_fasilitas/delete/'.$l['id'] ?>" >
                         <i class="mdi mdi-delete-forever"></i>
                       </a>
 

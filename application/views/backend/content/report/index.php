@@ -1,21 +1,21 @@
 <div class="page-content-wrapper-inner">
-  <?php App::breadcrumb()?>
+  <?php Response_Helper::breadcrumb()?>
   <div class="content-viewport">
     <div class="row">
       
       <div class="col-lg-12">
         <div class="grid">
-          <?php Response::part('alert');?>
+          <?php Response_Helper::part('alert');?>
           <form action="" method="post">
             <div class="row">
               <div class="form-group col-md-5">
-                <input type="date" name="start_date" class="form-control" placeholder="Tanggal Awal" value="<?= (Input::postOrOr('start_date')) ?>">
+                <input type="date" name="start_date" class="form-control" placeholder="Tanggal Awal" value="<?= (Input_Helper::postOrOr('start_date')) ?>">
               </div>
               <div class="col-md-1">
                 sampai
               </div>
               <div class="form-group col-md-5">
-                <input type="date" name="end_date" class="form-control" placeholder="Tanggal Akhir" value="<?= (Input::postOrOr('end_date')) ?>">
+                <input type="date" name="end_date" class="form-control" placeholder="Tanggal Akhir" value="<?= (Input_Helper::postOrOr('end_date')) ?>">
               </div>
               <div class="col-md-1">
                 <input type="submit" class="btn btn-primary btn-sm" name="cari" value="Filter">

@@ -141,10 +141,10 @@
                                     <a href="<?= BASEURL."kos/detail/".$data['id_kos'] ?>"><?= $data['nama_kos'] ?></a>
                                 </td>
                                 <td valign="top" style="padding: 15px; white-space: nowrap; text-align: center;">
-                                    <?= App::price($data['harga']) ?>
+                                    <?= Response_Helper::price($data['harga']) ?>
                                 </td>
                                 <td valign="top" style="padding: 15px; white-space: nowrap;text-align:right">
-                                    <?= App::price($data['harga']) ?>
+                                    <?= Response_Helper::price($data['harga']) ?>
                                 </td>
                             </tr>
                             <tr>
@@ -163,7 +163,7 @@
                                         </tr>
                                         <tr>
                                             <td style="padding: 15px;">Subtotal Harga</td>
-                                            <td style="padding: 15px 0 15px 15px; text-align: right;"><?= App::price($data['harga']) ?></td>
+                                            <td style="padding: 15px 0 15px 15px; text-align: right;"><?= Response_Helper::price($data['harga']) ?></td>
                                         </tr>
                                     </table>
                                 </td>
@@ -195,13 +195,13 @@
                                                     <table width="100%" style="width: 430px; margin-top: 15px; padding: 15px; border-radius: 4px; border: thin dashed #cccccc; font-size: 14px; font-weight: 600;">
                                                         <tr style="font-weight: normal; font-size: 12px;">
                                                             <td style="padding-bottom: 10px;">Dp Kos</td>
-                                                            <td style="padding-bottom: 10px;text-align: right; white-space: nowrap; vertical-align: top;"><?= App::price($dp) ?></td>
+                                                            <td style="padding-bottom: 10px;text-align: right; white-space: nowrap; vertical-align: top;"><?= Response_Helper::price($dp) ?></td>
                                                         </tr>
                                                         <!-- show this in invoice section subtotal ongkos kirim -->
                                                         
                                                         <tr>
                                                             <td style="border-top: thin solid #e0e0e0; padding-top: 10px;">Subtotal Dp</td>
-                                                            <td style="border-top: thin solid #e0e0e0; padding-top: 10px; text-align: right; white-space: nowrap;"><?= App::price($dp) ?></td>
+                                                            <td style="border-top: thin solid #e0e0e0; padding-top: 10px; text-align: right; white-space: nowrap;"><?= Response_Helper::price($dp) ?></td>
                                                         </tr>
                                                     </table>
                                                 </td>
@@ -232,7 +232,7 @@
                                                     <table width="100%" style="width: 430px; margin-top: 15px; padding: 15px; border-radius: 4px; border: thin solid rgba(0, 0, 0, 0.54); font-size: 14px; font-weight: 600;">
                                                         <tr>
                                                             <td>Sisa Pembayaran</td>
-                                                            <td style="text-align: right;"><?= App::price($data['harga'] - $dp) ?></td>
+                                                            <td style="text-align: right;"><?= Response_Helper::price($data['harga'] - $dp) ?></td>
                                                         </tr>
                                                     </table>
                                                 </td>

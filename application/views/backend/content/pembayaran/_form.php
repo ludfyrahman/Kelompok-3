@@ -1,5 +1,5 @@
 <div class="page-content-wrapper-inner">
-    <?php App::breadcrumb()?>
+    <?php Response_Helper::breadcrumb()?>
     <div class="content-viewport">
         <div class="row">
             <div class="col-lg-12 equel-grid">
@@ -8,18 +8,18 @@
                     <div class="grid-body">
                         <div class="item-wrapper">
                             <form method="post" action="" enctype="multipart/form-data">
-                            <?php Response::part('alert');?>
+                            <?php Response_Helper::part('alert');?>
                                 <div class="form-group">
                                     <label for="inputEmail1">Nama</label>
-                                    <input type="text" name="nama" class="form-control" value="<?=Input::postOrOr('nama', $data['nama'])?>" placeholder="Masukkan nama pengguna" required>
+                                    <input type="text" name="nama" class="form-control" value="<?=Input_Helper::postOrOr('nama', $data['nama'])?>" placeholder="Masukkan nama pengguna" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail1">Email</label>
-                                    <input type="email" name="email" class="form-control" value="<?=Input::postOrOr('email', $data['email'])?>" placeholder="Masukkan email pengguna" required>
+                                    <input type="email" name="email" class="form-control" value="<?=Input_Helper::postOrOr('email', $data['email'])?>" placeholder="Masukkan email pengguna" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail1">No Hp</label>
-                                    <input type="text" name="no_hp" class="form-control" value="<?=Input::postOrOr('no_hp', $data['no_hp'])?>" placeholder="Masukkan No Hp pengguna" required>
+                                    <input type="text" name="no_hp" class="form-control" value="<?=Input_Helper::postOrOr('no_hp', $data['no_hp'])?>" placeholder="Masukkan No Hp pengguna" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputEmail1">Password</label>
@@ -33,7 +33,7 @@
                                     <label for="inputPassword1">Level</label>
                                     <select class="custom-select" name="level" required>
                                     <?php
-                                    $ket = Input::postOrOr('level', $data['level']);
+                                    $ket = Input_Helper::postOrOr('level', $data['level']);
                                     ?>
                                         <option value="">Pilih Level</option>
                                         <option <?= ($ket == "1" ? "selected" : "") ?> value="1">Admin</option>

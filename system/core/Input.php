@@ -117,7 +117,7 @@ class CI_Input {
 	 *
 	 * Parsed from php://input at runtime
 	 *
-	 * @see	CI_Input::input_stream()
+	 * @see	CI_Input_Helper::input_stream()
 	 * @var	array
 	 */
 	protected $_input_stream;
