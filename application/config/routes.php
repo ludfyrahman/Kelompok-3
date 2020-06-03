@@ -62,3 +62,5 @@ $route['admin/pengguna'] = 'pengguna';
 $route['admin/pengguna/(:any)/edit'] = 'pengguna/edit/$1';
 $route['admin/pengguna/(:any)/delete'] = 'pengguna/delete/$1';
 $route['transaksi'] = 'pemesanan/transaction';
+$route['ubah_password/(:any)'] = 'pengguna/ubah_password/$1';
+$route['keluar'] = 'pengguna/logout';

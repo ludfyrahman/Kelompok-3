@@ -199,8 +199,13 @@ class Pengguna extends CI_Controller {
     }
     public function ubah_password($kode) {
         $data['title'] = 'Ubah Password ';
-		$data['content'] = 'user/password';
-        $this->load->view('frontend/index',$data);
+        $data['content'] = 'user/password';
+        $cek = $this->db->get_where("$this->low", ['verification' => $kode]);
+        if($cek->num_rows() > 0){
+            $this->load->view('frontend/index',$data);
+        }else{
+            echo "<h1>Kode Reset Password failed</h1>";
+        }
     }
     public function proses_ubah_password($kode){
         $d = $_POST;
@@ -217,7 +222,7 @@ class Pengguna extends CI_Controller {
             $this->db->update("$this->low", $arr, ['verification' => $kode]);
 
             $this->session->set_flashdata("alert", ['success', "Password berhasil diubah", 'Berhasil']);
-			redirect(base_url("$this->low/"));
+			redirect(base_url());
         }
         catch(Exception $e) {
             $this->password();

@@ -2,6 +2,7 @@
 /**
 *
 */
+include APPPATH."libraries/PHPMAILER/PHPMailerAutoload.php";
 class Response_helper
 {
 
@@ -17,6 +18,42 @@ class Response_helper
             return true;
         }else{
             return false;
+        }
+	}
+	public static function send($from, $to, $subject, $body){
+        $mail = new PHPMailer;
+
+        //$mail->SMTPDebug = 3;                               // Enable verbose debug output
+
+        $mail->isSMTP();                                      // Set mailer to use SMTP
+        $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+        $mail->SMTPAuth = true;                               // Enable SMTP authentication
+        $mail->Username = 'dawiyahrubi@gmail.com';                 // SMTP username
+        $mail->Password = 'rubilemupanda';                           // SMTP password
+        $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
+        $mail->Port = 465;                                    // TCP port to connect to
+
+        $mail->setFrom($from, 'papikos');
+        $mail->addAddress($to, 'User');     // Add a recipient
+        // $mail->addAddress('ellen@example.com');               // Name is optional
+        // $mail->addReplyTo('info@example.com', 'Information');
+        // $mail->addCC('cc@example.com');
+        // $mail->addBCC('bcc@example.com');
+
+        // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+        // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+        // $mail->isHTML(true);                                  // Set email format to HTML
+
+        $mail->IsHTML(true); 
+        $mail->Subject = $subject;
+        $mail->Body    = $body;
+        $mail->AltBody = 'jangan lupa';
+
+        if(!$mail->send()) {
+            echo 'Message could not be sent.';
+            echo 'Mailer Error: ' . $mail->ErrorInfo;
+        } else {
+            echo 'Message has been sent';
         }
     }
     public static function validateSizeUpload($limit, $file){

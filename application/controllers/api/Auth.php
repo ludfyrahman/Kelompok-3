@@ -1,9 +1,9 @@
 <?php 
-
 class Auth extends CI_Controller{
     public function __construct(){
         parent::__construct();
         $this->low = "pengguna";
+        // $this->load->library("../controllers/admin/Setting");
     }
     public function index(){
 
@@ -12,17 +12,24 @@ class Auth extends CI_Controller{
         $response['data'] = $this->authorization_token->userData();
         echo json_encode($response);
     }
-    public function kirim_notif(){
-    }
     public function lupa_password(){
         $response = [];
         if ($_SERVER['REQUEST_METHOD'] == "POST") {
             $d = $_POST;
             $response['status'] = false;
+            // $setting = new Setting();
             try {
-                $cek = $this->db->get_where("pengguna", ['email' => $d['email']])->num_rows();
-                if($cek > 0){
+                $cek = $this->db->get_where("pengguna", ['email' => $d['email']]);
+                if($cek->num_rows() > 0){
                     $response['status'] = true;
+                    $cek = $cek->row_array();
+                    $kode = Input_Helper::randomString(5);
+                    $this->db->update("pengguna", ['verification' => $kode]);
+                    $data = [
+                        'kode' => $kode
+                    ];
+                    // echo $cek['email'];
+                    Response_Helper::send("dawiyahrubi@gmail.com", $cek['email'], "Papikos", $this->load->view("part/lupa_password", $data,TRUE));
                     $response['message'] = 'Silahkan Cek email untuk mengubah password anda';
                 }else{
                     $response['message'] = 'Email yang anda masukan tidak terdaftar';
@@ -192,7 +199,7 @@ class Auth extends CI_Controller{
                                 $token_data['email'] = $a['email'];
                                 $token_data['id'] = $a['id'];
                                 $response['token'] = $this->authorization_token->generateToken($token_data);
-                                $response['data'] = $this->authorization_token->userData();
+                                $response['data'] = $a;
                             }
                         }
                     }

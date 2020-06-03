@@ -1,4 +1,6 @@
 <?php
+
+include APPPATH."libraries/PHPMAILER/PHPMailerAutoload.php";
 class Setting extends CI_Controller {
 
     public function __construct() {
@@ -8,7 +10,6 @@ class Setting extends CI_Controller {
         $this->load->model('mPengguna', 'pengguna');
         $this->load->model('mpemesanan', 'pemesanan');
     }
-
     public function index() {
         $gmail = null;
         $facebook = null;
@@ -17,17 +18,28 @@ class Setting extends CI_Controller {
         $data['gmail'] = $gmail;
         $data['facebook'] = $facebook;
         $this->load->view('backend/index',$data);
-
     }
     
     public function verification_code($from, $to){
         $kode = Input_Helper::randomString(5);
         $this->db->update('pengguna', ["verification" => $kode], ['id'=> Account_Helper::get("id")]);
         $subject = "Verifikasi Email";
-        $this->send("rezamufti24@gmail.com", $to, $subject, "<h1>Verifikasi Akun ".Account_Helper::get("nama")."</h1><p>masukkan kode <b>".$kode." untuk verifikasi akun anda<p>");
+        $this->send("dawiyahrubi@gmail.com", $to, $subject, "<h1>Verifikasi Akun ".Account_Helper::get("nama")."</h1><p>masukkan kode <b>".$kode." untuk verifikasi akun anda<p>");
     }
     public function lupa_password_email($from, $to){
-        $this->send("rezamufti24@gmail.com", $to, $subject, "<h1>Verifikasi Password $to </h1><p>klik link <b><a href=".BASEURL."ubah_password/$kode".">".$kode."</a> untuk mengubah password anda<p>");
+        $data = [
+            'kode' => Input_Helper::randomString(5)
+        ];
+        $this->send("dawiyahrubi@gmail.com", $to, "Papikos", $this->load->view("part/lupa_password", $data));
+    }
+    public function email(){
+        $this->send("dawiyahrubi@gmail.com", "ludfyr@gmail.com", "Subject", "<h1>Verifikasi Password ludfyr@gmail.com </h1>");
+    }
+    public function template(){
+        $data = [
+            'kode' => Input_Helper::randomString(5)
+        ];
+        $this->load->view("part/lupa_password", $data);
     }
     public function verifikasi($id){
         $q = $this->db->get_where("pengguna",  ['verification' => $id]);
@@ -80,13 +92,13 @@ class Setting extends CI_Controller {
         // $sms = new NexmoMessage(NEXMO_API_KEY, NEXMO_API_SECRET);
         // $sms->sendText( $to, 'Papikos', 'Kode Verifikasi '.$kode." " );
         $basic  = new \Nexmo\Client\Credentials\Basic('68206d0a', 'H9nFINin9ytRgmeT');
-$client = new \Nexmo\Client($basic);
+        $client = new \Nexmo\Client($basic);
 
-$message = $client->message()->send([
-    'to' => '6282231425636',
-    'from' => 'Vonage APIs',
-    'text' => 'Hello from Vonage SMS API'
-]);
+        $message = $client->message()->send([
+            'to' => '6282231425636',
+            'from' => 'Vonage APIs',
+            'text' => 'Hello from Vonage SMS API'
+        ]);
     }
     public function notifikasi_pembayaran_noHp($to){
         $kode = Input_Helper::randomString(5);
@@ -105,8 +117,8 @@ $message = $client->message()->send([
         $mail->isSMTP();                                      // Set mailer to use SMTP
         $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
         $mail->SMTPAuth = true;                               // Enable SMTP authentication
-        $mail->Username = 'rezamufti24@gmail.com';                 // SMTP username
-        $mail->Password = 'rezaraihanreksa24';                           // SMTP password
+        $mail->Username = 'dawiyahrubi@gmail.com';                 // SMTP username
+        $mail->Password = 'rubilemupanda';                           // SMTP password
         $mail->SMTPSecure = 'ssl';                            // Enable TLS encryption, `ssl` also accepted
         $mail->Port = 465;                                    // TCP port to connect to
 

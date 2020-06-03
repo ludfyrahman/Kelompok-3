@@ -13,7 +13,7 @@
                     <h2 class="text-primary">Ubah Password</h2>
                     <p class="mt-3 mb-4">Ubah password kamu untuk masuk akun papikos</p>
                     <?php Response_Helper::part('alert'); ?>
-                    <form action="" method="POST">
+                    <form action="<?= base_url('pengguna/proses_ubah_password/'.$this->uri->segment(2)) ?>" method="POST">
                         <div class="form-group">
                             <label for="">Password Baru</label>
                             <input type="password" class="form-control" name="new_password" placeholder="masukkan password baru kamu">
