@@ -72,8 +72,17 @@ class Pemesanan extends CI_Controller {
         $this->session->set_flashdata("alert", ['success', 'pemesanan berhasil diedit', ' Berhasil']);
         redirect(base_url('akun/pemesanan/detail/'.$id));
     }
+    public function bayar($id){
+        $data = $this->pemesanan->detailPemesanan($id)->row_array();
+        // echo "<pre>";
+        // print_r($data);
+        $media = $this->db->query("SELECT * from media WHERE id_kos='$data[id_detail]' LIMIT 1")->row_array();;
+        // Response::render('front/index', ['title' => "Pembayaran", 'data' => $data, 'content' => 'pembayaran/bayar', 'media' => $media]);
+        $data = ['title' => 'Pembayaran', 'content' => 'pembayaran/bayar', 'data' => $data, 'media' => $media];
+        $this->load->view('frontend/index',$data);
+    }
     public function detailPemesananUser($id){
-        $data = $this->mpemesanan->detailPemesanan($id)->row_array();
+        $data = $this->pemesanan->detailPemesanan($id)->row_array();
         // print_r($data);
         $media = $this->db->query("SELECT * from media WHERE id_kos='$data[id_detail]' LIMIT 1")->row_array();;
         // echo "<pre>";

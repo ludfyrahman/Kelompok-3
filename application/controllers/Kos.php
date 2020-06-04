@@ -17,195 +17,11 @@ class Kos extends CI_Controller {
 		  $this->update($this->uri->segment(4), $this->uri->segment(5));
 		}
     }
-    public function index(){
-		$data['title'] = "Data $this->cap";
-        $data['content'] = "$this->low/index";
-        $where = "";
-        if(Account_Helper::get('level') == 2){
-            $where = " WHERE p.id=".Account_Helper::get('id');
-        }
-        $data['lists'] = $this->db->query("SELECT k.id, k.nama,dk.harga, ka.nama as nama_kategori from $this->low k JOIN kategori ka ON k.id_kategori=ka.id JOIN pengguna p on k.ditambahkan_oleh=p.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos $where GROUP BY dk.id_kos ORDER BY k.id asc ")->result_array();
-        $this->load->view('backend/index',$data);
-    }
-	
-	public function add()
-	{
-		$data['title'] = "Tambah $this->cap";
-		$data['content'] = "$this->low/_form";
-		$data['data'] = null;
-        $data['type'] = 'Tambah';
-        $kategori = $this->db->get("kategori")->result_array();
-        $fasilitas = $this->db->get("fasilitas")->result_array();
-        $index = 0;
-        $index = 0;
-        $subfas = array();
-        foreach($fasilitas as $f){
-            $subfas[$index] = $f;
-            $sub_fasilitas = $this->db->get_where("sub_fasilitas", ['id_fasilitas' => $f['id']])->result_array();
-            $in = 0;
-            $subfas[$index]['sub'][$in] = '';
-            foreach($sub_fasilitas as $sub){
-                $subfas[$index]['sub'][$in] = $sub;
-                $subfas[$index]['old_sub'][$in] = null;
-                $in++;
-            }
-            $index++;
-        }
-        $data['subfas'] = $subfas;
-        $data['kategori'] = $kategori;
-		$this->load->view('backend/index',$data);
-	}
-
-	public function store(){
-        $d = $_POST;
-        $d = $_POST;
-        $f = $_FILES;
-
-        try {
-            $arr = [
-                'nama' => $d['nama'], 
-                'deskripsi' => $d['deskripsi'], 
-                'id_kategori' => $d['kategori'],
-                'jenis' => $d['jenis'],
-                'latitude' => $_COOKIE['lat'],
-                'longitude' => $_COOKIE['long'],
-                'ditambahkan_oleh' =>  Account_Helper::Get('id')
-            ];
-            $this->db->insert($this->low, $arr);
-            $id = $this->db->insert_id();
-            foreach ($d['type'] as $index => $t) {
-                $arraytype = [
-                    'id_kos' => $id,
-                    'type' => $t,
-                    'jumlah_kamar' => $d['jumlah_kamar'][$index],
-                    'harga' => $d['harga'][$index],
-                ];
-                $this->db->insert('detail_kos', $arraytype);
-                
-                $id_detail =  $this->db->insert_id();
-                $this->kos->add_sub($id_detail, $index);
-                // print_r($arraytype);
-            }
-            $this->session->set_flashdata("alert", ['success', "Berhasil Tambah $this->cap", ' Berhasil']);
-            redirect(base_url("$this->low/"));
-            
-        }
-        catch(Exception $e) {
-            // if($e->errorInfo[2] == "Duplicate entry '$d[email]' for key 'email'")
-            $_SESSION['alert'] = ['danger', 'error'];
-            $this->add();
-        }
-
-	}
-		
-	public function edit($id){
-        $kategori = $this->db->get("kategori")->result_array();
-        $fasilitas = $this->db->get("fasilitas")->result_array();
-        $detail = $this->sb->get_where("detail_kos ", ['id_kos' => $id])->result_array();
-        $index = 0;
-            foreach($fasilitas as $f){
-                $subfas[$index] = $f;
-                $sub_fasilitas = $this->db->get_where("sub_fasilitas", ['id_fasilitas' => $f['id']])->result_array();
-                $in = 0;
-                $subfas[$index]['sub'][$in] = '';
-                foreach($sub_fasilitas as $sub){
-                    $subfas[$index]['sub'][$in] = $sub;
-                    $in++;
-                }
-                $i = 0;
-                foreach ($detail as $d) {
-                    $inde = 0;
-                    $subfas[$i][$index]['old_sub'][$inde] = '';
-                    $sf = $this->db->query("SELECT sf.id FROM fasilitas_kos fk JOIN sub_fasilitas sf ON fk.id_fasilitas=sf.id WHERE id_kos=$d[id] and sf.id_fasilitas=$f[id]")->result_array();
-                    foreach ($sf as $sfv) {
-                        $subfas[$i][$index]['old_sub'][$inde] = $sfv['id'];
-                        $inde++;
-                    }
-                    $i++;
-                }
-                $index++;
-            }
-        $subfas = array();
-		$data['title'] = "Ubah $this->cap";
-		$data['content'] = "$this->low/_form";
-		$data['type'] = 'Ubah';
-        $data['data'] = $this->db->get_where("$this->low", ['id' => $id])->row_array();	
-        $data['subfas'] = $subfas;
-        $data['kategori'] = $kategori;
-        $data['detail'] = $detail;	
-		$this->load->view('backend/index',$data);
-	}
-    public function storeFile($id){
-        $f = $_FILES;
-        print_r($f);
-        $index = 0;
-        foreach ($f["file"] as $key => $arrDetail) 
-        {
-            echo "berhasil";
-            // foreach ($arrDetail as $index => $detail) {
-                $targetDir = FCPATH."assets/images/upload/kos/";
-                $type = explode('/', $f['file']['type'][$index]);
-                $fileName = date('YmdHis').".".$type[1];
-                $targetFile = $targetDir.$fileName;
-
-                if(move_uploaded_file($_FILES["file"]['tmp_name'][$index],$targetFile))
-                {
-                    // $this->media->insert(['link_media' => $fileName, 'id_kos' => $id]);
-                    $this->db->insert("media", ['link_media' => $fileName, 'id_kos' => $id]);
-                    return "file uploaded"; 
-                }else{
-                    return "File not uploaded.";
-                }
-                $index++;
-            // }
-        }
-    }
-	public function update($id){
-		$d = $_POST;
-		try{
-            $arr = [
-                'nama' => $d['nama'], 
-                'deskripsi' => $d['deskripsi'], 
-                'jenis' => $d['jenis'],
-                'id_kategori' => $d['kategori'],
-            ];
-            foreach ($d['type'] as $index => $t) {
-                $arraytype = [
-                    'type' => $t,
-                    'jumlah_kamar' => $d['jumlah_kamar'][$index],
-                    'harga' => $d['harga'][$index],
-                ];
-                $kode = $d['id'][$index];
-                $this->db->update('detail_kos', $arraytype, "WHERE id='$kode'");
-            }
-			$this->db->update("$this->low",$arr, ['id' => $id]);
-			$this->session->set_flashdata("alert", ['success', "Ubah $this->cap Berhasil", ' Berhasil']);
-			redirect(base_url("$this->low/"));
-			
-		}catch(Exception $e){
-			$this->session->set_flashdata("alert", ['danger', "Gagal Edit Data $this->cap", ' Gagal']);
-			redirect(base_url("$this->low/edit/".$id));
-			// $this->add();
-		}
-	}
-	public function adminkos(){
-        echo "admin/kos";
-    }
-	public function delete($id){
-		try{
-			$this->db->delete("$this->low", ['id' => $id]);
-			$this->session->set_flashdata("alert", ['success', "Berhasil Hapus Data $this->cap", 'Berhasil']);
-			redirect(base_url("$this->low/"));
-			
-		}catch(Exception $e){
-			$this->session->set_flashdata("alert", ['danger', "Gagal Hapus Data $this->cap", 'Gagal']);
-			redirect(base_url("$this->low/"));
-		}
-    }
+    
     public function detail($id, $id_detail = null){ 
         $detail_kos = $this->db->get_where("detail_kos",  ['id_kos' => $id])->result_array();
         $id_detail_kos= ($id_detail == null ? $detail_kos[0]['id'] : $id_detail);
-        $data = $this->db->query("SELECT k.id, k.nama as nama_kos, k.dilihat,k.jenis, k.tanggal_diubah, k.latitude, k.longitude, k.deskripsi, dk.jumlah_kamar, dk.harga, k.tanggal_ditambahkan, p.nama from $this->low k JOIN pengguna p ON k.ditambahkan_oleh=p.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos ", "WHERE k.id='$id' and dk.id=$id_detail_kos GROUP BY k.id")->row_array();
+        $data = $this->db->query("SELECT k.id, k.nama as nama_kos, k.dilihat,k.jenis, k.tanggal_diubah, k.latitude, k.longitude, k.deskripsi, dk.jumlah_kamar, dk.harga, k.tanggal_ditambahkan, p.nama from $this->low k JOIN pengguna p ON k.ditambahkan_oleh=p.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos WHERE k.id='$id' and dk.id=$id_detail_kos GROUP BY k.id")->row_array();
         $media = $this->db->query("SELECT m.*, dk.id as id_detail_kos from  media m JOIN detail_kos dk ON m.id_kos=dk.id JOIN kos k ON k.id=dk.id_kos WHERE k.id='$data[id]'")->result_array();
         $ulasan = $this->db->query("SELECT u.*, p.nama from ulasan u JOIN pengguna p on u.id_pengguna=p.id WHERE id_kos=$id ")->result_array();   
         $this->db->query("UPDATE kos set dilihat = dilihat + 1 WHERE id='$id'");
@@ -233,8 +49,8 @@ class Kos extends CI_Controller {
             
             $index++;
         }
-        // print_r($subfas);
         // echo "</pre>";
+        // print_r($data);
         $data['title'] =$data['nama_kos'];
 		$data['content'] = "$this->low/detail";
 		$data['type'] = 'Ubah';
@@ -249,10 +65,9 @@ class Kos extends CI_Controller {
     }
     public function pesan($id, $id_detail = null){
         // $data = $this->kos->Select("k.id, k.nama as nama_kos,k.tanggal_diubah, k.latitude, k.longitude, k.deskripsi, dk.jumlah_kamar, dk.harga, k.tanggal_ditambahkan, p.nama", " k JOIN pengguna p ON k.ditambahkan_oleh=p.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos", "WHERE k.id='$id' and dk.id=$id_detail ")[1][0];
-        $data = $this->db->query("SELECT k.id, k.nama as nama_kos,k.tanggal_diubah, k.latitude, k.longitude, k.deskripsi, dk.jumlah_kamar, dk.harga, k.tanggal_ditambahkan, p.nama $this->low k JOIN pengguna p ON k.ditambahkan_oleh=p.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos WHERE k.id='$id' and dk.id=$id_detail ")->row_array();
-        $media = $this->media->Select("*", "WHERE id_kos='$data[id]' LIMIT 1")[1][0];
-        $media = $this->db->query("SELECT * FROM media WHERE id_kos='$data[id]' LIMIT 1")->row_array();
-        $data = ['title' => 'Login Papikos', 'content' => 'user/login'];
+        $data = $this->db->query("SELECT k.id, k.nama as nama_kos,k.tanggal_diubah, k.latitude, k.longitude, k.deskripsi, dk.jumlah_kamar, dk.harga, k.tanggal_ditambahkan, p.nama from $this->low k JOIN pengguna p ON k.ditambahkan_oleh=p.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos WHERE k.id='$id' and dk.id=$id_detail ")->row_array();
+        $media = $this->db->query("SELECT * from media WHERE id_kos='$data[id]' LIMIT 1")->row_array();
+        // $data = ['title' => 'Login Papikos', 'content' => 'user/login'];
         if(!isset($_SESSION['userid'])){
             $this->load->view('frontend/index',$data);
         }else{
@@ -324,6 +139,8 @@ class Kos extends CI_Controller {
         // echo "</pre>";
         $data = ['title' => 'Semua Kos', 'content' => 'kos/semua','data' => $kos, 'kategori' => $kategori];
         $this->load->view('frontend/index',$data);
+        // echo "</pre>";
+        // print_r($kos);
     }
     public function favorit($id){
         // $count = $this->favorit->select("*", "WHERE id_kos=$id and id_pengguna=".Account_Helper::get('id'))[0];
@@ -335,6 +152,7 @@ class Kos extends CI_Controller {
             $this->db->delete('favorit', ['id_kos' => $id, 'id_pengguna' => Account_Helper::get('id')]);
         }
     }
+    
     public function ulasan(){
         $d = $_POST;
 
@@ -364,5 +182,15 @@ class Kos extends CI_Controller {
         // $d = $this->ulasan->select("k.nama, u.*", "u JOIN kos k on u.id_kos=k.id WHERE u.id_kos='$id' and u.id_pengguna=".Account_Helper::get('id')); 
         echo json_encode($d);
     }
-    
+    public function pesanAction($id, $id_detail = null){
+        $arr = [
+            'id_kos' => $id_detail,
+            'id_pengguna' => Account_Helper::Get("id"),
+        ];
+        $this->db->insert("pemesanan", $arr);
+        $id = $this->db->insert_id();
+        // Response::redirectWithAlert('akun/pemesanan/detail/'.$id, ['info', 'pemesanan berhasil diedit']);
+        $this->session->set_flashdata("message", ['success', "pemesanan berhasil", ' Berhasil']);
+        redirect(base_url("akun/pemesanan/detail/".$id));
+    }
 }

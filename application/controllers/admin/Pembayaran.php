@@ -67,9 +67,9 @@ class Pembayaran extends CI_Controller {
                 $status = 3;
             }
             Response_Helper::UploadImage($f['file'], 'bukti');
-            $q = $this->pembayaran->Insert(['id_pemesanan' => $id,  'tipe' => $d['status'], 'jumlah' => $d['bayar'], 'bukti_bayar' => $f['file']['name']]);
-            $this->pemesanan->update(['status' => $status], "WHERE id=$id");
-            if(!$q){
+            $q = $this->db->insert("$this->low", ['id_pemesanan' => $id,  'tipe' => $d['status'], 'jumlah' => $d['bayar'], 'bukti_bayar' => $f['file']['name']]);
+            $this->db->update("$this->low", ['status' => $status], ['id' => $id]);
+            if($q){
                 echo json_encode(['status' => true]);
             }else{
                 echo json_encode(['status' => false]);
@@ -84,8 +84,9 @@ class Pembayaran extends CI_Controller {
         $d = $_POST;
         try {
             if ($type == 2) {
-                $r = $this->pembayaran->select("*", "p JOIN pemesanan pm ON p.id_pemesanan=pm.id JOIN kos k ON pm.id_kos=k.id WHERE p.id='$id'")->row_array();
-                $this->db->update('kos', ['jumlah_kamar' => $r['jumlah_kamar'] - 1], ['id' => $id]);
+                $r = $this->db->query("SELECT * from pembayaran p JOIN pemesanan pm ON p.id_pemesanan=pm.id JOIN kos k ON pm.id_kos=k.id WHERE p.id='$id'")->row_array();
+                // $this->db->update('kos', ['jumlah_kamar' => $r['jumlah_kamar'] - 1], ['id' => $id]);
+                $this->db->update("pemesanan", ['status' => 3], ['id' => $r['id_pemesanan']]);
             }
             $arr = [
                 'status' => 1, 

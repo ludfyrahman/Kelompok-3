@@ -124,7 +124,7 @@
                                         </div>
                                     </div>
                                     <div>
-                                        <!-- <a href="<?= BASEURL."kos/pesan/".$data['id']."/".Response_Helper::uri(5)?>"><button class="btn btn-success float-right">Pesan</button></a> -->
+                                        <a href="<?= BASEURL."kos/pesan/".$data['id']."/".$this->uri->segment(4)?>"><button class="btn btn-success float-right">Pesan</button></a>
                                     </div>
                                 </div>
                             </div>

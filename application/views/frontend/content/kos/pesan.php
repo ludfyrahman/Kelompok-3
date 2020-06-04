@@ -59,7 +59,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <p style="text-align:right">Batas maksimal pembayaran dp 1 x 24 jam</p>
-                                    <a href="<?= BASEURL."kos/pesanAction/".$data['id']."/".Response_Helper::uri(5) ?>" class='pesan'><button class="btn btn-success float-right" >Pesan Kos</button></a>
+                                    <a href="<?= BASEURL."kos/pesanAction/".$data['id']."/".$this->uri->segment(4) ?>" class='pesan'><button class="btn btn-success float-right" >Pesan Kos</button></a>
                                 </div>
                             </div>
                         </div>

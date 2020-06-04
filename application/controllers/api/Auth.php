@@ -53,12 +53,12 @@ class Auth extends CI_Controller{
                 if($d['password'] != $d['password_confirmation']) {
                     $response['message'] = ['danger', 'Password konfirmasi tidak sama'];
                 }else{
-                    $data = $this->db->get_where("pengguna", ['email' => $d['email']])->row_array();
+                    $data = $this->db->get_where("pengguna", ['id' => $d['id']])->row_array();
                     if(!password_verify($d['old_password'], $data['password'])) {
                         $response['message'] = ['danger', 'Password lama tidak sama'];
                     }else{
                         $arr = ['password' => password_hash($d['password'], PASSWORD_DEFAULT)];
-                        $d = $this->db->update("pengguna", $arr, ['email' => $d['email']]);
+                        $d = $this->db->update("pengguna", $arr, ['id' => $d['id']]);
                         if($d){
                             $response['status'] = true;
                             $response['message'] = 'Ubah Password Berhasil';
@@ -92,7 +92,7 @@ class Auth extends CI_Controller{
                     'tanggal_lahir'     => $d['tanggal_lahir'],
                     'alamat'            => $d['alamat']
                 ];
-                $d = $this->db->update("pengguna", $arr, ['email' => $d['email']]);
+                $d = $this->db->update("pengguna", $arr, ['id' => $d['id']]);
                 if($d){
                     $response['status'] = true;
                     $response['message'] = 'Ubah Profil Berhasil';
@@ -121,7 +121,7 @@ class Auth extends CI_Controller{
                     'nama_rekening'     => $d['nama_rekening'],
                     'no_rekening'       => $d['no_rekening'],
                 ];
-                $d = $this->db->update("pengguna", $arr, ['email' => $d['email']]);
+                $d = $this->db->update("pengguna", $arr, ['id' => $d['id']]);
                 if($d){
                     $response['status'] = true;
                     $response['message'] = 'Ubah Rekening Berhasil';
