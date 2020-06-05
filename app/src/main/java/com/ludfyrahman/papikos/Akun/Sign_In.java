@@ -18,7 +18,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.ludfyrahman.papikos.Config.AppController;
+import com.ludfyrahman.papikos.Config.AuthData;
 import com.ludfyrahman.papikos.Config.ServerAccess;
+import com.ludfyrahman.papikos.Dashboard.Dashboard;
 import com.ludfyrahman.papikos.R;
 
 import org.json.JSONException;
@@ -57,6 +59,7 @@ public class Sign_In extends AppCompatActivity {
             }
         });
     }
+
     private void login(){
         pd.setMessage("Authenticating...");
         pd.setCancelable(false);
@@ -83,12 +86,13 @@ public class Sign_In extends AppCompatActivity {
                         JSONObject res = new JSONObject(response);
                         Log.d("pesan", res.toString());
                         if(res.getBoolean("status") == true){
-//                            JSONObject r = res.getJSONObject("data");
-//                            AuthData.getInstance(getBaseContext()).setdatauser(r.getString("id_user"), r.getString("nama_depan"), r.getString("foto"));
+                            JSONObject r = res.getJSONObject("data");
+//                            Log.d("pesan", )
+                            AuthData.getInstance(getBaseContext()).setdatauser(r.getString("id"), r.getString("nama"), r.getString("email"), res.getString("token"), r.getString("profil"));
                             Toast.makeText(Sign_In.this, res.getString("message"), Toast.LENGTH_SHORT).show();
-//                            Intent intent = new Intent(getBaseContext(), Dashboard.class);
+                            Intent intent = new Intent(getBaseContext(), Dashboard.class);
 
-//                            startActivity(intent);
+                            startActivity(intent);
                         }else{
                             Toast.makeText(getBaseContext(), res.getString("message"), Toast.LENGTH_SHORT).show();
                         }

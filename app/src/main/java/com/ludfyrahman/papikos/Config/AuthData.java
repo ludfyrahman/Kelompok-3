@@ -8,8 +8,10 @@ public class AuthData {
     private static Context mCtx;
     private static final String SHARED_PREF_NAME = "sharedlogin";
     private static final String id_user = "kodeauth";
-    private static final String nama_depan = "kodeuser";
-    private static final String foto = "nama_user";
+    private static final String email = "email";
+    private static final String nama = "nama";
+    private static final String token = "token";
+    private static final String foto = "foto";
     private AuthData(Context context){
         mCtx = context;
     }
@@ -19,12 +21,14 @@ public class AuthData {
         }
         return mInstance;
     }
-    public boolean setdatauser(String xid_user, String xnama_depan, String xfoto){
+    public boolean setdatauser(String xid_user, String xemail, String xnama, String xtoken, String xfoto){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 
         editor.putString(id_user, xid_user);
-        editor.putString(nama_depan, xnama_depan);
+        editor.putString(email, xemail);
+        editor.putString(nama, xnama);
+        editor.putString(token, xtoken);
         editor.putString(foto, xfoto);
         editor.apply();
 
@@ -43,13 +47,22 @@ public class AuthData {
 
         return sharedPreferences.getString(id_user, null);
     }
-    public String getNama_depan() {
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getString(nama_depan, null);
-    }
     public String getFoto() {
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+
         return sharedPreferences.getString(foto, null);
+    }
+    public String getNama() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(nama, null);
+    }
+    public String getEmail() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(email, null);
+    }
+    public String getToken() {
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        return sharedPreferences.getString(token, null);
     }
     public boolean logout(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);

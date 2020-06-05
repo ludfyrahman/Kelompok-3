@@ -6,47 +6,48 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/colorwhite">
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_layout"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        android:fitsSystemWindows="true"
+        >
+        <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+            android:layout_height="250dp"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed"
+            app:contentScrim="@android:color/transparent"
+            app:expandedTitleTextAppearance="@android:color/transparent"
             android:fitsSystemWindows="true"
             >
-            <com.google.android.material.appbar.CollapsingToolbarLayout
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewPager"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed"
-                app:contentScrim="?attr/colorPrimary"
-                app:expandedTitleTextAppearance="@android:color/transparent"
-                android:fitsSystemWindows="true">
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-                    android:title="Detail Produk"
-                    app:layout_collapseMode="pin"
-                    app:titleTextColor="@color/colorwhite"
-                    />
-                <com.synnapps.carouselview.CarouselView
-                    android:id="@+id/cover"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    app:fillColor="#FFFFFFFF"
-                    app:pageColor="#00000000"
-                    app:radius="6dp"
-                    app:slideInterval="3000"
-                    app:strokeColor="#FF777777"
-                    app:strokeWidth="1dp"/>
+                android:layout_height="match_parent" />
+
+            <LinearLayout
+                android:id="@+id/SliderDots"
+                android:layout_below="@+id/viewPager"
+                android:orientation="horizontal"
+                android:gravity="center_vertical|center_horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                android:title="Detail Produk"
+                app:layout_collapseMode="pin"
+                app:titleTextColor="@color/colorwhite"
+                />
 
 
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
 
-
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
         <androidx.core.widget.NestedScrollView
             android:layout_height="match_parent"
             android:layout_width="match_parent"
@@ -82,6 +83,7 @@
                        android:layout_weight="1"
                        android:gravity="right"
                        android:textSize="18dp"
+                       android:id="@+id/harga"
                        android:textColor="@color/colorBlack"
                        android:text="Rp 750.000"/>
                 </LinearLayout>

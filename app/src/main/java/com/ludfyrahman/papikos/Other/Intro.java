@@ -20,7 +20,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.ludfyrahman.papikos.Akun.Sign_In;
+import com.ludfyrahman.papikos.Config.AuthData;
 import com.ludfyrahman.papikos.Config.PreferenceManager;
+import com.ludfyrahman.papikos.Dashboard.Dashboard;
 import com.ludfyrahman.papikos.R;
 
 public class Intro extends AppCompatActivity {
@@ -91,6 +93,13 @@ public class Intro extends AppCompatActivity {
                 }
             }
         });
+        onLogin();
+    }
+    private void onLogin(){
+        if(AuthData.getInstance(this).isLoggedIn()){
+            Intro.this.finish();
+            startActivity(new Intent(getBaseContext(), Dashboard.class));
+        }
     }
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];

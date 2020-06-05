@@ -62,7 +62,7 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
-                        android:src="@drawable/marker"/>
+                        android:src="@drawable/notif"/>
                 </LinearLayout>
             </LinearLayout>
         </androidx.appcompat.widget.Toolbar>
@@ -94,6 +94,7 @@
                        android:layout_height="wrap_content"
                        android:textColor="@color/colorwhite"
                        android:textSize="20sp"
+                       android:id="@+id/selamat_datang"
                        android:text="@string/welcome"/>
 
                    <TextView
