@@ -17,6 +17,8 @@ import com.ludfyrahman.papikos.Akun.Pengaturan.Data_Diri;
 import com.ludfyrahman.papikos.Akun.Pengaturan.Form_Rekening;
 import com.ludfyrahman.papikos.Akun.Pengaturan.Ubah_Biodata;
 import com.ludfyrahman.papikos.Akun.Pengaturan.Ubah_Password;
+import com.ludfyrahman.papikos.Akun.Sign_In;
+import com.ludfyrahman.papikos.Config.AuthData;
 import com.ludfyrahman.papikos.Other.Tentang;
 import com.ludfyrahman.papikos.R;
 import com.ludfyrahman.papikos.Transaksi.Transaksi;
@@ -71,6 +73,13 @@ public class Fragment_Akun extends Fragment {
             }
         });
         keluar = v.findViewById(R.id.keluar);
+        keluar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AuthData.getInstance(getContext()).logout();
+                startActivity(new Intent(getContext(), Sign_In.class));
+            }
+        });
         return v;
     }
 }

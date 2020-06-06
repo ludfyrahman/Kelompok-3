@@ -36,6 +36,8 @@ public class Fragment_Dashboard extends Fragment {
         nama.setText(AuthData.getInstance(getContext()).getNama());
         email.setText(AuthData.getInstance(getContext()).getEmail());
         profil = v.findViewById(R.id.profil);
+        String[] nama = AuthData.getInstance(getContext()).getNama().split(" ");
+        selamat_datang.setText("Selamat Datang, "+nama[0]);
 //        Glide.with(getContext())
 //                .load(ServerAccess.COVER+"profil/"+AuthData.getInstance(getContext()).getFoto())
 //                .into(profil);

@@ -187,7 +187,7 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:id="@+id/tangggal_lahir"
+                            android:id="@+id/tanggal_lahir"
                             android:text="05 Januari 1999"
                             android:gravity="right"/>
                     </LinearLayout>

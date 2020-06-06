@@ -54,4 +54,7 @@
     <string name="kode_invoice">Kode Invoice</string>
     <string name="empty_data">DATA KOSONG!</string>
     <string name="empty_data_desc">Data yang anda perlukan tidak tersedia untuk saat ini</string>
+    <string name="ulasan_kosong">Ulasan Tidak ada</string>
+    <string name="jenis_kelamin">Jenis Kelamin</string>
+    <string name="tanggal_lahir">Tanggal Lahir</string>
 </resources>

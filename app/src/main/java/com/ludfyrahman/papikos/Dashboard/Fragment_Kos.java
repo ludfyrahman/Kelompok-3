@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -47,6 +48,7 @@ public class Fragment_Kos extends Fragment {
     RecyclerView.LayoutManager mManager;
     ProgressDialog pd;
     LinearLayout not_found;
+    SwipeRefreshLayout swLayout;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,8 +62,23 @@ public class Fragment_Kos extends Fragment {
         listdata.setAdapter(adapter);
         pd = new ProgressDialog(getContext());
         not_found = v.findViewById(R.id.not_found);
+        swLayout = (SwipeRefreshLayout) v.findViewById(R.id.swlayout);
+        swLayout.setColorSchemeResources(R.color.colorPrimary,R.color.colorPrimaryDark);
+        swLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                reload();
+            }
+        });
         loadJson();
         return v;
+    }
+    public void reload(){
+        not_found.setVisibility(View.GONE);
+        list.clear();
+        loadJson(); // your code
+        listdata.getAdapter().notifyDataSetChanged();
+        swLayout.setRefreshing(false);
     }
     private void loadJson()
     {

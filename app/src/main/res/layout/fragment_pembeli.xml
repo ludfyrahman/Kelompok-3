@@ -40,6 +40,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:gravity="right"
+                        android:id="@+id/nama"
                         android:textColor="@color/colorBlack"
                         android:layout_height="wrap_content"
                         android:text="Fina Vivi"/>
@@ -57,6 +58,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:gravity="right"
+                        android:id="@+id/no_hp"
                         android:textColor="@color/colorBlack"
                         android:layout_height="wrap_content"
                         android:text="082331759738"/>
@@ -74,6 +76,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:gravity="right"
+                        android:id="@+id/email"
                         android:textColor="@color/colorBlack"
                         android:layout_height="wrap_content"
                         android:text="Email"/>
@@ -114,6 +117,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:gravity="right"
+                        android:id="@+id/nama_bank"
                         android:textColor="@color/colorBlack"
                         android:layout_height="wrap_content"
                         android:text="BNI"/>
@@ -131,6 +135,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:gravity="right"
+                        android:id="@+id/nama_rekening"
                         android:textColor="@color/colorBlack"
                         android:layout_height="wrap_content"
                         android:text="Mochamad Ludfi Rahman"/>
@@ -148,6 +153,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:gravity="right"
+                        android:id="@+id/no_rekening"
                         android:textColor="@color/colorBlack"
                         android:layout_height="wrap_content"
                         android:text="2988398928"/>

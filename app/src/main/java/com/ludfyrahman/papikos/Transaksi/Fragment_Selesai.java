@@ -32,7 +32,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Fragment_Pelunasan extends Fragment {
+public class Fragment_Selesai extends Fragment {
     private Adapter_Transaksi adapter;
     private List<Transaksi_Model> list;
     private RecyclerView listdata;
@@ -82,7 +82,7 @@ public class Fragment_Pelunasan extends Fragment {
                 JSONObject res = null;
                 try {
                     res = new JSONObject(response);
-                    JSONArray arr = res.getJSONArray("dp");
+                    JSONArray arr = res.getJSONArray("selesai");
                     if(arr.length() > 0) {
                         for (int i = 0; i < arr.length(); i++) {
                             try {

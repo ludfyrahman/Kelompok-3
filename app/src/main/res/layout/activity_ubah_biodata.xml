@@ -107,9 +107,51 @@
                     android:padding="16dp"
                     android:background="@color/colorLight"
                     android:textSize="12sp"
-                    android:id="@+id/no_hp"
+                    android:id="@+id/telepon"
                     android:textColorHint="@color/colorGray"
                     android:hint="@string/no_hp"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGray"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/jenis_kelamin"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:background="@color/colorLight"
+                    android:textSize="12sp"
+                    android:id="@+id/jenis_kelamin"
+                    android:textColorHint="@color/colorGray"
+                    android:hint="@string/jenis_kelamin"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorGray"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:text="@string/tanggal_lahir"/>
+                <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:background="@color/colorLight"
+                    android:textSize="12sp"
+                    android:id="@+id/tanggal_lahir"
+                    android:textColorHint="@color/colorGray"
+                    android:hint="@string/tanggal_lahir"/>
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -127,6 +169,7 @@
                     android:layout_height="200dp"
                     android:padding="16dp"
                     android:gravity="top"
+                    android:id="@+id/alamat"
                     android:background="@color/colorLight"
                     android:textSize="12sp"
                     android:textColorHint="@color/colorGray"

@@ -51,6 +51,7 @@
             android:textColor="@color/colorwhite"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
+            android:id="@+id/status"
             android:layout_marginTop="8dp"
             android:background="@drawable/button_round_red"/>
     </LinearLayout>

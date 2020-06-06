@@ -21,7 +21,7 @@ public class AuthData {
         }
         return mInstance;
     }
-    public boolean setdatauser(String xid_user, String xemail, String xnama, String xtoken, String xfoto){
+    public boolean setdatauser(String xid_user, String xnama, String xemail, String xtoken, String xfoto){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
 

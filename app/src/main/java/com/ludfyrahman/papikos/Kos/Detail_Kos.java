@@ -2,6 +2,8 @@ package com.ludfyrahman.papikos.Kos;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
 import android.app.ProgressDialog;
@@ -25,8 +27,11 @@ import com.ludfyrahman.papikos.Config.ServerAccess;
 import com.ludfyrahman.papikos.Config.SliderUtils;
 import com.ludfyrahman.papikos.Config.slider.CustomVolleyRequest;
 import com.ludfyrahman.papikos.Config.slider.ViewPagerAdapter;
+import com.ludfyrahman.papikos.Kos.Adapter.Adapter_kos;
 import com.ludfyrahman.papikos.Kos.Model.Kos_Model;
 import com.ludfyrahman.papikos.R;
+import com.ludfyrahman.papikos.Ulasan.Adapter.Adapter_Ulasan;
+import com.ludfyrahman.papikos.Ulasan.Model.Ulasan_Model;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,12 +47,17 @@ public class Detail_Kos extends AppCompatActivity {
     ProgressDialog pd;
     String[] sampleImages = new String[4];
     ViewPager viewPager;
-    LinearLayout sliderDotspanel;
+    LinearLayout sliderDotspanel, ulasan_not_found;
     private int dotscount;
     private ImageView[] dots;
     RequestQueue rq;
     List<SliderUtils> sliderImg;
     ViewPagerAdapter viewPagerAdapter;
+
+    private Adapter_Ulasan adapter;
+    private List<Ulasan_Model> list;
+    private RecyclerView listdata;
+    RecyclerView.LayoutManager mManager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,6 +82,7 @@ public class Detail_Kos extends AppCompatActivity {
         no_hp = findViewById(R.id.no_hp);
         email = findViewById(R.id.email);
         jenis = findViewById(R.id.jenis);
+        ulasan_not_found = findViewById(R.id.ulasan_not_found);
         rq = CustomVolleyRequest.getInstance(this).getRequestQueue();
 
         sliderImg = new ArrayList<>();
@@ -80,7 +91,13 @@ public class Detail_Kos extends AppCompatActivity {
 
         sliderDotspanel = (LinearLayout) findViewById(R.id.SliderDots);
 
-//        sendRequest();
+        listdata = (RecyclerView) findViewById(R.id.listdata);
+        listdata.setHasFixedSize(true);
+        list = new ArrayList<>();
+        adapter = new Adapter_Ulasan(this,(ArrayList<Ulasan_Model>) list, this);
+        mManager = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        listdata.setLayoutManager(mManager);
+        listdata.setAdapter(adapter);
 
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -146,6 +163,29 @@ public class Detail_Kos extends AppCompatActivity {
 
                         }
                     }
+
+                    JSONArray ul = data.getJSONArray("ulasan");
+                    if(ul.length() > 0) {
+                        for (int i = 0; i < ul.length(); i++) {
+                            try {
+                                JSONObject ulasan = ul.getJSONObject(i);
+                                Ulasan_Model md = new Ulasan_Model();
+                                md.setKode(ulasan.getString("id"));
+                                md.setNama(ulasan.getString("nama"));
+                                md.setUlasan(ulasan.getString("ulasan"));
+                                md.setFoto(ServerAccess.COVER+"profil/"+ulasan.getString("profil"));
+                                list.add(md);
+                            } catch (Exception ea) {
+                                ea.printStackTrace();
+                            }
+                        }
+
+                        adapter.notifyDataSetChanged();
+                        pd.cancel();
+                    }else{
+                        ulasan_not_found.setVisibility(View.VISIBLE);
+                        pd.cancel();
+                    }
                     viewPagerAdapter = new ViewPagerAdapter(sliderImg, Detail_Kos.this);
 //
                     viewPager.setAdapter(viewPagerAdapter);
@@ -156,7 +196,6 @@ public class Detail_Kos extends AppCompatActivity {
                     for(int i = 0; i < dotscount; i++){
 
                         dots[i] = new ImageView(Detail_Kos.this);
-//                        dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
 
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
 
@@ -165,34 +204,6 @@ public class Detail_Kos extends AppCompatActivity {
                         sliderDotspanel.addView(dots[i], params);
 
                     }
-//                    String foto = data.getString("foto");
-//                    String[] parts = foto.split(",");
-//                    for (int i = 0;i < parts.length;i++){
-////                        Log.d("info", ServerAccess.COVER+"barang/"+data.getString("id_user")+"/"+parts[i]);
-////                        sampleImages[i] = ServerAccess.COVER+"barang/"+data.getString("id_user")+"/"+parts[i];
-//                        SliderUtils sliderUtils = new SliderUtils();
-//                        sliderUtils.setSliderImageUrl(ServerAccess.COVER+"barang/"+data.getString("id_user")+"/"+parts[i]);
-//                        sliderImg.add(sliderUtils);
-//                    }
-//                    viewPagerAdapter = new ViewPagerAdapter(sliderImg, Detail_Produk.this);
-//
-//                    viewPager.setAdapter(viewPagerAdapter);
-//
-//                    dotscount = viewPagerAdapter.getCount();
-//                    dots = new ImageView[dotscount];
-//
-//                    for(int i = 0; i < dotscount; i++){
-//
-//                        dots[i] = new ImageView(Detail_Produk.this);
-////                        dots[i].setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.nonactive_dot));
-//
-//                        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-//
-//                        params.setMargins(8, 0, 8, 0);
-//
-//                        sliderDotspanel.addView(dots[i], params);
-//
-//                    }
 
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();

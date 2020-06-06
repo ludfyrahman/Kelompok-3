@@ -23,7 +23,6 @@ public class Transaksi extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_transaksi);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.back);
         Intent data = getIntent();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -47,7 +46,7 @@ public class Transaksi extends AppCompatActivity {
         mSectionsPagerAdapter.addFragment(new Fragment_DP(), "DP", 0);
         mSectionsPagerAdapter.addFragment(new Fragment_Pelunasan(), "Pelunasan", 1);
         mSectionsPagerAdapter.addFragment(new Fragment_Dibatalkan(), "Dibatalkan", 2);
-        mSectionsPagerAdapter.addFragment(new Fragment_Lunas(), "Lunas", 3);
+        mSectionsPagerAdapter.addFragment(new Fragment_Selesai(), "Selesai", 3);
         viewPager.setAdapter(mSectionsPagerAdapter);
         mSectionsPagerAdapter.notifyDataSetChanged();
         tabLayout.setupWithViewPager(viewPager);

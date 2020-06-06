@@ -81,12 +81,14 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorLight"
+                                android:id="@+id/due_date"
                                 android:text="@string/tanggal"/>
                             <TextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingTop="8dp"
                                 android:textSize="20sp"
+                                android:id="@+id/invoice"
                                 android:textStyle="bold"
                                 android:textColor="@color/colorLight"
                                 android:text="@string/invoice_title"/>
@@ -118,6 +120,7 @@
                                 android:layout_height="wrap_content"
                                 android:textColor="@color/colorwhite"
                                 android:textSize="25sp"
+                                android:id="@+id/tagihan"
                                 android:text="Rp 250.000"/>
                         </LinearLayout>
                         <LinearLayout
@@ -132,6 +135,7 @@
                                 android:layout_gravity="right"
                                 android:background="@color/colorwhite"
                                 android:textColor="@color/colorPrimary"
+                                android:id="@+id/status"
                                 android:text="Dp"/>
                         </LinearLayout>
                     </LinearLayout>

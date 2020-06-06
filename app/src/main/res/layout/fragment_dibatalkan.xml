@@ -9,63 +9,43 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp"
-        android:orientation="horizontal">
+        android:orientation="vertical">
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="INV00051"
-                android:id="@+id/kode_transaksi"
-                android:textStyle="bold" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Kos Tidar Asri"
-                android:layout_marginTop="8dp"
-                android:id="@+id/kos"
+            android:layout_width="match_parent"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:id="@+id/not_found"
+            android:visibility="gone"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:src="@drawable/empty"
                 />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Rp 570.000"
-                android:layout_marginTop="8dp"
+                android:layout_gravity="center"
+                android:textSize="18sp"
                 android:textColor="@color/colorPrimary"
-                android:id="@+id/harga"
-                android:textStyle="bold" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="right"
-            android:orientation="vertical">
+                android:text="@string/empty_data"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text=" 06 Feb 2020"
-                android:textColor="@color/colorPrimary"
-                android:id="@+id/tanggal"
-                android:textStyle="bold" />
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Dibatalkan"
-                android:textColor="@color/colorwhite"
-                android:paddingLeft="16dp"
-                android:paddingRight="16dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/button_round_red"/>
+                android:layout_gravity="center"
+                android:layout_margin="8dp"
+                android:text="@string/empty_data_desc"/>
         </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:id="@+id/kode"
-            android:visibility="gone"
-            android:layout_height="wrap_content"
-            android:text=""/>
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:id="@+id/swlayout"
+            android:layout_height="match_parent">
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:id="@+id/listdata"
+                android:scrollbars="vertical"
+                android:layout_marginBottom="16dp"
+                android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
     </LinearLayout>
 </LinearLayout>
