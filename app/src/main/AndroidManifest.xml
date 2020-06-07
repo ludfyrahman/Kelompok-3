@@ -18,11 +18,12 @@
         android:hardwareAccelerated="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:usesCleartextTraffic="true"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".Transaksi.Fragment_Selesai"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".Kos.Detail_Map"></activity>
+        <activity android:name=".Transaksi.Fragment_Selesai" />
         <activity android:name=".Transaksi.Fragment_Dibatalkan" />
         <activity android:name=".Transaksi.Fragment_Pelunasan" />
         <activity android:name=".Transaksi.Fragment_DP" />
@@ -59,6 +60,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <service
             android:name=".Config.MyFirebaseInstanceIdService"
             android:exported="true">
@@ -73,6 +75,10 @@
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyD-Mba-Z-PmsPnHIKiXC1pvQfb2OoXlC4g" />
     </application>
 
 </manifest>

@@ -1,6 +1,5 @@
 package com.ludfyrahman.papikos.Transaksi;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -43,7 +42,7 @@ public class Fragment_DP extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_dibatalkan, container, false);
+        View v = inflater.inflate(R.layout.fragment_transaksi, container, false);
         listdata = (RecyclerView) v.findViewById(R.id.listdata);
         listdata.setHasFixedSize(true);
         list = new ArrayList<>();

@@ -1,14 +1,11 @@
 package com.ludfyrahman.papikos.Transaksi;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
-import android.location.Address;
-import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -23,8 +20,6 @@ import com.android.volley.toolbox.StringRequest;
 import com.ludfyrahman.papikos.Config.AppController;
 import com.ludfyrahman.papikos.Config.AuthData;
 import com.ludfyrahman.papikos.Config.ServerAccess;
-import com.ludfyrahman.papikos.Kos.Adapter.Adapter_kos;
-import com.ludfyrahman.papikos.Kos.Model.Kos_Model;
 import com.ludfyrahman.papikos.R;
 import com.ludfyrahman.papikos.Transaksi.Adapter.Adapter_Transaksi;
 import com.ludfyrahman.papikos.Transaksi.Model.Transaksi_Model;
@@ -35,7 +30,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 public class Fragment_Dibatalkan extends Fragment {
     private Adapter_Transaksi adapter;
@@ -48,7 +42,7 @@ public class Fragment_Dibatalkan extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View v = inflater.inflate(R.layout.fragment_dibatalkan, container, false);
+        View v = inflater.inflate(R.layout.fragment_transaksi, container, false);
         listdata = (RecyclerView) v.findViewById(R.id.listdata);
         listdata.setHasFixedSize(true);
         list = new ArrayList<>();

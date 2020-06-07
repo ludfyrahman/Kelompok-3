@@ -39,7 +39,6 @@ public class Fragment_Pembeli extends Fragment {
     }
     private void loadJson()
     {
-        Log.d("pesan", getArguments().getString("kode"));
         StringRequest senddata = new StringRequest(Request.Method.GET, ServerAccess.TRANSAKSI+"detail/"+getArguments().getString("kode"), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
