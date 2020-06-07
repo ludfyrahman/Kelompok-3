@@ -9,7 +9,8 @@ class Auth extends CI_Controller{
 
     }
     public function info(){
-        $response['data'] = $this->authorization_token->userData();
+        $d = $this->authorization_token->userData();
+        $response['data'] = $this->db->get_where("$this->low", ['id' => $d->id])->row_array();
         echo json_encode($response);
     }
     public function lupa_password(){

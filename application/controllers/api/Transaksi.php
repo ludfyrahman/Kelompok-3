@@ -8,8 +8,8 @@ class Transaksi extends CI_Controller{
     }
     public function data($id){
         // $id = Account_Helper::Get('id');
-        $response['dp'] = $this->db->query("SELECT p.id as id_pemesanan, p.*, k.*, dk.* from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id  WHERE id_pengguna='$id' and status='1' GROUP BY dk.id_kos")->result_array();
         $response['dibatalkan'] = $this->db->query("SELECT p.id as id_pemesanan, p.*, k.*, dk.* from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id WHERE p.id_pengguna='$id' and status='0' GROUP BY dk.id_kos")->result_array();
+        $response['dp'] = $this->db->query("SELECT p.id as id_pemesanan, p.*, k.*, dk.* from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id  WHERE id_pengguna='$id' and status='1' GROUP BY dk.id_kos")->result_array();
         $response['lunas'] = $this->db->query("SELECT p.id as id_pemesanan, p.*, k.*, dk.* from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id  WHERE id_pengguna='$id' and status='2' GROUP BY dk.id_kos")->result_array();
         $response['selesai'] = $this->db->query("SELECT p.id as id_pemesanan, p.*, k.*, dk.* from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id  WHERE id_pengguna='$id' and status='3' GROUP BY dk.id_kos")->result_array();
         // echo "<pre>";
@@ -31,7 +31,7 @@ class Transaksi extends CI_Controller{
         $response['data'] = $this->pemesanan->detailPemesanan($id)->row_array();
         // echo "<pre>";
         // print_r($data);
-        $response['pembayaran'] = $this->db->get_where("pembayaran", ['id_pemesanan' => $data['id']])->result_array();
+        $response['pembayaran'] = $this->db->get_where("pembayaran", ['id_pemesanan' => $response['data']['id']])->result_array();
         // print_r($pembayaran); 
         echo json_encode($response);
     }
