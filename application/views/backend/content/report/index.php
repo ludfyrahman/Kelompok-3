@@ -44,10 +44,10 @@
                   <tr>
                     <td><?=$no?></td>
                     <td class='text-left'><?=$l['tgl']?></td>
-                    <td class='text-left'><b><a href="<?= BASEADM."pemesanan&start_date=".$l['tgl']."&end_date=".$l['tgl']."&status=0" ?>"><?=$l['ditolak']?></b></a></td>
-                    <td class='text-left'><b><a href="<?= BASEADM."pemesanan&start_date=".$l['tgl']."&end_date=".$l['tgl']."&status=1" ?>"><?=$l['pending']?></b></a></td>
-                    <td class='text-left'><b><a href="<?= BASEADM."pemesanan&start_date=".$l['tgl']."&end_date=".$l['tgl']."&status=2" ?>"><?=$l['dp']?></b></a></td>
-                    <td class='text-left'><b><a href="<?= BASEADM."pemesanan&start_date=".$l['tgl']."&end_date=".$l['tgl']."&status=3" ?>"><?=$l['lunas']?></b></a></td>
+                    <td class='text-left'><b><a href="<?= BASEADM."pemesanan?start_date=".$l['tgl']."&end_date=".$l['tgl']."&status=0" ?>"><?=$l['ditolak']?></b></a></td>
+                    <td class='text-left'><b><a href="<?= BASEADM."pemesanan?start_date=".$l['tgl']."&end_date=".$l['tgl']."&status=1" ?>"><?=$l['pending']?></b></a></td>
+                    <td class='text-left'><b><a href="<?= BASEADM."pemesanan?start_date=".$l['tgl']."&end_date=".$l['tgl']."&status=2" ?>"><?=$l['dp']?></b></a></td>
+                    <td class='text-left'><b><a href="<?= BASEADM."pemesanan?start_date=".$l['tgl']."&end_date=".$l['tgl']."&status=3" ?>"><?=$l['lunas']?></b></a></td>
                   </tr>
                 <?php $no++;} ?>
                 </tbody>

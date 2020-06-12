@@ -80,6 +80,10 @@ class Pembayaran extends CI_Controller {
             echo $e->getMessage();
         }
     }
+    public function konfirmasi($id){
+        $this->model->konfirmasi($id);
+    }
+
     public function aksi($type, $id){
         $d = $_POST;
         try {

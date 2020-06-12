@@ -9,9 +9,13 @@ class Kos extends CI_Controller{
     public function data($limit = null){
         $where = " ";
         $urut = "";
+        $lat = (isset($_GET['lat']) ? $_GET['lat'] :0 );
+        $long = (isset($_GET['long']) ? $_GET['long'] : 0);
+        // echo $lat;
         if($limit != null){
             $where.=" LIMIT $limit ";
         }
+        // $urut = " HAVING distance < 14322 order by distance asc";    
         if (isset($d['jarak'])) {
             if($d['jarak'] != ''){
                 $urut = " HAVING distance < $d[jarak] order by distance asc";    
@@ -60,8 +64,9 @@ class Kos extends CI_Controller{
             // 1 mile = 1,609 
             //key latitude and $user longitude
         }
-        $urut = "";
-        $q = $this->db->query("SELECT k.nama, k.id, k.latitude, k.longitude, k.deskripsi,k.id_kategori, kk.nama as kategori, k.tanggal_ditambahkan, p.nama as nama_pemilik, dk.harga, m.link_media from $this->low
+        // echo "SELECT k.nama, k.id, k.latitude, k.longitude, k.deskripsi,k.id_kategori, kk.nama as kategori, k.tanggal_ditambahkan, p.nama as nama_pemilik, dk.harga, m.link_media, ( 6371 * acos ( cos ( radians($lat) ) * cos( radians( latitude) ) * cos( radians( longitude ) - radians($lat) ) + sin ( radians($long) ) * sin( radians( latitude ) ) ) ) AS distance from $this->low
+        // k LEFT JOIN pengguna p on k.ditambahkan_oleh=p.id LEFT JOIN kategori kk on k.id_kategori=kk.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos LEFT JOIN (Select * from media) m on dk.id=m.id_kos  $where GROUP BY  k.id  $urut";
+        $q = $this->db->query("SELECT k.nama, k.id, k.latitude, k.longitude, k.deskripsi,k.id_kategori, kk.nama as kategori, k.tanggal_ditambahkan, p.nama as nama_pemilik, dk.harga, m.link_media, ( 6371 * acos ( cos ( radians($lat) ) * cos( radians( latitude) ) * cos( radians( longitude ) - radians($lat) ) + sin ( radians($long) ) * sin( radians( latitude ) ) ) ) AS distance from $this->low
         k LEFT JOIN pengguna p on k.ditambahkan_oleh=p.id LEFT JOIN kategori kk on k.id_kategori=kk.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos LEFT JOIN (Select * from media) m on dk.id=m.id_kos  $where GROUP BY  k.id  $urut")->result_array();
         echo json_encode(['data' => $q]);
     }
