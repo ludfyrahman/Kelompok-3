@@ -17,6 +17,12 @@ class Input_helper
         if(isset($_GET[$index]) && $_GET[$index] != '')
             return $_GET[$index];
         return $a;
+	}
+	public static function UploadMultiImage($img, $path, $index) {
+        $images = $img['name'][$index];
+        $path = "assets/images/upload/$path/$images";
+        move_uploaded_file($img['tmp_name'][$index], str_replace('system', '', BASEPATH) . $path);
+        chmod($path, 0755);
     }
 	public static function randomString($length){
 		$chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';

@@ -46,10 +46,10 @@
                                                     <i class="fab fa-twitter"></i>
                                                     <i class="fab fa-twitter"></i>
                                                 </a> -->
-                                                <a class="google-plus" href="<?= 'https://accounts.google.com/o/oauth2/auth?scope=' . urlencode('https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email') . '&redirect_uri=' . urlencode(CLIENT_REDIRECT_URL) . '&response_type=code&client_id=' . CLIENT_ID . '&access_type=online&tipe=login' ?>">
+                                                <!-- <a class="google-plus" href="<?= 'https://accounts.google.com/o/oauth2/auth?scope=' . urlencode('https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email') . '&redirect_uri=' . urlencode(CLIENT_REDIRECT_URL) . '&response_type=code&client_id=' . CLIENT_ID . '&access_type=online&tipe=login' ?>">
                                                     <i class="fab fa-google-plus-g"></i>
                                                     <i class="fab fa-google-plus-g"></i>
-                                                </a>
+                                                </a> -->
                                             </div>
                                         </div>
                                         <!-- Profile Login -->

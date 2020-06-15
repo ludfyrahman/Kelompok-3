@@ -40,5 +40,8 @@ class MKos extends CI_model {
             }
         // }
     }
+    public function data($val = ""){
+        return $this->db->query("SELECT * FROM kos k JOIN (Select * from detail_kos) dk on k.id=dk.id_kos LEFT JOIN (Select * from media) m on dk.id=m.id_kos $val");
+    }
 }
 ?>

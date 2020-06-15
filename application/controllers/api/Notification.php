@@ -7,7 +7,7 @@ class Notification extends CI_Controller
     }
     public function sendnotif($kunci = "",$body, $title, $key, $pk){
       
-        $tokens = ["dyrXh5mEqkE:APA91bHF9Xb-sLDkIU4A-hSdaWJR6W7QS1eZw03nRoNwBt2utB3Chk5M41Ack4j40v6lkOOxGWOlaBdCa7NCQ_3PtfDFvzh8AFcaH2cjcK6OsDnXa0_8uHAU4S0b6g61nEzDLDqCMdaY"];
+        $tokens = ["dDmNGmwAFeY:APA91bFh2QU4mFiRgA02Bi_8SQNt6ARH3wl3uLLFholVpxjMNON0s3uOkxYROsJ-UUHBez6eHLOkZrEaN419qW5RXNkfsyz7-wI90Mv5vUQ8yLDWJ0UU2oWAnPFA4aJbkigzZ8Ypa9ip"];
         $message = [];
         // $datauser = $this->Maksi->getDataApi("user",$pk,$key);	
         // foreach($datauser as $du){

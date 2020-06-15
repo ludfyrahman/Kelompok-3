@@ -52,9 +52,10 @@ class Pemesanan extends CI_Controller {
             $arr = [
                 'status' => $status, 
             ];
-
+            $st = ['ditolak', 'pending', 'dp', 'lunas'];
+            $message = $st[$status];
+            $this->sendnotif($id, "Transaksi dengan kode $id di $message", "Transaksi", "12", "id");
             $this->db->update("pembayaran", $arr, ['id' => $id]);
-            // echo "berhasil";
             $this->session->set_flashdata("alert", ['success', 'Status Pembayaran dengan kode '.invoice_code."".$id, ' Berhasil']);
 			redirect(base_url("admin/pembayaran"));
         }
