@@ -8,11 +8,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.ludfyrahman.papikos.Akun.Sign_In;
 import com.ludfyrahman.papikos.Config.AuthData;
 import com.ludfyrahman.papikos.R;
@@ -25,6 +27,7 @@ public class Dashboard extends AppCompatActivity implements BottomNavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
         navigation = findViewById(R.id.navigation);
+        Log.d("token", FirebaseInstanceId.getInstance().getToken());
         navigation.setOnNavigationItemSelectedListener(Dashboard.this);
         navigation.setSelectedItemId(R.id.dashboard);
         loadFragment(new Fragment_Dashboard());

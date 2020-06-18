@@ -28,7 +28,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Fragment_DP extends Fragment {
@@ -88,11 +92,21 @@ public class Fragment_DP extends Fragment {
                                 JSONObject data = arr.getJSONObject(i);
                                 Transaksi_Model md = new Transaksi_Model();
                                 md.setKode(data.getString("id_pemesanan"));
-                                md.setKode_transaksi(ServerAccess.INV+ data.getString("id"));
+                                md.setKode_transaksi(ServerAccess.INV+ data.getString("id_pemesanan"));
                                 md.setHarga(ServerAccess.numberConvert(data.getString("harga")));
                                 md.setKos(data.getString("nama"));
                                 md.setStatus(data.getString("status"));
                                 md.setTanggal(ServerAccess.dateFormat(data.getString("tanggal_pemesanan")));
+                                try {
+                                    DateFormat f = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
+                                    Date d = f.parse("8/29/2011 11:16:12 AM");
+                                    DateFormat date = new SimpleDateFormat("MM/dd/yyyy");
+                                    DateFormat time = new SimpleDateFormat("hh:mm:ss a");
+                                    System.out.println("Date: " + date.format(d));
+                                    System.out.println("Time: " + time.format(d));
+                                } catch (ParseException e) {
+                                    e.printStackTrace();
+                                }
                                 list.add(md);
                             } catch (Exception ea) {
                                 ea.printStackTrace();

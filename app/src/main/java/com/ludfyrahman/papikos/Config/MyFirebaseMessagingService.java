@@ -69,11 +69,9 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Log.d(TAG, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
 
-
     }
 
     private void showNotification(Map<String, String> data) {
-
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         String NOTIFICATION_CHANNEL_ID = "my_channel_id_01";
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -86,10 +84,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notificationManager.createNotificationChannel(notificationChannel);
         }
 //        Toast.makeText(this, "data "+data.get("kunci"), Toast.LENGTH_SHORT).show();
-//        Log.d(TAG, "data token: " + data.get("kunci"));
+        Log.d(TAG, "data token: " + data.get("kunci"));
         key = data.get("data");
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, NOTIFICATION_CHANNEL_ID);
-
+        Intent notificationIntent = new Intent(getBaseContext(), Detail_Transaksi.class);
+        notificationIntent.putExtra("kode", data.get("kunci"));
+        PendingIntent contentIntent = PendingIntent.getActivity(getBaseContext(),
+                0, notificationIntent,
+                PendingIntent.FLAG_CANCEL_CURRENT);
         CharSequence message;
         notificationBuilder.setAutoCancel(true)
                 .setDefaults(Notification.DEFAULT_ALL)
@@ -97,8 +99,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 .setSmallIcon(R.drawable.white_logo)
                 .setTicker("Hearty365")
                 .setPriority(Notification.PRIORITY_MAX)
-                .setContentTitle("Pemberitahuan Baru")
-                .setContentInfo("Info");
+                .setContentTitle(data.get("title"))
+                .setContentText(data.get("body"))
+                .setContentInfo("Info")
+                .setContentIntent(contentIntent);;
 
 
 

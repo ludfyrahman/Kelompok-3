@@ -64,7 +64,7 @@ public class Detail_Kos extends AppCompatActivity {
         setContentView(R.layout.activity_detail_kos);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
-        toolbar.setNavigationIcon(R.drawable.back);
+        toolbar.setNavigationIcon(R.drawable.back_filled);
         pd = new ProgressDialog(Detail_Kos.this);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override

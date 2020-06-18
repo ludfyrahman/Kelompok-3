@@ -83,6 +83,7 @@ public class Detail_Transaksi extends AppCompatActivity {
         pd.setCancelable(false);
         pd.show();
         final Intent data = getIntent();
+        Log.d("kode_transaksi",data.getStringExtra("kode"));
         StringRequest senddata = new StringRequest(Request.Method.GET, ServerAccess.TRANSAKSI+"detail/"+data.getStringExtra("kode"), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
