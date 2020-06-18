@@ -22,7 +22,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Kos.Detail_Map"></activity>
+        <activity android:name=".Kos.Kos"></activity>
+        <activity android:name=".Kos.Detail_Map" />
         <activity android:name=".Transaksi.Fragment_Selesai" />
         <activity android:name=".Transaksi.Fragment_Dibatalkan" />
         <activity android:name=".Transaksi.Fragment_Pelunasan" />
