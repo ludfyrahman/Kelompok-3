@@ -47,6 +47,41 @@ class Transaksi extends CI_Controller{
             $this->load->view('frontend/index',$data);
         }
     }
+    public function doPay($id){
+        $d = $_POST;
+        $f = $_FILES;
+        try {
+            $status = 1;
+            if ($d['status'] == 1) {
+                $status = 2;
+            }else if($d['status'] == 2){
+                $status = 3;
+            }
+            if($f['file']['name'] !=''){
+                if(Input_Helper::validateTypeUpload(['jpg', 'png', 'jpeg'], $f['file'])){
+                    Response_Helper::UploadImage($f['file'], 'bukti');
+                    $q = $this->db->insert("pembayaran", ['id_pemesanan' => $id,  'tipe' => $d['status'], 'jumlah' => $d['bayar'], 'bukti_bayar' => $f['file']['name']]);
+                    $this->db->update("pembayaran", ['status' => $status], ['id' => $id]);
+                    if($q){
+                        $response = ['status' => true, 'message' => "Berhasil Melakukan Pembayaran"];
+                    }else{
+                        $response = ['status' => false, 'message' => "Gagal Melakukan Pembayaran"];
+                    }
+                }else{
+                    $response = ['status' => false, 'message' => "Format file tidak diperbolehkan, hanya jpg, jpeg dan png"];
+                }
+                
+            }else{
+                $response = ['status' => false, 'message' => "Bukti Tidak Boleh Kosong"];
+            }
+            
+            echo json_encode($response);
+        }
+        catch(Exception $e) {
+
+            echo $e->getMessage();
+        }
+    }
     
 }
 

@@ -50,14 +50,16 @@ class Pemesanan extends CI_Controller {
 
         try {
             $arr = [
-                'status' => $status, 
+                'status' => 2, 
             ];
             $st = ['ditolak', 'pending', 'dp', 'lunas'];
             $message = $st[$status];
-            $this->sendnotif($id, "Transaksi dengan kode $id di $message", "Transaksi", "12", "id");
-            $this->db->update("pembayaran", $arr, ['id' => $id]);
-            $this->session->set_flashdata("alert", ['success', 'Status Pembayaran dengan kode '.invoice_code."".$id, ' Berhasil']);
-			redirect(base_url("admin/pembayaran"));
+            $pengguna = $this->db->get_where("pemesanan", ['id' => $id])->row_array();
+            echo $pengguna['id_pengguna'];
+            Auth_Helper::sendnotif($id,"Transaksi dengan kode INV000 $id Dikonfirmasi", "Transaksi", 'id', $pengguna['id_pengguna']);
+            $this->db->update("pemesanan", $arr, ['id' => $id]);
+            // $this->session->set_flashdata("alert", ['success', 'Status Pembayaran dengan kode '.invoice_code."".$id." Diterima", ' Berhasil']);
+			// redirect(base_url("admin/pembayaran"));
         }
         catch(Exception $e) {
             print_r($e->errorInfo[2]);

@@ -6,18 +6,19 @@ class Kos extends CI_Controller{
         $this->low = "kos";
         
     }
-    public function data($limit = null){
+    public function data($limit = ""){
         $where = " ";
         $urut = "";
         $lat = (isset($_GET['lat']) ? $_GET['lat'] :0 );
         $long = (isset($_GET['long']) ? $_GET['long'] : 0);
         // echo $lat;
-        if($limit != null){
-            $where.=" LIMIT $limit ";
+        $d = $_POST;
+        if($limit != ""){
+            $limit.=" LIMIT $limit ";
         }
         // $urut = " HAVING distance < 14322 order by distance asc";    
         if (isset($d['jarak'])) {
-            if($d['jarak'] != ''){
+            if($d['jarak'] != '' && $d['jarak'] != null){
                 $urut = " HAVING distance < $d[jarak] order by distance asc";    
             }
         }
@@ -26,23 +27,23 @@ class Kos extends CI_Controller{
         if(isset($d['search'])){
             $pencarian = "Where ";
             $cari = "";
-            if(isset($d['cari']) != ""){
+            if(isset($d['cari']) != "" && $d['cari'] != null){
                 $cari = (isset($d['cari']) ? " k.nama like  '%".$d['cari']."%'" : '');
             }
             $kategori = "";
             if(isset($d['kategori'])){
-                if($d['kategori'] != ""){
-                    $kategori = (isset($d['kategori']) ? " and k.id_kategori ='".$d['kategori']."'" : '');
+                if($d['kategori'] != "" && $d['kategori'] != null){
+                    $kategori = ($d['kategori'] != "" && $d['cari'] != "" ? " and k.id_kategori ='".$d['kategori']."'" : " k.id_kategori ='".$d['kategori']."'");
                 }
             }
             $tipe = "";
             if(isset($d['tipe']) != ""){
-                if($d['tipe'] != ""){
+                if($d['tipe'] != "" && $d['tipe'] != null){
                     $tipe = (isset($d['tipe']) ? " and k.jenis ='".$d['tipe']."'" : '');
                 }
             }
             if (isset($d['urut'])) {
-                if ($d['urut'] !='') {
+                if ($d['urut'] !='' && $d['urut'] != null) {
                     $urut = "ORDER BY ";
                     if ($d['urut'] == 1) {
                         $urut .= " k.id desc";
@@ -55,7 +56,7 @@ class Kos extends CI_Controller{
             }
             $harga = "";
             if(isset($d['harga_awal'])){
-                if(($d['harga_awal'] !="" ) && ($d['harga_tertinggi'] != "")){
+                if(($d['harga_awal'] !="" && $d['harga_awal'] != null) && ($d['harga_tertinggi'] != "" && $d['harga_tertinggi'] != null)){
                     $harga = " AND dk.harga BETWEEN '$d[harga_awal]' AND '$d[harga_tertinggi]'";
                 }
             }
@@ -67,8 +68,22 @@ class Kos extends CI_Controller{
         // echo "SELECT k.nama, k.id, k.latitude, k.longitude, k.deskripsi,k.id_kategori, kk.nama as kategori, k.tanggal_ditambahkan, p.nama as nama_pemilik, dk.harga, m.link_media, ( 6371 * acos ( cos ( radians($lat) ) * cos( radians( latitude) ) * cos( radians( longitude ) - radians($lat) ) + sin ( radians($long) ) * sin( radians( latitude ) ) ) ) AS distance from $this->low
         // k LEFT JOIN pengguna p on k.ditambahkan_oleh=p.id LEFT JOIN kategori kk on k.id_kategori=kk.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos LEFT JOIN (Select * from media) m on dk.id=m.id_kos  $where GROUP BY  k.id  $urut";
         $q = $this->db->query("SELECT k.nama, k.id, k.latitude, k.longitude, k.deskripsi,k.id_kategori, kk.nama as kategori, k.tanggal_ditambahkan, p.nama as nama_pemilik, dk.harga, m.link_media, ( 6371 * acos ( cos ( radians($lat) ) * cos( radians( latitude) ) * cos( radians( longitude ) - radians($lat) ) + sin ( radians($long) ) * sin( radians( latitude ) ) ) ) AS distance from $this->low
-        k LEFT JOIN pengguna p on k.ditambahkan_oleh=p.id LEFT JOIN kategori kk on k.id_kategori=kk.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos LEFT JOIN (Select * from media) m on dk.id=m.id_kos  $where GROUP BY  k.id  $urut")->result_array();
+        k LEFT JOIN pengguna p on k.ditambahkan_oleh=p.id LEFT JOIN kategori kk on k.id_kategori=kk.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos LEFT JOIN (Select * from media) m on dk.id=m.id_kos  $pencarian GROUP BY  k.id  $urut")->result_array();
         echo json_encode(['data' => $q]);
+    }
+    public function pesanAction($id, $id_detail = null){
+        $arr = [
+            'id_kos' => $id_detail,
+            'id_pengguna' => Account_Helper::Get("id"),
+        ];
+        $q = $this->db->insert("pemesanan", $arr);
+        $id = $this->db->insert_id();
+        if($q){
+            $response['message'] = "Pemesanan Berhasil";
+        }else{
+            $response['message'] = "Pemesanan Gagal";
+        }
+        echo json_encode($response);
     }
     public function kategori($id = null){
         $where = " ";
