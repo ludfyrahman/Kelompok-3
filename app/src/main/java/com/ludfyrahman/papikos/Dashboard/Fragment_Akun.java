@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.ludfyrahman.papikos.Akun.Profil;
 import com.ludfyrahman.papikos.Akun.Pengaturan.Data_Diri;
@@ -25,11 +27,17 @@ import com.ludfyrahman.papikos.Transaksi.Transaksi;
 
 public class Fragment_Akun extends Fragment {
     LinearLayout profil, edit_profil, edit_password, transaksi, favorit, tentang, keluar;
+    ImageView profil_image;
+    TextView email, nama;
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         View v = inflater.inflate(R.layout.fragment_akun, container, false);
-
+        profil_image = v.findViewById(R.id.profil_image);
+        email = v.findViewById(R.id.email);
+        email.setText(AuthData.getInstance(getContext()).getEmail());
+        nama = v.findViewById(R.id.nama);
+        nama.setText(AuthData.getInstance(getContext()).getNama());
         profil = v.findViewById(R.id.profil);
         profil.setOnClickListener(new View.OnClickListener() {
             @Override

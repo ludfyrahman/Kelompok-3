@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +31,7 @@ import com.ludfyrahman.papikos.Config.AppController;
 import com.ludfyrahman.papikos.Config.AuthData;
 import com.ludfyrahman.papikos.Config.ServerAccess;
 import com.ludfyrahman.papikos.Dashboard.Dashboard;
+import com.ludfyrahman.papikos.Other.Welcome;
 import com.ludfyrahman.papikos.R;
 
 import org.json.JSONException;
@@ -168,5 +171,9 @@ public class Sign_In extends AppCompatActivity {
 
             AppController.getInstance().addToRequestQueue(senddata);
         }
+    }
+    @Override
+    public void onBackPressed() {
+        startActivity(new Intent(getBaseContext(), Welcome.class));
     }
 }
