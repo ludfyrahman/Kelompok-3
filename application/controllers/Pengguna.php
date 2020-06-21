@@ -14,7 +14,11 @@ class Pengguna extends CI_Controller {
 		  $this->store($this->uri->segment(4));
 		}else if($this->uri->segment(4) == "edit" && $_SERVER['REQUEST_METHOD'] == "POST"){
 		  $this->update($this->uri->segment(3));
-		}
+		}else if($this->uri->segment(1) == "lupa_password" && $_SERVER['REQUEST_METHOD'] == "POST"){
+            $this->proses_forgot_password();
+        }else if($this->uri->segment(1) == "ubah_password" && $_SERVER['REQUEST_METHOD'] == "POST"){
+            $this->proses_ubah_password($this->uri->segment(2));
+        }
     }
     public function logout() {
         // echo "keluar";
@@ -204,7 +208,7 @@ class Pengguna extends CI_Controller {
         if($cek->num_rows() > 0){
             $this->load->view('frontend/index',$data);
         }else{
-            echo "<h1>Kode Reset Password failed</h1>";
+            $this->load->view('part/404',$data);
         }
     }
     public function proses_ubah_password($kode){
@@ -233,13 +237,20 @@ class Pengguna extends CI_Controller {
         $c = $this->db->get_where($this->low, ['email' => $d['email']])->result_array();
         // $c = $this->pengguna->select("*", "WHERE email='$d[email]'");
         if(count($c) > 0 ){
-            $this->setting->lupa_password_email("papikos@gmail.com", $c[0]['email']);
+            $kode = Input_Helper::randomString(5);
+            $arr = ['verification' => $kode];
+            $this->db->update($this->low, $arr, ['email' => $d['email']]);
+            // $this->setting->lupa_password_email("papikos@gmail.com", $c[0]['email']);
             // echo "ada cek email";
+            $data = [
+                'kode' => $kode
+            ];
             $_SESSION['alert'] = ['info', 'Verifikasi Terkirim ke email '.$c[0]['email']];
-            return $this->lupa_password();
+            Response_Helper::send("dawiyahrubi@gmail.com", $d['email'], "Papikos", $this->load->view("part/lupa_password", $data,TRUE));
+            redirect(base_url("lupa_password"));
         }else{
             $_SESSION['alert'] = ['info', 'Email anda tidak terdaftar di aplikasi'];
-            return $this->lupa_password();
+            redirect(base_url("lupa_password"));
         }
     }
     
@@ -397,8 +408,9 @@ class Pengguna extends CI_Controller {
             $kode = Input_Helper::randomString(5);
             $arr = ['nama' => $d['nama'], 'email' => $d['email'], 'password' => password_hash($d['password'], PASSWORD_DEFAULT), 'level' => 3, 'verification' => $kode];
             $this->db->insert($this->low, $arr);
-            $this->setting->send("rezamufti24@gmail.com", $arr['email'], 'Verifikasi Akun Papikos', 'Verifikasi Akun Papikos. klik <a href="'.BASEURL."verifikasi/$kode".'">'.$kode.'</a>');
-            
+            // $this->setting->send("rezamufti24@gmail.com", $arr['email'], 'Verifikasi Akun Papikos', 'Verifikasi Akun Papikos. klik <a href="'.BASEURL."verifikasi/$kode".'">'.$kode.'</a>');
+            $data['kode'] = $kode;
+            Response_Helper::send("dawiyahrubi@gmail.com", $arr['email'], "Verifikasi Akun Papikos", $this->load->view("part/verifikasi_email", $data,TRUE));
             $this->session->set_flashdata("alert", ['success', "Register berhasil, verifikasi akun terlebih dahulu", 'Berhasil']);
             redirect(base_url("$this->low/login/"));
         }

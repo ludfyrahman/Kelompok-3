@@ -92,5 +92,16 @@ class Site extends CI_Controller { //mengextends CI_Controller
         session_destroy();
         redirect(base_url());
     }
+    public function verifikasi($id){
+        $q = $this->db->get_where("pengguna", ['verification' => $id])->num_rows();
+        if($q > 0 ){
+            $this->db->update('pengguna', ['status' => 1], ['verification' => $id]);
+            $this->session->set_flashdata("alert", ['success', "Verifikasi Akun Berhasil", ' Berhasil']);
+            redirect(base_url("pengguna/login/"));
+        }else{
+            $this->session->set_flashdata("alert", ['danger', "Verifikasi Akun Gagal", ' Berhasil']);
+            redirect(base_url("pengguna/login/"));
+        }
+    }
 }
 ?>

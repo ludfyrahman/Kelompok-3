@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title><?php echo $title ?></title>
     <?php 
-    define("BASEASSET", base_url("assets/"));
-    define("BASEADM", base_url("admin/"));
-    define("PATHPAPI", str_replace('system', 'application', BASEPATH)); 
+    // define("BASEASSET", base_url("assets/"));
+    // define("BASEADM", base_url("admin/"));
+    // define("PATHPAPI", str_replace('system', 'application', BASEPATH)); 
     ?>
     <link rel="shortcut icon" href="<?php echo BASEASSET ?>/images/favicon.ico" />
     <!-- plugins:css -->
