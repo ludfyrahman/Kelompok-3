@@ -18,6 +18,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.bumptech.glide.Glide;
 import com.ludfyrahman.papikos.Config.AppController;
 import com.ludfyrahman.papikos.Config.AuthData;
 import com.ludfyrahman.papikos.Config.ServerAccess;
@@ -39,6 +40,7 @@ import java.util.Map;
 
 public class Profil extends AppCompatActivity {
     TextView nama, email, jenis_kelamin, telepon, tanggal_lahir, alamat;
+    ImageView profil;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,6 +60,10 @@ public class Profil extends AppCompatActivity {
         telepon = findViewById(R.id.telepon);
         tanggal_lahir = findViewById(R.id.tanggal_lahir);
         alamat = findViewById(R.id.alamat);
+        profil = findViewById(R.id.profil);
+        Glide.with(this)
+                .load(ServerAccess.COVER+"profil/"+ AuthData.getInstance(getBaseContext()).getFoto())
+                .into(profil);
         loadJson();
     }
     private void loadJson()

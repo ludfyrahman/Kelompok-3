@@ -30,6 +30,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.ludfyrahman.papikos.Config.AppController;
 import com.ludfyrahman.papikos.Config.AuthData;
 import com.ludfyrahman.papikos.Config.ServerAccess;
+import com.ludfyrahman.papikos.Dashboard.Dashboard;
 import com.ludfyrahman.papikos.R;
 
 import org.json.JSONException;
@@ -77,7 +78,7 @@ public class Auth_Page extends AppCompatActivity {
                         .createSignInIntentBuilder()
                         .setAvailableProviders(providers)
                         .setTheme(R.style.LoginTheme)
-                        .setLogo(R.drawable.logo)
+                        .setLogo(R.drawable.white_logo)
                         .build(),
                 MY_REQUEST_CODE);
     }
@@ -97,11 +98,11 @@ public class Auth_Page extends AppCompatActivity {
                 String phone = user.getPhoneNumber();
 
                 if (user.getEmail() != null){
-//                    LoginEmail(email);
+                    LoginEmail(email);
                     Log.d("email", email);
                 }else{
                     Log.d("no_hp", phone);
-//                    LoginPhone(phone);
+                    LoginPhone(phone);
                 }
             }else{
                 Toast.makeText(this, ""+response.getError().getMessage(), Toast.LENGTH_SHORT).show();
@@ -114,20 +115,21 @@ public class Auth_Page extends AppCompatActivity {
         pd.setMessage("Authenticating...");
         pd.setCancelable(false);
         pd.show();
-        StringRequest senddata = new StringRequest(Request.Method.POST, ServerAccess.SIGN_UP, new Response.Listener<String>() {
+        StringRequest senddata = new StringRequest(Request.Method.POST, ServerAccess.EMAIL, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 pd.cancel();
                 try {
                     JSONObject res = new JSONObject(response);
-                    if(res.getString("status").equals("success")){
-//                        JSONObject r = res.getJSONObject("data");
-//                        AuthData.getInstance(getBaseContext()).setdatauser(r.getString("id_user"), r.getString("nama_depan"), r.getString("foto"));
-                        Toast.makeText(Auth_Page.this, "Berhasil login", Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(getBaseContext(), Dashboard.class);
-//                        startActivity(intent);
+                    if(res.getBoolean("status") == true){
+                        JSONObject r = res.getJSONObject("data");
+                        AuthData.getInstance(getBaseContext()).setdatauser(r.getString("id"), r.getString("nama"), r.getString("email"), res.getString("token"), r.getString("profil"));
+                        Toast.makeText(Auth_Page.this, res.getString("message"), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getBaseContext(), Dashboard.class);
+                        startActivity(intent);
                     }else{
                         Toast.makeText(getBaseContext(), res.getString("msg"), Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(getBaseContext(), Sign_In.class));
                     }
                     pd.dismiss();
 
@@ -161,23 +163,21 @@ public class Auth_Page extends AppCompatActivity {
         pd.setMessage("Authenticating...");
         pd.setCancelable(false);
         pd.show();
-        StringRequest senddata = new StringRequest(Request.Method.POST, ServerAccess.SIGN_UP, new Response.Listener<String>() {
+        StringRequest senddata = new StringRequest(Request.Method.POST, ServerAccess.PHONE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 pd.cancel();
                 try {
                     JSONObject res = new JSONObject(response);
-                    Log.d("pesan", res.getString("status"));
-                    if(res.getString("status").equals("success")){
+                    if(res.getBoolean("status") == true){
                         JSONObject r = res.getJSONObject("data");
-//                        AuthData.getInstance(getBaseContext()).setdatauser(r.getString("id_user"), r.getString("nama_depan"), r.getString("foto"));
-//                        Toast.makeText(Auth_Page.this, "Berhasil login", Toast.LENGTH_SHORT).show();
-//                        Intent intent = new Intent(getBaseContext(), Dashboard.class);
-//                        startActivity(intent);
+                        AuthData.getInstance(getBaseContext()).setdatauser(r.getString("id"), r.getString("nama"), r.getString("email"), res.getString("token"), r.getString("profil"));
+                        Toast.makeText(Auth_Page.this, res.getString("message"), Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(getBaseContext(), Dashboard.class);
+                        startActivity(intent);
                     }else{
                         Toast.makeText(getBaseContext(), res.getString("msg"), Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(getBaseContext(), Sign_In.class);
-                        startActivity(intent);
+                        startActivity(new Intent(getBaseContext(), Sign_In.class));
                     }
                     pd.dismiss();
 

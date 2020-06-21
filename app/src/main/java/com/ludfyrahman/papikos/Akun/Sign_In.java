@@ -13,6 +13,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -44,6 +46,8 @@ import java.util.Map;
 public class Sign_In extends AppCompatActivity {
     EditText email, password;
     Button masuk;
+    TextView lupa;
+    LinearLayout lainnya;
     ProgressDialog pd;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,18 +56,31 @@ public class Sign_In extends AppCompatActivity {
         pd = new ProgressDialog(Sign_In.this);
         pd.setMessage("Please Wait...");
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-//        setSupportActionBar(toolbar);
         toolbar.setNavigationIcon(R.drawable.back);
         Intent data = getIntent();
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                startActivity(new Intent(getBaseContext(), Welcome.class));
             }
         });
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         masuk = findViewById(R.id.masuk);
+        lupa = findViewById(R.id.lupa);
+        lainnya = findViewById(R.id.lainnya);
+        lainnya.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), Auth_Page.class));
+            }
+        });
+        lupa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getBaseContext(), Lupa_Password.class));
+            }
+        });
         masuk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

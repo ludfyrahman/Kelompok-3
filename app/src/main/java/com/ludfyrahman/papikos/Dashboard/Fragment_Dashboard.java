@@ -72,6 +72,8 @@ public class Fragment_Dashboard extends Fragment {
     private RecyclerView listdata_terbaru;
     RecyclerView.LayoutManager mManager_terbaru;
     LinearLayout not_found_terbaru;
+
+
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -145,6 +147,9 @@ public class Fragment_Dashboard extends Fragment {
 //                reload();
 //            }
 //        });
+        Glide.with(getActivity())
+                .load(ServerAccess.COVER+"profil/"+ AuthData.getInstance(getContext()).getFoto())
+                .into(profil);
         loadJson();
         return v;
     }

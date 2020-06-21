@@ -12,6 +12,9 @@ public class ServerAccess {
     public static final String auth = ROOT_API+"auth/";
     public static final String DASHBOARD = ROOT_API+"dashboard/data";
     public static final String SIGN_UP = auth+"sign_up";
+    public static final String EMAIL = auth+"email";
+    public static final String LUPA_PASSWORD = auth+"proses_forgot_password";
+    public static final String PHONE = auth+"phone";
     public static final String SIGN_IN = auth+"sign_in";
     public static final String TRANSAKSI = ROOT_API+"transaksi/";
     public static final String KOS = ROOT_API+"kos/";

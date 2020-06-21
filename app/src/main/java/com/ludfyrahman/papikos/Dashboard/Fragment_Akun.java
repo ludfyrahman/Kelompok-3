@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.ludfyrahman.papikos.Akun.Profil;
 import com.ludfyrahman.papikos.Akun.Pengaturan.Data_Diri;
 import com.ludfyrahman.papikos.Akun.Pengaturan.Form_Rekening;
@@ -21,6 +22,7 @@ import com.ludfyrahman.papikos.Akun.Pengaturan.Ubah_Biodata;
 import com.ludfyrahman.papikos.Akun.Pengaturan.Ubah_Password;
 import com.ludfyrahman.papikos.Akun.Sign_In;
 import com.ludfyrahman.papikos.Config.AuthData;
+import com.ludfyrahman.papikos.Config.ServerAccess;
 import com.ludfyrahman.papikos.Other.Tentang;
 import com.ludfyrahman.papikos.R;
 import com.ludfyrahman.papikos.Transaksi.Transaksi;
@@ -66,13 +68,6 @@ public class Fragment_Akun extends Fragment {
                 startActivity(new Intent(getContext(), Transaksi.class));
             }
         });
-        favorit = v.findViewById(R.id.favorit);
-        favorit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getContext(), Ubah_Password.class));
-            }
-        });
         tentang = v.findViewById(R.id.tentang);
         tentang.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,6 +83,9 @@ public class Fragment_Akun extends Fragment {
                 startActivity(new Intent(getContext(), Sign_In.class));
             }
         });
+        Glide.with(getActivity())
+                .load(ServerAccess.COVER+"profil/"+ AuthData.getInstance(getContext()).getFoto())
+                .into(profil_image);
         return v;
     }
 }
