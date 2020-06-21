@@ -67,8 +67,14 @@
                     android:background="@color/colorLight"
                     android:textSize="12sp"
                     android:layout_gravity="center"
+                    android:id="@+id/upload"
                     android:textColorHint="@color/colorGray"
                     android:hint="Upload bukti Transfer"/>
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:visibility="gone"
+                    android:id="@+id/gambar"/>
             </LinearLayout>
             <Button
                 android:layout_width="match_parent"

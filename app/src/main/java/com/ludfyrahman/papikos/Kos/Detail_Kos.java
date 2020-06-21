@@ -13,6 +13,7 @@ import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -58,6 +59,9 @@ public class Detail_Kos extends AppCompatActivity {
     private List<Ulasan_Model> list;
     private RecyclerView listdata;
     RecyclerView.LayoutManager mManager;
+
+
+    Button pesan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +85,14 @@ public class Detail_Kos extends AppCompatActivity {
         nama_pemilik = findViewById(R.id.nama_pemilik);
         no_hp = findViewById(R.id.no_hp);
         email = findViewById(R.id.email);
+        pesan = findViewById(R.id.pesan);
+        pesan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                startActivity(getIntent());
+            }
+        });
         jenis = findViewById(R.id.jenis);
         ulasan_not_found = findViewById(R.id.ulasan_not_found);
         rq = CustomVolleyRequest.getInstance(this).getRequestQueue();

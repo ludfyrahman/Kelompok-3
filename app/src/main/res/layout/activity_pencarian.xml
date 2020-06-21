@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="@android:color/transparent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        android:id="@+id/title"
+        android:textColor="@color/colorPrimary"
+        android:textSize="20sp" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_margin="10dp"
+        android:background="@color/colorLight"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="15sp"
+
+        android:text="Kata Kunci"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/cari"
+        android:inputType="text"
+        android:layout_margin="8dp"
+        android:textSize="12sp"
+        android:paddingLeft="8dp"
+        android:hint="Kata Kunci"
+
+        android:background="@color/colorLight"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="Kategori"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/kategori"
+        android:layout_margin="8dp"
+        android:background="@color/colorLight"
+        android:padding="15dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="Jenis Kos"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/jenis"
+        android:layout_margin="8dp"
+        android:background="@color/colorLight"
+        android:padding="15dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="Urutkan"/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/urutkan"
+        android:layout_margin="8dp"
+        android:background="@color/colorLight"
+        android:padding="15dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:text="Range Harga"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:id="@+id/harga_awal"
+            android:layout_weight="1"
+            android:inputType="number"
+            android:textSize="12sp"
+            android:paddingLeft="8dp"
+            android:hint="Harga Minimum"
+            android:background="@color/colorLight"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" - "
+            android:textSize="20sp"
+            android:textAlignment="center"
+            android:layout_weight="1.5"
+            android:gravity="center_horizontal" />
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:textSize="12sp"
+            android:paddingLeft="8dp"
+            android:hint="Harga Maksimum"
+            android:id="@+id/harga_tertinggi"
+            android:inputType="number"
+            android:layout_weight="1"
+            android:background="@color/colorLight"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/pesan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Terapkan"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_round_blue"
+        android:textColor="@color/colorwhite" />
+</LinearLayout>

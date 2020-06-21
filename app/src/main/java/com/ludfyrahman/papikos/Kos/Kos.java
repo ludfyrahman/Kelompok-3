@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -97,7 +98,13 @@ public class Kos extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.filter) {
-            Toast.makeText(Kos.this, "Action clicked", Toast.LENGTH_LONG).show();
+//            startActivity(new Intent(getBaseContext(), Pencarian.class));
+//            Toast.makeText(Kos.this, "Action clicked", Toast.LENGTH_LONG).show();
+            Pencarian bt = new Pencarian();
+            Bundle bundle = new Bundle();
+//            bundle.putString("id", marker.getSnippet());
+            bt.setArguments(bundle);
+            bt.show(getSupportFragmentManager(), "Kos");
             return true;
         }
 

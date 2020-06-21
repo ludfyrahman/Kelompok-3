@@ -195,7 +195,7 @@ public class Fragment_Map  extends Fragment {
                 bundle.putString("id", marker.getSnippet());
                 bt.setArguments(bundle);
                 bt.show(getFragmentManager(), "Kos");
-                Toast.makeText(getContext(), marker.getTitle()+" id kosnya "+marker.getSnippet(), Toast.LENGTH_SHORT).show();
+//                Toast.makeText(getContext(), marker.getTitle()+" id kosnya "+marker.getSnippet(), Toast.LENGTH_SHORT).show();
                 marker.hideInfoWindow();
                 return true;
             }
