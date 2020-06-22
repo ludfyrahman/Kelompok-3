@@ -1,4 +1,4 @@
-package com.ludfyrahman.papikos.Ulasan.Adapter;
+package com.ludfyrahman.papikos.Kos.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -8,49 +8,42 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
-import com.ludfyrahman.papikos.Kos.Adapter.Adapter_kos;
 import com.ludfyrahman.papikos.Kos.Detail_Kos;
+import com.ludfyrahman.papikos.Kos.Model.Fasilitas_Model;
 import com.ludfyrahman.papikos.Kos.Model.Kos_Model;
 import com.ludfyrahman.papikos.R;
-import com.ludfyrahman.papikos.Ulasan.Model.Ulasan_Model;
 
 import java.util.ArrayList;
 
-public class Adapter_Ulasan extends RecyclerView.Adapter<Adapter_Ulasan.ViewHolder> {
-    private ArrayList<Ulasan_Model> listdata;
+public class Adapter_Fasilitas extends RecyclerView.Adapter<Adapter_Fasilitas.ViewHolder> {
+    private ArrayList<Fasilitas_Model> listdata;
     private Activity activity;
     private Context context;
 
-    public Adapter_Ulasan(Activity activity, ArrayList<Ulasan_Model> listdata, Context context) {
+    public Adapter_Fasilitas(Activity activity, ArrayList<Fasilitas_Model> listdata, Context context) {
         this.listdata = listdata;
         this.activity = activity;
         this.context = context;
     }
 
     @Override
-    public Adapter_Ulasan.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public Adapter_Fasilitas.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View v = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.template_ulasan, parent, false);
-        Adapter_Ulasan.ViewHolder vh = new Adapter_Ulasan.ViewHolder(v);
+                .inflate(R.layout.template_fasilitas, parent, false);
+        Adapter_Fasilitas.ViewHolder vh = new Adapter_Fasilitas.ViewHolder(v);
         return vh;
     }
     @Override
-    public void onBindViewHolder(Adapter_Ulasan.ViewHolder holder, int position) {
-        final Adapter_Ulasan.ViewHolder x = holder;
+    public void onBindViewHolder(Adapter_Fasilitas.ViewHolder holder, int position) {
+        final Adapter_Fasilitas.ViewHolder x = holder;
         holder.kode.setText(listdata.get(position).getKode());
         holder.nama.setText(listdata.get(position).getNama());
-        holder.ulasan.setText(listdata.get(position).getUlasan());
-        holder.rating.setRating(Float.parseFloat(listdata.get(position).getRating()));
-        Glide.with(activity)
-                .load(listdata.get(position).getFoto())
-                .into(holder.cover);
         holder.mContext = context;
         holder.kode.setVisibility(View.GONE);
     }
@@ -62,8 +55,7 @@ public class Adapter_Ulasan extends RecyclerView.Adapter<Adapter_Ulasan.ViewHold
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         private CardView cv;
-        private TextView kode, nama, ulasan;
-        RatingBar rating;
+        private TextView kode, harga, nama, alamat;
         ImageView cover;
         Context mContext;
 
@@ -71,12 +63,9 @@ public class Adapter_Ulasan extends RecyclerView.Adapter<Adapter_Ulasan.ViewHold
             super(v);
             kode = (TextView) v.findViewById(R.id.kode);
             nama = (TextView) v.findViewById(R.id.nama);
-            rating = (RatingBar) v.findViewById(R.id.rating);
-            ulasan = (TextView) v.findViewById(R.id.ulasan);
-            cover = (ImageView) v.findViewById(R.id.cover);
-            v.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
+//            v.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
 //                    try {
 //                        Intent intent;
 //                        intent = new Intent(v.getContext(), Detail_Kos.class);
@@ -85,8 +74,8 @@ public class Adapter_Ulasan extends RecyclerView.Adapter<Adapter_Ulasan.ViewHold
 //                    } catch (Exception e) {
 //                        Log.d("pesan", "error");
 //                    }
-                }
-            });
+//                }
+//            });
         }
     }
 }

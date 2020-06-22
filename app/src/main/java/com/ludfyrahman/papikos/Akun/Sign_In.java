@@ -141,7 +141,6 @@ public class Sign_In extends AppCompatActivity {
             password.setFocusable(true);
             pd.dismiss();
         }else{
-            Log.d("url", ServerAccess.SIGN_IN);
             StringRequest senddata = new StringRequest(Request.Method.POST, ServerAccess.SIGN_IN, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -151,11 +150,9 @@ public class Sign_In extends AppCompatActivity {
                         Log.d("pesan", res.toString());
                         if(res.getBoolean("status") == true){
                             JSONObject r = res.getJSONObject("data");
-//                            Log.d("pesan", )
                             AuthData.getInstance(getBaseContext()).setdatauser(r.getString("id"), r.getString("nama"), r.getString("email"), res.getString("token"), r.getString("profil"));
                             Toast.makeText(Sign_In.this, res.getString("message"), Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getBaseContext(), Dashboard.class);
-
                             startActivity(intent);
                         }else{
                             Toast.makeText(getBaseContext(), res.getString("message"), Toast.LENGTH_SHORT).show();

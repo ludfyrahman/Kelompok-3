@@ -85,6 +85,20 @@
                     android:id="@+id/lokasi"
                     android:text="Perumahan tidar jember"
                     />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorBlack"
+                    android:text="Type Kos"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:textSize="16dp"/>
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/listtype"
+                    android:scrollbars="vertical"
+                    android:layout_marginBottom="16dp"
+                    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -280,55 +294,23 @@
                     android:layout_marginTop="16dp"
                     android:textSize="16dp"/>
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:id="@+id/listfasilitas"
+                    android:scrollbars="vertical"
+                    android:layout_marginBottom="16dp"
+                    android:layout_height="wrap_content"></androidx.recyclerview.widget.RecyclerView>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
-                   <LinearLayout
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
-                       android:padding="8dp"
-                       android:orientation="vertical">
-                       <ImageView
-                           android:layout_width="50dp"
-                           android:layout_gravity="center"
-                           android:layout_height="50dp"
-                           android:src="@drawable/logo"/>
-                       <TextView
-                           android:layout_width="wrap_content"
-                           android:layout_height="wrap_content"
-                           android:text="Free Handphone"/>
-                   </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    android:id="@+id/fasilitas_not_found">
+                    <TextView
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_gravity="center"
-                            android:layout_height="50dp"
-                            android:src="@drawable/logo"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Free Handphone"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="8dp"
-                        android:orientation="vertical">
-                        <ImageView
-                            android:layout_width="50dp"
-                            android:layout_gravity="center"
-                            android:layout_height="50dp"
-                            android:src="@drawable/logo"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Free Handphone"/>
-                    </LinearLayout>
+                        android:textAlignment="center"
+                        android:text="@string/fasilitas_kosong"
+                        android:gravity="center_horizontal" />
                 </LinearLayout>
                 <TextView
                     android:layout_width="match_parent"
@@ -355,6 +337,7 @@
                             android:layout_height="wrap_content"
                             android:textSize="20sp"
                             android:textStyle="bold"
+                            android:id="@+id/rate"
                             android:layout_weight="1"
                             android:textColor="@color/colorwhite"
                             android:text="4.2"/>
@@ -378,12 +361,14 @@
                             android:textColor="@color/colorGray"
                             android:textStyle="bold"
                             android:paddingBottom="8dp"
+                            android:id="@+id/jumlah_ulasan"
                             android:text="10.230 ulasan"/>
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
+                            android:id="@+id/lihat_ulasan"
                             android:text="Lihat ulasan"/>
                     </LinearLayout>
                 </LinearLayout>

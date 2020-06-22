@@ -61,4 +61,5 @@
     <string name="facebook_app_id" translatable="false">2805059026218742</string>
     <string name="facebook_application_id" translatable="false">2805059026218742</string>
     <string name="fb_login_protocol_scheme" translatable="false">fb2805059026218742</string>
+    <string name="fasilitas_kosong">Fasilitas Kosong</string>
 </resources>

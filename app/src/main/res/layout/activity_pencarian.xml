@@ -8,13 +8,27 @@
     android:padding="16dp"
     android:background="@android:color/transparent">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Filter"
-        android:id="@+id/title"
-        android:textColor="@color/colorPrimary"
-        android:textSize="20sp" />
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Filter"
+            android:id="@+id/title"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/reset"
+            android:text="Reset"/>
+    </LinearLayout>
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -25,7 +39,6 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:textSize="15sp"
-
         android:text="Kata Kunci"/>
     <EditText
         android:layout_width="match_parent"
@@ -45,12 +58,22 @@
         android:textSize="15sp"
         android:text="Kategori"/>
     <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
         android:id="@+id/kategori"
-        android:layout_margin="8dp"
-        android:background="@color/colorLight"
-        android:padding="15dp"/>
+        style="@style/Widget.AppCompat.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/dropdownListPreferredItemHeight"
+        android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:dropDownWidth="300dp"
+        android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+        android:paddingRight="14dp"
+        android:popupBackground="@android:color/white"
+        android:popupElevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,12 +81,22 @@
         android:textSize="15sp"
         android:text="Jenis Kos"/>
     <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
         android:id="@+id/jenis"
-        android:layout_margin="8dp"
-        android:background="@color/colorLight"
-        android:padding="15dp"/>
+        style="@style/Widget.AppCompat.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/dropdownListPreferredItemHeight"
+        android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:dropDownWidth="300dp"
+        android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+        android:paddingRight="14dp"
+        android:popupBackground="@android:color/white"
+        android:popupElevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -71,12 +104,22 @@
         android:textSize="15sp"
         android:text="Urutkan"/>
     <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
         android:id="@+id/urutkan"
-        android:layout_margin="8dp"
-        android:background="@color/colorLight"
-        android:padding="15dp"/>
+        style="@style/Widget.AppCompat.Spinner"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/dropdownListPreferredItemHeight"
+        android:layout_margin="10dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:dropDownWidth="300dp"
+        android:dropDownVerticalOffset="?attr/dropdownListPreferredItemHeight"
+        android:paddingRight="14dp"
+        android:popupBackground="@android:color/white"
+        android:popupElevation="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -119,7 +162,7 @@
             android:background="@color/colorLight"/>
     </LinearLayout>
     <Button
-        android:id="@+id/pesan"
+        android:id="@+id/terapkan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Terapkan"

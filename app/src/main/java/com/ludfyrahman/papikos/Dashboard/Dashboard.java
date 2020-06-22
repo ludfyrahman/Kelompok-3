@@ -17,6 +17,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.ludfyrahman.papikos.Akun.Sign_In;
 import com.ludfyrahman.papikos.Config.AuthData;
+import com.ludfyrahman.papikos.Kos.Temp.Temp_Kos;
 import com.ludfyrahman.papikos.R;
 
 public class Dashboard extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
@@ -39,6 +40,7 @@ public class Dashboard extends AppCompatActivity implements BottomNavigationView
                 loadFragment(new Fragment_Dashboard());
             }
         });
+        Temp_Kos.getInstance(getBaseContext()).clear();
     }
     private boolean loadFragment(Fragment fragment) {
         //switching fragment

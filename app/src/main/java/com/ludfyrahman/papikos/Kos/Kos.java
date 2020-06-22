@@ -25,6 +25,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.ludfyrahman.papikos.Config.AppController;
 import com.ludfyrahman.papikos.Config.ServerAccess;
+import com.ludfyrahman.papikos.Dashboard.Dashboard;
 import com.ludfyrahman.papikos.Kos.Adapter.Adapter_kos;
 import com.ludfyrahman.papikos.Kos.Model.Kos_Model;
 import com.ludfyrahman.papikos.Kos.Temp.Temp_Kos;
@@ -61,6 +62,7 @@ public class Kos extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 finish();
+                startActivity(new Intent(getBaseContext(), Dashboard.class));
             }
         });
         listdata = (RecyclerView) findViewById(R.id.listdata);

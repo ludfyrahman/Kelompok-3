@@ -28,8 +28,12 @@ import com.ludfyrahman.papikos.Config.ServerAccess;
 import com.ludfyrahman.papikos.Config.SliderUtils;
 import com.ludfyrahman.papikos.Config.slider.CustomVolleyRequest;
 import com.ludfyrahman.papikos.Config.slider.ViewPagerAdapter;
+import com.ludfyrahman.papikos.Kos.Adapter.Adapter_Fasilitas;
+import com.ludfyrahman.papikos.Kos.Adapter.Adapter_Type;
 import com.ludfyrahman.papikos.Kos.Adapter.Adapter_kos;
+import com.ludfyrahman.papikos.Kos.Model.Fasilitas_Model;
 import com.ludfyrahman.papikos.Kos.Model.Kos_Model;
+import com.ludfyrahman.papikos.Kos.Model.Type_Model;
 import com.ludfyrahman.papikos.R;
 import com.ludfyrahman.papikos.Ulasan.Adapter.Adapter_Ulasan;
 import com.ludfyrahman.papikos.Ulasan.Model.Ulasan_Model;
@@ -44,11 +48,11 @@ import java.util.List;
 import java.util.Locale;
 
 public class Detail_Kos extends AppCompatActivity {
-    TextView nama, harga, lokasi, kategori, jumlah_kamar, jenis, deskripsi, nama_pemilik, no_hp, email;
+    TextView nama, harga, lokasi, kategori, jumlah_kamar, jenis, deskripsi, nama_pemilik, no_hp, email, rate, jumlah_ulasan, lihat_ulasan;
     ProgressDialog pd;
     String[] sampleImages = new String[4];
     ViewPager viewPager;
-    LinearLayout sliderDotspanel, ulasan_not_found;
+    LinearLayout sliderDotspanel, ulasan_not_found, fasilitas_not_found;
     private int dotscount;
     private ImageView[] dots;
     RequestQueue rq;
@@ -60,6 +64,15 @@ public class Detail_Kos extends AppCompatActivity {
     private RecyclerView listdata;
     RecyclerView.LayoutManager mManager;
 
+    private Adapter_Fasilitas adapter_fasilitas;
+    private List<Fasilitas_Model> list_fasilitas;
+    private RecyclerView listfasilitas;
+    RecyclerView.LayoutManager mManager_fasilitas;
+
+    private Adapter_Type adapter_type;
+    private List<Type_Model> list_type;
+    private RecyclerView listtype;
+    RecyclerView.LayoutManager mManager_type;
 
     Button pesan;
     @Override
@@ -76,6 +89,9 @@ public class Detail_Kos extends AppCompatActivity {
                 finish();
             }
         });
+        rate = findViewById(R.id.rate);
+        jumlah_ulasan = findViewById(R.id.jumlah_ulasan);
+        lihat_ulasan = findViewById(R.id.lihat_ulasan);
         nama = findViewById(R.id.nama);
         harga = findViewById(R.id.harga);
         lokasi = findViewById(R.id.lokasi);
@@ -89,12 +105,22 @@ public class Detail_Kos extends AppCompatActivity {
         pesan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
-                startActivity(getIntent());
+                Pesan bt = new Pesan();
+                Bundle bundle = new Bundle();
+                Intent data = getIntent();
+                String type = "";
+                if (data.hasExtra("type")){
+                    type = data.getStringExtra("type");
+                }
+                bundle.putString("type", type);
+                bundle.putString("kode", data.getStringExtra("kode"));
+                bt.setArguments(bundle);
+                bt.show(getSupportFragmentManager(), "Pesan");
             }
         });
         jenis = findViewById(R.id.jenis);
         ulasan_not_found = findViewById(R.id.ulasan_not_found);
+        fasilitas_not_found = findViewById(R.id.fasilitas_not_found);
         rq = CustomVolleyRequest.getInstance(this).getRequestQueue();
 
         sliderImg = new ArrayList<>();
@@ -111,6 +137,22 @@ public class Detail_Kos extends AppCompatActivity {
         listdata.setLayoutManager(mManager);
         listdata.setAdapter(adapter);
 
+        listfasilitas = (RecyclerView) findViewById(R.id.listfasilitas);
+        listfasilitas.setHasFixedSize(true);
+        list_fasilitas = new ArrayList<>();
+        adapter_fasilitas = new Adapter_Fasilitas(this,(ArrayList<Fasilitas_Model>) list_fasilitas, this);
+        mManager_fasilitas = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        listfasilitas.setLayoutManager(mManager_fasilitas);
+        listfasilitas.setAdapter(adapter_fasilitas);
+
+
+        listtype = (RecyclerView) findViewById(R.id.listtype);
+        listtype.setHasFixedSize(true);
+        list_type = new ArrayList<>();
+        adapter_type = new Adapter_Type(this,(ArrayList<Type_Model>) list_type, this);
+        mManager_type = new LinearLayoutManager(this,LinearLayoutManager.HORIZONTAL,false);
+        listtype.setLayoutManager(mManager_type);
+        listtype.setAdapter(adapter_type);
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -142,7 +184,11 @@ public class Detail_Kos extends AppCompatActivity {
         pd.setCancelable(false);
         pd.show();
         final Intent data = getIntent();
-        StringRequest senddata = new StringRequest(Request.Method.GET, ServerAccess.KOS+"detail/"+data.getStringExtra("kode"), new Response.Listener<String>() {
+        String type = "";
+        if (data.hasExtra("type")){
+            type = "/"+data.getStringExtra("type");
+        }
+        StringRequest senddata = new StringRequest(Request.Method.GET, ServerAccess.KOS+"detail/"+data.getStringExtra("kode")+type, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject res = null;
@@ -159,6 +205,8 @@ public class Detail_Kos extends AppCompatActivity {
                     nama_pemilik.setText(data.getString("nama"));
                     no_hp.setText(data.getString("no_hp"));
                     email.setText(data.getString("email"));
+                    rate.setText(data.getString("rate"));
+                    jumlah_ulasan.setText(data.getString("jumlah_ulasan")+" ulasan");
                     Geocoder geocoder = new Geocoder(getBaseContext(), Locale.getDefault());
                     List<Address> addresses = geocoder.getFromLocation(data.getDouble("latitude"), data.getDouble("longitude"), 1);
                     String cityName = addresses.get(0).getAddressLine(0);
@@ -175,7 +223,6 @@ public class Detail_Kos extends AppCompatActivity {
 
                         }
                     }
-
                     JSONArray ul = data.getJSONArray("ulasan");
                     if(ul.length() > 0) {
                         for (int i = 0; i < ul.length(); i++) {
@@ -185,6 +232,7 @@ public class Detail_Kos extends AppCompatActivity {
                                 md.setKode(ulasan.getString("id"));
                                 md.setNama(ulasan.getString("nama"));
                                 md.setUlasan(ulasan.getString("ulasan"));
+                                md.setRating(ulasan.getString("rating"));
                                 md.setFoto(ServerAccess.COVER+"profil/"+ulasan.getString("profil"));
                                 list.add(md);
                             } catch (Exception ea) {
@@ -198,6 +246,7 @@ public class Detail_Kos extends AppCompatActivity {
                         ulasan_not_found.setVisibility(View.VISIBLE);
                         pd.cancel();
                     }
+
                     viewPagerAdapter = new ViewPagerAdapter(sliderImg, Detail_Kos.this);
 //
                     viewPager.setAdapter(viewPagerAdapter);
@@ -217,6 +266,55 @@ public class Detail_Kos extends AppCompatActivity {
 
                     }
 
+
+                    JSONArray fas = data.getJSONArray("subfas");
+                    if(fas.length() > 0) {
+                        for (int i = 0; i < fas.length(); i++) {
+                            try {
+                                JSONObject fasilitas = fas.getJSONObject(i);
+                                JSONArray sub_fas = fasilitas.getJSONArray("sub");
+                                for (int j = 0; j < sub_fas.length(); j++) {
+                                    Fasilitas_Model md = new Fasilitas_Model();
+                                    JSONObject sub = sub_fas.getJSONObject(j);
+                                    md.setKode(sub.getString("id"));
+                                    md.setNama(sub.getString("nama"));
+                                    list_fasilitas.add(md);
+                                }
+
+                            } catch (Exception ea) {
+                                ea.printStackTrace();
+                            }
+                        }
+
+                        adapter_fasilitas.notifyDataSetChanged();
+                        pd.cancel();
+                    }else{
+                        fasilitas_not_found.setVisibility(View.VISIBLE);
+                        pd.cancel();
+                    }
+
+
+                    JSONArray dk = data.getJSONArray("dk");
+                    if(dk.length() > 0) {
+                        for (int i = 0; i < dk.length(); i++) {
+                            try {
+                                JSONObject type = dk.getJSONObject(i);
+                                    Type_Model md = new Type_Model();
+                                    md.setKode(type.getString("id"));
+                                    md.setType(type.getString("type"));
+                                    md.setId_kos(type.getString("id_kos"));
+                                    list_type.add(md);
+
+                            } catch (Exception ea) {
+                                ea.printStackTrace();
+                            }
+                        }
+
+                        adapter_type.notifyDataSetChanged();
+                        pd.cancel();
+                    }else{
+                        pd.cancel();
+                    }
                 } catch (JSONException | IOException e) {
                     e.printStackTrace();
                     pd.cancel();
