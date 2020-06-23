@@ -49,8 +49,6 @@ class Kos extends CI_Controller {
             
             $index++;
         }
-        // echo "</pre>";
-        // print_r($data);
         $data['title'] =$data['nama_kos'];
 		$data['content'] = "$this->low/detail";
 		$data['type'] = 'Ubah';
@@ -61,15 +59,17 @@ class Kos extends CI_Controller {
         $data['subfas'] = $subfas;
         $data['ulasan'] = $ulasan;
         $data['dk'] = $detail_kos;
+        // echo "</pre>";
+        // print_r($data);
 		$this->load->view('frontend/index',$data);
     }
     public function pesan($id, $id_detail = null){
         // $data = $this->kos->Select("k.id, k.nama as nama_kos,k.tanggal_diubah, k.latitude, k.longitude, k.deskripsi, dk.jumlah_kamar, dk.harga, k.tanggal_ditambahkan, p.nama", " k JOIN pengguna p ON k.ditambahkan_oleh=p.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos", "WHERE k.id='$id' and dk.id=$id_detail ")[1][0];
         $data = $this->db->query("SELECT k.id, k.nama as nama_kos,k.tanggal_diubah, k.latitude, k.longitude, k.deskripsi, dk.jumlah_kamar, dk.harga, k.tanggal_ditambahkan, p.nama from $this->low k JOIN pengguna p ON k.ditambahkan_oleh=p.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos WHERE k.id='$id' and dk.id=$id_detail ")->row_array();
         $media = $this->db->query("SELECT * from media WHERE id_kos='$data[id]' LIMIT 1")->row_array();
-        // $data = ['title' => 'Login Papikos', 'content' => 'user/login'];
+        $data_page = ['title' => 'Login Papikos', 'content' => 'user/login'];
         if(!isset($_SESSION['userid'])){
-            $this->load->view('frontend/index',$data);
+            $this->load->view('frontend/index',$data_page);
         }else{
             $data = ['title' => "Pesan ".$data['nama_kos'], 'content' => 'kos/pesan', 'type' => 'Tambah', 'data' => $data, 'media' => $media];
             $this->load->view('frontend/index',$data);
@@ -186,6 +186,7 @@ class Kos extends CI_Controller {
         $arr = [
             'id_kos' => $id_detail,
             'id_pengguna' => Account_Helper::Get("id"),
+            'tanggal_expired' => date('Y-m-d H:i:s', strtotime('+1 days'))
         ];
         $this->db->insert("pemesanan", $arr);
         $id = $this->db->insert_id();

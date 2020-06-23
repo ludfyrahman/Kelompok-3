@@ -71,16 +71,19 @@ class Kos extends CI_Controller{
         k LEFT JOIN pengguna p on k.ditambahkan_oleh=p.id LEFT JOIN kategori kk on k.id_kategori=kk.id JOIN (Select * from detail_kos) dk on k.id=dk.id_kos LEFT JOIN (Select * from media) m on dk.id=m.id_kos  $pencarian GROUP BY  k.id  $urut")->result_array();
         echo json_encode(['data' => $q]);
     }
-    public function pesanAction($id, $id_detail = null){
+    public function pesanAction($id, $id_detail = null, $id_akun){
         $arr = [
             'id_kos' => $id_detail,
-            'id_pengguna' => Account_Helper::Get("id"),
+            'id_pengguna' => $id_akun,
+            'tanggal_expired' => date('Y-m-d H:i:s', strtotime('+1 days'))
         ];
         $q = $this->db->insert("pemesanan", $arr);
         $id = $this->db->insert_id();
         if($q){
+            $response['status'] = true;
             $response['message'] = "Pemesanan Berhasil";
         }else{
+            $response['status'] = false;
             $response['message'] = "Pemesanan Gagal";
         }
         echo json_encode($response);
@@ -115,11 +118,12 @@ class Kos extends CI_Controller{
         JOIN (Select * from media) m on k.id=m.id_kos $where GROUP BY m.id_kos")->result_array();
         echo json_encode($data);
     }
+
     public function detail($id, $id_detail = null){
         // $q = $this->db->get_where($this->low, ['id' => $id])->row_array();
         $detail_kos = $this->db->get_where("detail_kos",  ['id_kos' => $id])->result_array();
         $id_detail_kos= ($id_detail == null ? $detail_kos[0]['id'] : $id_detail);
-        $data = $this->db->query("SELECT k.id, k.nama as nama_kos, k.dilihat,k.jenis, kat.nama as kategori, k.tanggal_diubah, k.latitude, k.longitude, k.deskripsi, dk.jumlah_kamar, dk.harga, k.tanggal_ditambahkan, p.nama,  p.email, p.no_hp 
+        $data = $this->db->query("SELECT k.id, k.nama as nama_kos, k.dilihat,k.jenis, kat.nama as kategori, k.tanggal_diubah, k.latitude, k.longitude, k.deskripsi, dk.jumlah_kamar, dk.harga, k.tanggal_ditambahkan, p.nama,  p.email, p.nama_rekening, p.no_rekening, p.nama_bank, p.no_hp 
         from $this->low k JOIN pengguna p ON k.ditambahkan_oleh=p.id 
         JOIN kategori kat ON k.id_kategori=kat.id
         JOIN (Select * from detail_kos) dk on k.id=dk.id_kos WHERE k.id='$id' and dk.id=$id_detail_kos GROUP BY k.id")->row_array();
@@ -152,10 +156,11 @@ class Kos extends CI_Controller{
         }
         // $data['kos'] = $kos;	
         $data['subfas'] = $subfas;
-        $data['rate'] = $rate;
+        $data['rate'] = number_format((float)$rate, 2, '.', ''); ;
         $data['media'] = $media;
         $data['subfas'] = $subfas;
         $data['ulasan'] = $ulasan;
+        $data['jumlah_ulasan'] = count($ulasan);
         $data['dk'] = $detail_kos;
         echo json_encode(['data' => $data]);
     }
