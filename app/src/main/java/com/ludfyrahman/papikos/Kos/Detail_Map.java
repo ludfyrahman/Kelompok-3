@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -39,7 +40,9 @@ import java.util.Locale;
 
 public class Detail_Map extends BottomSheetDialogFragment {
     TextView nama, harga, alamat;
+    Button pesan;
     ImageView cover;
+    String id = "";
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -48,6 +51,16 @@ public class Detail_Map extends BottomSheetDialogFragment {
         harga = v.findViewById(R.id.harga);
         alamat = v.findViewById(R.id.alamat);
         cover = v.findViewById(R.id.cover);
+        pesan = v.findViewById(R.id.pesan);
+        pesan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent;
+                intent = new Intent(v.getContext(), Detail_Kos.class);
+                intent.putExtra("kode", id);
+                v.getContext().startActivity(intent);
+            }
+        });
         loadJson();
         return v;
     }
@@ -62,6 +75,7 @@ public class Detail_Map extends BottomSheetDialogFragment {
                     res = new JSONObject(response);
                     JSONObject data = res.getJSONObject("data");
                     nama.setText(data.getString("nama_kos"));
+                    id = data.getString("id");
                     harga.setText(ServerAccess.numberConvert(data.getString("harga")));
                     JSONArray arr = data.getJSONArray("media");
                     JSONObject d = arr.getJSONObject(0);

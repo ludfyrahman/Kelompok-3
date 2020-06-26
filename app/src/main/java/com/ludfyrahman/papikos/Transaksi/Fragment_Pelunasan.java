@@ -81,7 +81,7 @@ public class Fragment_Pelunasan extends Fragment {
                 JSONObject res = null;
                 try {
                     res = new JSONObject(response);
-                    JSONArray arr = res.getJSONArray("dp");
+                    JSONArray arr = res.getJSONArray("pelunasan");
                     if(arr.length() > 0) {
                         for (int i = 0; i < arr.length(); i++) {
                             try {

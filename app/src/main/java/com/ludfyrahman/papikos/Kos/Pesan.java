@@ -76,7 +76,7 @@ public class Pesan  extends BottomSheetDialogFragment {
                     JSONObject data = res.getJSONObject("data");
                     nama.setText(data.getString("nama_kos"));
                     no_hp.setText(data.getString("no_hp"));
-                    rekening.setText(data.getString("nama_bank")+" "+data.getString("no_rekening") + " ("+data.getString("nama")+")");
+                    rekening.setText(data.getString("nama_bank")+" "+data.getString("no_rekening") + " ("+data.getString("nama_rekening")+")");
                     harga.setText(ServerAccess.numberConvert(data.getString("harga")));
                     double tagihan = data.getDouble("harga") * 0.25;
                     jumlah_pembayaran.setText(ServerAccess.numberConvert(Double.toString(tagihan)));
@@ -104,7 +104,7 @@ public class Pesan  extends BottomSheetDialogFragment {
     }
     private void pesan(String kode, String type)
     {
-        StringRequest senddata = new StringRequest(Request.Method.GET, ServerAccess.PESAN+"detail/"+kode+"/"+type+"/"+ AuthData.getInstance(getContext()).getId_user(), new Response.Listener<String>() {
+        StringRequest senddata = new StringRequest(Request.Method.GET, ServerAccess.PESAN+kode+"/"+type+"/"+ AuthData.getInstance(getContext()).getId_user(), new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 JSONObject res = null;

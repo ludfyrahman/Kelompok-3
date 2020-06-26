@@ -49,12 +49,12 @@ public class Fragment_Item extends Fragment {
                     JSONObject data = res.getJSONObject("data");
                     nama_kos.setText(data.getString("nama_kos"));
                     tipe.setText(data.getString("type"));
-                    harga.setText(data.getString("harga"));
+                    harga.setText(ServerAccess.numberConvert(data.getString("harga")));
                     jenis.setText(ServerAccess.jenis(data.getInt("jenis")));
                     kategori.setText(data.getString("kategori"));
-                    nama_bank.setText(data.getString("nama_bank"));
-                    nama_rekening.setText(data.getString("nama_rekening"));
-                    no_rekening.setText(data.getString("no_rekening"));
+                    nama_bank.setText(data.getString("nama_bank_kos"));
+                    nama_rekening.setText(data.getString("nama_rekening_kos"));
+                    no_rekening.setText(data.getString("no_rekening_kos"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

@@ -58,7 +58,7 @@ public class Detail_Kos extends AppCompatActivity {
     RequestQueue rq;
     List<SliderUtils> sliderImg;
     ViewPagerAdapter viewPagerAdapter;
-
+    String type_value = "";
     private Adapter_Ulasan adapter;
     private List<Ulasan_Model> list;
     private RecyclerView listdata;
@@ -108,9 +108,10 @@ public class Detail_Kos extends AppCompatActivity {
                 Pesan bt = new Pesan();
                 Bundle bundle = new Bundle();
                 Intent data = getIntent();
-                String type = "";
+                String type = type_value;
                 if (data.hasExtra("type")){
                     type = data.getStringExtra("type");
+                    Log.d("id_type", type);
                 }
                 bundle.putString("type", type);
                 bundle.putString("kode", data.getStringExtra("kode"));
@@ -302,6 +303,7 @@ public class Detail_Kos extends AppCompatActivity {
                                     Type_Model md = new Type_Model();
                                     md.setKode(type.getString("id"));
                                     md.setType(type.getString("type"));
+                                    type_value = type.getString("id");
                                     md.setId_kos(type.getString("id_kos"));
                                     list_type.add(md);
 
