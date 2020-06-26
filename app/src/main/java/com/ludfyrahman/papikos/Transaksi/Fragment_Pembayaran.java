@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -26,12 +27,17 @@ import org.json.JSONObject;
 public class Fragment_Pembayaran extends Fragment {
     Button bayar;
     String kode = "", status_code = "1";
+    TextView jumlah_bayar, status, kode_transaksi, total;
     int jumlah = 0;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_pembayaran, container, false);
         bayar = v.findViewById(R.id.bayar);
+        jumlah_bayar = v.findViewById(R.id.jumlah_bayar);
+        status = v.findViewById(R.id.status);
+        kode_transaksi = v.findViewById(R.id.kode_transaksi);
+        total = v.findViewById(R.id.total);
         bayar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,19 +65,21 @@ public class Fragment_Pembayaran extends Fragment {
                     kode = data.getString("id");
                     status_code = data.getString("status_code");
                     if(data.getString("status_code").equals("1")){
-                        jumlah = data.getInt("harga") * 25 /100;
+                        int hitung =  data.getInt("harga") * 25 /100;
+                        jumlah = hitung;
+                        jumlah_bayar.setText(ServerAccess.numberConvert(Integer.toString(hitung)));
 //                    nama_kos.setText(data.getString("nama_kos"))
+                    }else if(data.getString("status_code").equals("2")){
+                        int hitung =  data.getInt("harga") - (data.getInt("harga") * 25 /100);
+                        jumlah = hitung;
+                        jumlah_bayar.setText(ServerAccess.numberConvert(Integer.toString(hitung)));
                     }
-                    if(data.getString("status_code").equals("3")){
+                    total.setText(ServerAccess.numberConvert(data.getString("harga")));
+                    status.setText(data.getString("status"));
+                    kode_transaksi.setText(ServerAccess.INV+data.getString("status_code"));
+                    if(data.getString("status_code").equals("3") || data.getString("status_code").equals("0")){
                         bayar.setVisibility(View.GONE);
                     }
-//                    tipe.setText(data.getString("type"));
-//                    harga.setText(ServerAccess.numberConvert(data.getString("harga")));
-//                    jenis.setText(ServerAccess.jenis(data.getInt("jenis")));
-//                    kategori.setText(data.getString("kategori"));
-//                    nama_bank.setText(data.getString("nama_bank_kos"));
-//                    nama_rekening.setText(data.getString("nama_rekening_kos"));
-//                    no_rekening.setText(data.getString("no_rekening_kos"));
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

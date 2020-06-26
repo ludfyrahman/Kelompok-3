@@ -97,6 +97,7 @@ public class Fragment_DP extends Fragment {
                                 md.setKos(data.getString("nama"));
                                 md.setStatus(data.getString("status"));
                                 md.setTanggal(ServerAccess.dateFormat(data.getString("tanggal_pemesanan")));
+
                                 try {
                                     DateFormat f = new SimpleDateFormat("MM/dd/yyyy hh:mm:ss a");
                                     Date d = f.parse("8/29/2011 11:16:12 AM");

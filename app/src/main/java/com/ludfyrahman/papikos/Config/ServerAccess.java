@@ -31,8 +31,8 @@ public class ServerAccess {
     }
     public static String dateFormat(String date){
 //        String date ="29/07/13";
-        SimpleDateFormat input = new SimpleDateFormat("dd-MM-yyyy");
-        SimpleDateFormat output = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat input = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat output = new SimpleDateFormat("dd MMM yyyy");
         String str = null;
         try {
             Date oneWayTripDate = input.parse(date);                 // parse input

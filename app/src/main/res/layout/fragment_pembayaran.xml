@@ -40,6 +40,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:gravity="right"
+                    android:id="@+id/kode_transaksi"
                     android:textColor="@color/colorBlack"
                     android:layout_height="wrap_content"
                     android:text="INV00051"/>
@@ -57,6 +58,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:gravity="right"
+                    android:id="@+id/status"
                     android:textColor="@color/colorBlack"
                     android:layout_height="wrap_content"
                     android:text="DP"/>
@@ -74,6 +76,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:gravity="right"
+                    android:id="@+id/jumlah_bayar"
                     android:textColor="@color/colorBlack"
                     android:layout_height="wrap_content"
                     android:text="Rp 250.000"/>
@@ -91,6 +94,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:gravity="right"
+                    android:id="@+id/total"
                     android:textColor="@color/colorBlack"
                     android:layout_height="wrap_content"
                     android:text="Rp 580.000"/>
