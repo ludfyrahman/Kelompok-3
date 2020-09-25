@@ -10,7 +10,7 @@ class Transaksi extends CI_Controller{
         // $id = Account_Helper::Get('id');
         $response['dibatalkan'] = $this->db->query("SELECT p.id as id_pemesanan, p.*, k.*, dk.* from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id WHERE p.id_pengguna='$id' and status='0' GROUP BY dk.id_kos")->result_array();
         $response['dp'] = $this->db->query("SELECT p.id as id_pemesanan, p.*, k.*, dk.* from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id  WHERE id_pengguna='$id' and status='1' GROUP BY dk.id_kos")->result_array();
-        $response['lunas'] = $this->db->query("SELECT p.id as id_pemesanan, p.*, k.*, dk.* from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id  WHERE id_pengguna='$id' and status='2' GROUP BY dk.id_kos")->result_array();
+        $response['pelunasan'] = $this->db->query("SELECT p.id as id_pemesanan, p.*, k.*, dk.* from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id  WHERE id_pengguna='$id' and status='2' GROUP BY dk.id_kos")->result_array();
         $response['selesai'] = $this->db->query("SELECT p.id as id_pemesanan, p.*, k.*, dk.* from pemesanan p  JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k on dk.id_kos=k.id  WHERE id_pengguna='$id' and status='3' GROUP BY dk.id_kos")->result_array();
         // echo "<pre>";
         $now = date('Y-m-d');
@@ -19,7 +19,7 @@ class Transaksi extends CI_Controller{
                 // $this->pemesanan->update(['status' => 0], "WHERE id='$d[id_pemesanan]'");
             }
         }
-        foreach ($response['lunas'] as $l) {
+        foreach ($response['pelunasan'] as $l) {
             // print_r($l);
             if (strtotime($now) > strtotime($l['tanggal_pemesanan']. ' +4 day')) {
                 // $this->pemesanan->update(['status' => 0], "WHERE id='$l[id_pemesanan]'");
@@ -58,18 +58,18 @@ class Transaksi extends CI_Controller{
                 $status = 3;
             }
             if($f['file']['name'] !=''){
-                if(Input_Helper::validateTypeUpload(['jpg', 'png', 'jpeg'], $f['file'])){
+                // if(Input_Helper::validateTypeUpload(['image/jpg', 'image/png', 'image/jpeg'], $f['file'])){
                     Response_Helper::UploadImage($f['file'], 'bukti');
                     $q = $this->db->insert("pembayaran", ['id_pemesanan' => $id,  'tipe' => $d['status'], 'jumlah' => $d['bayar'], 'bukti_bayar' => $f['file']['name']]);
-                    $this->db->update("pembayaran", ['status' => $status], ['id' => $id]);
+                    $this->db->update("pemesanan", ['status' => $status], ['id' => $id]);
                     if($q){
                         $response = ['status' => true, 'message' => "Berhasil Melakukan Pembayaran"];
                     }else{
                         $response = ['status' => false, 'message' => "Gagal Melakukan Pembayaran"];
                     }
-                }else{
-                    $response = ['status' => false, 'message' => "Format file tidak diperbolehkan, hanya jpg, jpeg dan png"];
-                }
+                // }else{
+                //     $response = ['status' => false, 'message' => "Format file tidak diperbolehkan, hanya jpg, jpeg dan png"];
+                // }
                 
             }else{
                 $response = ['status' => false, 'message' => "Bukti Tidak Boleh Kosong"];

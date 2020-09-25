@@ -20,7 +20,7 @@ class MPemesanan extends CI_model {
         return $q;
     }
     public function detailPemesanan($id){
-        $q = $this->db->query("SELECT p.id,k.id as id_kos, dk.type, kat.nama as kategori,pg.nama_rekening, pg.nama_bank, pg.no_rekening,  pgg.nama_rekening nama_rekening_kos, pg.nama_bank nama_bank_kos, pg.no_rekening no_rekening_kos, p.status as status_code, k.nama as nama_kos, dk.jumlah_kamar, dk.harga, pg.nama as nama, pg.email,k.jenis, k.tanggal_diubah, pg.alamat, pg.no_hp, p.tanggal_pemesanan, pgg.nama as nama_pemilik, (CASE WHEN p.status = 0 THEN 'Ditolak' WHEN p.status = 1 THEN 'Pending' WHEN p.status = 2 THEN 'Dp' WHEN p.status = 3 THEN 'Lunas' END) as status , dk.id as id_detail, p.tanggal_expired FROM pemesanan p 
+        $q = $this->db->query("SELECT p.id,k.id as id_kos, dk.type, kat.nama as kategori,pg.nama_rekening, pg.nama_bank, pg.no_rekening,  pgg.nama_rekening nama_rekening_kos, pg.nama_bank nama_bank_kos, pg.no_rekening no_rekening_kos, p.status as status_code, k.nama as nama_kos, dk.jumlah_kamar, dk.harga, pg.nama as nama, pg.email,k.jenis, k.tanggal_diubah, pg.alamat, pg.no_hp, p.tanggal_pemesanan, pgg.nama as nama_pemilik, (CASE WHEN p.status = 0 THEN 'Ditolak' WHEN p.status = 1 THEN 'Menunggu DP' WHEN p.status = 2 THEN 'Pelunasan' WHEN p.status = 3 THEN 'Lunas' END) as status , dk.id as id_detail, p.tanggal_expired FROM pemesanan p 
         JOIN (Select * from detail_kos) dk on dk.id=p.id_kos JOIN kos k ON dk.id_kos=k.id 
         JOIN kategori kat ON k.id_kategori=kat.id
         JOIN pengguna pg on p.id_pengguna=pg.id JOIN pengguna pgg on k.ditambahkan_oleh=pgg.id WHERE p.id='$id'");
